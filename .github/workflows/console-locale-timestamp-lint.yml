@@ -23,4 +23,4 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run lint -w '@saekitominaga/console-locale-timestamp'
+      - run: npm run lint -w 'console-locale-timestamp'
