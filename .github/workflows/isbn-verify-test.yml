@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w '@saekitominaga/isbn-verify'
-      - run: npm run test -w '@saekitominaga/isbn-verify'
+      - run: npm run build -w '@w0s/isbn-verify'
+      - run: npm run test -w '@w0s/isbn-verify'
 
       - uses: coverallsapp/github-action@v2
         with:

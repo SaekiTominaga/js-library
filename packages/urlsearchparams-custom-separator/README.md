@@ -1,6 +1,6 @@
 # Support characters other than "&" as URL query separator
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Furlsearchparams-custom-separator.svg)](https://www.npmjs.com/package/%40saekitominaga%2Furlsearchparams-custom-separator)
+[![npm version](https://badge.fury.io/js/%40w0s%2Furlsearchparams-custom-separator.svg)](https://www.npmjs.com/package/@w0s/urlsearchparams-custom-separator)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/urlsearchparams-custom-separator-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/urlsearchparams-custom-separator-test.yml)
 
 The URL query separator uses "&", but needs to be escaped in HTML and XML. [HTML 4.01 - Appendix B.2.2](https://www.w3.org/TR/html4/appendix/notes.html#h-B.2.2) had recommended support the use of ";" in place of "&".
@@ -10,7 +10,7 @@ This feature supports arbitrary separators other than "&" and allows them to be 
 ## Examples
 
 ```JavaScript
-import URLSearchParamsCustomSeparator from '@saekitominaga/urlsearchparams-custom-separator';
+import URLSearchParamsCustomSeparator from '@w0s/urlsearchparams-custom-separator';
 
 const urlSearchParams1 = new URLSearchParamsCustomSeparator(new URL('https://example.com/path/to?foo=1&bar=2;baz=3;qux=4:quux=5'), [';', ':']);
 urlSearchParams1.searchParams.get('baz'); // 3

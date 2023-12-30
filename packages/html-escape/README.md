@@ -1,6 +1,6 @@
 # Escapes and unescapes the characters for HTML
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Fstring-escape-html.svg)](https://www.npmjs.com/package/@saekitominaga/string-escape-html)
+[![npm version](https://badge.fury.io/js/%40w0s%2Fhtml-escape.svg)](https://www.npmjs.com/package/@w0s/html-escape)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/html-escape-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/html-escape-test.yml)
 
 - Escapes and unescapes the characters for HTML
@@ -9,7 +9,7 @@
 ## Examples
 
 ```JavaScript
-import HtmlEscape from '@saekitominaga/string-escape-html';
+import HtmlEscape from '@w0s/html-escape';
 
 HtmlEscape.escape('<span data-foo="hoge&hoge">text</span>'); // &lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;
 HtmlEscape.unescape('&lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;'); // <span data-foo="hoge&hoge">text</span>
@@ -20,7 +20,7 @@ HtmlEscape.template`<p>${span}</p>`; // <p>&lt;span&gt;text&lt;span&gt;</p>
 
 ```JavaScript
 /* Short method name */
-import Html from '@saekitominaga/string-escape-html';
+import Html from '@w0s/html-escape';
 
 Html._('<span data-foo="hoge&hoge">text</span>');
 Html.$('&lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;');

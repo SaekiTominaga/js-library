@@ -1,12 +1,12 @@
 # Parsing a PA-API 5.0 Item Image URL
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Fpaapi-item-image-url-parser.svg)](https://www.npmjs.com/package/%40saekitominaga%2Fpaapi-item-image-url-parser)
+[![npm version](https://badge.fury.io/js/%40w0s%2Fpaapi-item-image-url-parser.svg)](https://www.npmjs.com/package/@w0s/paapi-item-image-url-parser)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser-test.yml)
 
 ## Examples
 
 ```JavaScript
-import PaapiItemImageUrlParser from '@saekitominaga/paapi-item-image-url-parser';
+import PaapiItemImageUrlParser from '@w0s/paapi-item-image-url-parser';
 
 const imageUrl = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 const paapiItemImageUrlParser = new PaapiItemImageUrlParser(imageUrl);
@@ -31,7 +31,7 @@ paapiItemImageUrlParser.toString(); // 'https://m.media-amazon.com/images/I/5198
 ```
 
 ```JavaScript
-import PaapiItemImageUrlParser from '@saekitominaga/paapi-item-image-url-parser';
+import PaapiItemImageUrlParser from '@w0s/paapi-item-image-url-parser';
 
 const imageUrl = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');
 const paapiItemImageUrlParser = new PaapiItemImageUrlParser(imageUrl);

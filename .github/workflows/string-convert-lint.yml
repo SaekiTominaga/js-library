@@ -23,4 +23,4 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run lint -w '@saekitominaga/string-convert'
+      - run: npm run lint -w '@w0s/string-convert'

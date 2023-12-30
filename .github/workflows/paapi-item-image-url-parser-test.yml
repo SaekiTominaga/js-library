@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w '@saekitominaga/paapi-item-image-url-parser'
-      - run: npm run test -w '@saekitominaga/paapi-item-image-url-parser'
+      - run: npm run build -w '@w0s/paapi-item-image-url-parser'
+      - run: npm run test -w '@w0s/paapi-item-image-url-parser'
 
       - uses: coverallsapp/github-action@v2
         with:

@@ -1,5 +1,5 @@
 {
-	"name": "@saekitominaga/string-convert",
+	"name": "@w0s/string-convert",
 	"version": "1.0.5",
 	"description": "Converts newlines in a string, `trim()`, half-width / full-width conversion, etc",
 	"homepage": "https://github.com/SaekiTominaga/npm#readme",

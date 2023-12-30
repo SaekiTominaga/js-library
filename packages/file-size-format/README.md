@@ -1,6 +1,6 @@
 # Expressing file size in a unit system
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Ffile-size-format.svg)](https://www.npmjs.com/package/%40saekitominaga%2Ffile-size-format)
+[![npm version](https://badge.fury.io/js/%40w0s%2Ffile-size-format.svg)](https://www.npmjs.com/package/@w0s/file-size-format)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/file-size-format-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/file-size-format-test.yml)
 
 Expresses the size of a file in human-readable units such as `KiB` or `MB`.
@@ -12,7 +12,7 @@ Expresses the size of a file in human-readable units such as `KiB` or `MB`.
 ## Examples
 
 ```JavaScript
-import FileSizeFormat from '@saekitominaga/file-size-format';
+import FileSizeFormat from '@w0s/file-size-format';
 
 FileSizeFormat.iec(1024); // 1KiB
 FileSizeFormat.si(1000); // 1kB
