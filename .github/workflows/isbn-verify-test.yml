@@ -26,6 +26,6 @@ jobs:
       - run: npm run build -w '@saekitominaga/isbn-verify'
       - run: npm run test -w '@saekitominaga/isbn-verify'
 
-      - uses: coverallsapp/github-action@2
+      - uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
