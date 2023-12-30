@@ -88,7 +88,3 @@ new PaapiItemImageUrlParser(inputUrl: URL)
 <dt><code>getExtension(): string</code></dt>
 <dd>Get the extension part of URL</dd>
 </dl>
-
-## Old browsers & Node.js
-
-Private class methods feature is used since version 2.2. Supported environments are Firefox 90+, Chrome 84+, Safari 15+, and Node.js 14.6+.
