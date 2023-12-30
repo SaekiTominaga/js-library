@@ -1,5 +1,5 @@
 /**
- * MIME Type Parser
+ * Parsing a MIME type
  */
 export default class MIMETypeParser {
 	readonly #SEPARATOR_TYPE_SUBTYPE = '/'; // `type` と `subtype` の区切り子

@@ -4,3 +4,4 @@
 - [Expressing file size in a unit system](packages/file-size-format)
 - [Escapes and unescapes the characters for HTML](packages/html-escape)
 - [Verify ISBN string format and check digit](packages/isbn-verify)
+- [Parsing a MIME type](packages/mime-type-parser)
