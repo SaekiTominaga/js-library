@@ -1,4 +1,4 @@
-# PA-API 5.0 Item Image URL Parser
+# Parsing a PA-API 5.0 Item Image URL
 
 [![npm version](https://badge.fury.io/js/%40saekitominaga%2Fpaapi-item-image-url-parser.svg)](https://www.npmjs.com/package/%40saekitominaga%2Fpaapi-item-image-url-parser)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser-test.yml)

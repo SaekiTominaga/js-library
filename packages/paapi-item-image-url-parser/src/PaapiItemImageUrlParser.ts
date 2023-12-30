@@ -1,5 +1,5 @@
 /**
- * PA-API Item Image URL Parser
+ * Parsing a PA-API 5.0 Item Image URL
  */
 export default class {
 	readonly #url: URL;
