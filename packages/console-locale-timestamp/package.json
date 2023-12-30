@@ -1,7 +1,7 @@
 {
 	"name": "console-locale-timestamp",
-	"version": "1.0.14",
-	"description": "Console locale timestamp",
+	"version": "1.0.15",
+	"description": "Console with locale timestamp",
 	"keywords": [
 		"console"
 	],

@@ -1,7 +1,7 @@
 type LogLevel = 'log' | 'info' | 'warn' | 'error'; // https://console.spec.whatwg.org/#loglevel-severity
 
 /**
- * Console locale timestamp
+ * Console with locale timestamp
  */
 export default class ConsoleLocaleTimestamp {
 	readonly #locales?: string;
