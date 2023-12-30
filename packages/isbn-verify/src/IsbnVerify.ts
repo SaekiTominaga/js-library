@@ -9,7 +9,7 @@ interface VerifyOption {
 /**
  * Verify ISBN string format and check digit
  */
-export default class IsbnVerify {
+export default class {
 	readonly #isbnNormalization: string; // ISBN (without hyphen)
 
 	#isbn13 = false; // Whether the specified ISBN is a current standard (13 digit) ISBN or not
