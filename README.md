@@ -7,3 +7,4 @@
 - [Parsing a MIME type](packages/mime-type-parser)
 - [Parsing a PA-API 5.0 Item Image URL](packages/paapi-item-image-url-parser)
 - [Converts newlines in a string, `trim()`, half-width / full-width conversion, etc](packages/string-convert)
+- [Support characters other than "&" as URL query separator](packages/urlsearchparams-custom-separator)
