@@ -1,7 +1,7 @@
 /**
  * Escapes and unescapes the characters for HTML
  */
-export default class StringEscapeHtml {
+export default class {
 	/**
 	 * Escapes the characters in a string using character references
 	 *
@@ -32,7 +32,7 @@ export default class StringEscapeHtml {
 	 * @returns Escaped string
 	 */
 	static _(input: string): string {
-		return StringEscapeHtml.escape(input);
+		return this.escape(input);
 	}
 
 	/**
@@ -65,7 +65,7 @@ export default class StringEscapeHtml {
 	 * @returns Unescaped string
 	 */
 	static $(input: string): string {
-		return StringEscapeHtml.unescape(input);
+		return this.unescape(input);
 	}
 
 	/**
@@ -79,7 +79,7 @@ export default class StringEscapeHtml {
 	static template(input: TemplateStringsArray, ...placeholders: unknown[]): string {
 		return input.reduce((previous, current, index) => {
 			const placeholder = String(placeholders.at(index - 1));
-			return `${previous}${StringEscapeHtml.escape(placeholder)}${current}`;
+			return `${previous}${this.escape(placeholder)}${current}`;
 		});
 	}
 
@@ -92,6 +92,6 @@ export default class StringEscapeHtml {
 	 * @returns Escaped string
 	 */
 	static __(input: TemplateStringsArray, ...placeholders: unknown[]): string {
-		return StringEscapeHtml.template(input, placeholders);
+		return this.template(input, placeholders);
 	}
 }
