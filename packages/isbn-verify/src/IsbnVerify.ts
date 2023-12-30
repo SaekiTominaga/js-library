@@ -7,7 +7,7 @@ interface VerifyOption {
 }
 
 /**
- * ISBN Verify
+ * Verify ISBN string format and check digit
  */
 export default class IsbnVerify {
 	readonly #isbnNormalization: string; // ISBN (without hyphen)

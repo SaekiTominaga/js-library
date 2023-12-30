@@ -1,9 +1,7 @@
-# ISBN Verify
+# Verify ISBN string format and check digit
 
 [![npm version](https://badge.fury.io/js/%40saekitominaga%2Fisbn-verify.svg)](https://www.npmjs.com/package/@saekitominaga/isbn-verify)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/isbn-verify-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/isbn-verify-test.yml)
-
-Verify ISBN string format and check digit.
 
 ## Examples
 
