@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w '@saekitominaga/urlsearchparams-custom-separator'
-      - run: npm run test -w '@saekitominaga/urlsearchparams-custom-separator'
+      - run: npm run build -w '@w0s/urlsearchparams-custom-separator'
+      - run: npm run test -w '@w0s/urlsearchparams-custom-separator'
 
       - uses: coverallsapp/github-action@v2
         with:

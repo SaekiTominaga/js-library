@@ -1,12 +1,12 @@
 # Converts newlines in a string, `trim()`, half-width / full-width conversion, etc
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Fstring-convert.svg)](https://www.npmjs.com/package/%40saekitominaga%2Fstring-convert)
+[![npm version](https://badge.fury.io/js/%40w0s%2Fstring-convert.svg)](https://www.npmjs.com/package/@w0s/string-convert)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/string-convert-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/string-convert-test.yml)
 
 ## Examples
 
 ```JavaScript
-import StringConvert from '@saekitominaga/string-convert';
+import StringConvert from '@w0s/string-convert';
 
 StringConvert.convert('foo\r\nbar', {
   newline: 'LF',

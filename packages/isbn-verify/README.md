@@ -1,12 +1,12 @@
 # Verify ISBN string format and check digit
 
-[![npm version](https://badge.fury.io/js/%40saekitominaga%2Fisbn-verify.svg)](https://www.npmjs.com/package/@saekitominaga/isbn-verify)
+[![npm version](https://badge.fury.io/js/%40w0s%2Fisbn-verify.svg)](https://www.npmjs.com/package/@w0s/isbn-verify)
 [![test status](https://github.com/SaekiTominaga/npm/actions/workflows/isbn-verify-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/isbn-verify-test.yml)
 
 ## Examples
 
 ```JavaScript
-import IsbnVerify from '@saekitominaga/isbn-verify';
+import IsbnVerify from '@w0s/isbn-verify';
 
 const isbnVerify1 = new IsbnVerify('978-4-06-519981-0'); // ISBN with correct format but wrong check digit
 isbnVerify1.isValid(); // false
