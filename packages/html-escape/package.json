@@ -1,6 +1,6 @@
 {
 	"name": "@saekitominaga/string-escape-html",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "Escapes and unescapes the characters for HTML",
 	"keywords": [
 		"html",
