@@ -1,0 +1,37 @@
+{
+	"name": "@saekitominaga/file-size-format",
+	"version": "1.1.2",
+	"description": "Expressing file size in a unit system",
+	"keywords": [
+		"file",
+		"filesize",
+		"iec",
+		"si"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/FileSizeFormat.js",
+	"module": "dist/FileSizeFormat.js",
+	"types": "dist/FileSizeFormat.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/file-size-format"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

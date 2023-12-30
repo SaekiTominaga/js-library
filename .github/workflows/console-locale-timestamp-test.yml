@@ -1,0 +1,31 @@
+name: console-locale-timestamp-test
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/console-locale-timestamp/__tests__/*.test.js'
+      - 'packages/console-locale-timestamp/src/*.ts'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/console-locale-timestamp/__tests__/*.test.js'
+      - 'packages/console-locale-timestamp/src/*.ts'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build -w '@saekitominaga/console-locale-timestamp'
+      - run: npm run test -w '@saekitominaga/console-locale-timestamp'
+
+      - uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

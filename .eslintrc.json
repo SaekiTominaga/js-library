@@ -1,0 +1,32 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"es2022": true
+	},
+	"extends": ["@w0s/eslint-config"],
+	"ignorePatterns": ["@types/", "packages/*/dist/"],
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"overrides": [
+		{
+			"files": ["packages/console-locale-timestamp/src/*.ts"],
+			"rules": {
+				"class-methods-use-this": "off",
+				"no-console": "off"
+			}
+		},
+		{
+			"files": ["packages/html-escape/__tests__/*.test.js", "packages/html-escape/src/*.ts"],
+			"rules": {
+				"no-underscore-dangle": [
+					"error",
+					{
+						"allow": ["__"]
+					}
+				]
+			}
+		}
+	]
+}

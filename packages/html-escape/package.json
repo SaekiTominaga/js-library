@@ -1,0 +1,35 @@
+{
+	"name": "@saekitominaga/string-escape-html",
+	"version": "2.0.1",
+	"description": "Escapes and unescapes the characters for HTML",
+	"keywords": [
+		"html",
+		"escape"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/HtmlEscape.js",
+	"module": "dist/HtmlEscape.js",
+	"types": "dist/HtmlEscape.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/html-escape"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
