@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/paapi-item-image-url-parser",
-	"version": "2.2.5",
+	"version": "3.0.0",
 	"description": "Parsing a PA-API 5.0 Item Image URL",
 	"keywords": [
 		"paapi",

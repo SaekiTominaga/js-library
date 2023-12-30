@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/html-escape",
-	"version": "2.0.2",
+	"version": "3.0.0",
 	"description": "Escapes and unescapes the characters for HTML",
 	"keywords": [
 		"html",
