@@ -1,0 +1,31 @@
+name: string-convert-test
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/string-convert/__tests__/*.test.js'
+      - 'packages/string-convert/src/*.ts'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/string-convert/__tests__/*.test.js'
+      - 'packages/string-convert/src/*.ts'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build -w '@saekitominaga/string-convert'
+      - run: npm run test -w '@saekitominaga/string-convert'
+
+      - uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,31 @@
+{
+	"name": "@saekitominaga/string-convert",
+	"version": "1.0.4",
+	"description": "Converts newlines in a string, `trim()`, half-width / full-width conversion, etc",
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/StringConvert.js",
+	"module": "dist/StringConvert.js",
+	"types": "dist/StringConvert.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/string-convert"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

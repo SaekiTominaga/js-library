@@ -1,0 +1,34 @@
+{
+	"name": "@saekitominaga/isbn-verify",
+	"version": "2.0.1",
+	"description": "Verify ISBN string format and check digit",
+	"keywords": [
+		"ISBN"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/IsbnVerify.js",
+	"module": "dist/IsbnVerify.js",
+	"types": "dist/IsbnVerify.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/isbn-verify"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

@@ -1,0 +1,31 @@
+name: isbn-verify-test
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/isbn-verify/__tests__/*.test.js'
+      - 'packages/isbn-verify/src/*.ts'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/isbn-verify/__tests__/*.test.js'
+      - 'packages/isbn-verify/src/*.ts'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build -w '@saekitominaga/isbn-verify'
+      - run: npm run test -w '@saekitominaga/isbn-verify'
+
+      - uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,26 @@
+name: string-convert-lint
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/string-convert/__tests__/*.test.js'
+      - 'packages/string-convert/src/*.ts'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/string-convert/__tests__/*.test.js'
+      - 'packages/string-convert/src/*.ts'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint -w '@saekitominaga/string-convert'

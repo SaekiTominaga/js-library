@@ -1,0 +1,35 @@
+{
+	"name": "console-locale-timestamp",
+	"version": "1.0.14",
+	"description": "Console locale timestamp",
+	"keywords": [
+		"console"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/ConsoleLocaleTimestamp.js",
+	"module": "dist/ConsoleLocaleTimestamp.js",
+	"types": "dist/ConsoleLocaleTimestamp.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"sample": "node sample.js",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/console-locale-timestamp"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

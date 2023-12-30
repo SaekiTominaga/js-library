@@ -1,0 +1,35 @@
+{
+	"name": "@saekitominaga/paapi-item-image-url-parser",
+	"version": "2.2.4",
+	"description": "PA-API 5.0 Item Image URL Parser",
+	"keywords": [
+		"paapi",
+		"paapi5"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/PaapiItemImageUrlParser.js",
+	"module": "dist/PaapiItemImageUrlParser.js",
+	"types": "dist/PaapiItemImageUrlParser.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/paapi-item-image-url-parser"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

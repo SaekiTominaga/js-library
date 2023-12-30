@@ -1,0 +1,31 @@
+name: urlsearchparams-custom-separator-test
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'packages/urlsearchparams-custom-separator/__tests__/*.test.js'
+      - 'packages/urlsearchparams-custom-separator/src/*.ts'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/urlsearchparams-custom-separator/__tests__/*.test.js'
+      - 'packages/urlsearchparams-custom-separator/src/*.ts'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build -w '@saekitominaga/urlsearchparams-custom-separator'
+      - run: npm run test -w '@saekitominaga/urlsearchparams-custom-separator'
+
+      - uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

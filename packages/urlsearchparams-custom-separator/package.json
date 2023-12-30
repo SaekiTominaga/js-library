@@ -1,0 +1,35 @@
+{
+	"name": "@saekitominaga/urlsearchparams-custom-separator",
+	"version": "2.0.0",
+	"description": "Support characters other than \"&\" as URL query separator",
+	"keywords": [
+		"url",
+		"urlsearchparams"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/URLSearchParamsCustomSeparator.js",
+	"module": "dist/URLSearchParamsCustomSeparator.js",
+	"types": "dist/URLSearchParamsCustomSeparator.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/urlsearchparams-custom-separator"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
