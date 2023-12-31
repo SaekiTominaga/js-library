@@ -1,1 +1,4 @@
-export default {};
+export default {
+	collectCoverage: true,
+	coverageDirectory: './.coverage/',
+};
