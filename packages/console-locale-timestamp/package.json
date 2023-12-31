@@ -27,7 +27,7 @@
 		"watch": "tsc -w",
 		"sample": "node sample.js",
 		"lint": "eslint src/*.ts __tests__/*.js",
-		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --coverage --roots packages/console-locale-timestamp"
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --roots packages/console-locale-timestamp"
 	},
 	"publishConfig": {
 		"access": "public"
