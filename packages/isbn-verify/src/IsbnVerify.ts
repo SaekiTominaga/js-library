@@ -12,9 +12,9 @@ interface VerifyOption {
 export default class {
 	readonly #isbnNormalization: string; // ISBN (without hyphen)
 
-	#isbn13 = false; // Whether the specified ISBN is a current standard (13 digit) ISBN or not
+	readonly #isbn13: boolean = false; // Whether the specified ISBN is a current standard (13 digit) ISBN or not
 
-	#isbn10 = false; // Whether the specified ISBN is a old standard (10 digit) ISBN or not
+	readonly #isbn10: boolean = false; // Whether the specified ISBN is a old standard (10 digit) ISBN or not
 
 	/**
 	 * @param isbn - ISBN value to check

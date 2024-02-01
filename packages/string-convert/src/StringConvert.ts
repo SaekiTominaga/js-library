@@ -23,15 +23,15 @@ interface Option {
  * Converts newlines in a string, `trim()`, half-width / full-width conversion, etc
  */
 export default class {
-	static #CR = '\r';
+	static readonly #CR = '\r';
 
-	static #LF = '\n';
+	static readonly #LF = '\n';
 
-	static #CRLF = `${this.#CR}${this.#LF}`;
+	static readonly #CRLF = `${this.#CR}${this.#LF}`;
 
-	static #SPACE = '\u0020'; // 半角スペース
+	static readonly #SPACE = '\u0020'; // 半角スペース
 
-	static #IDEOGRAPHIC_SPACE = '\u3000'; // 全角スペース
+	static readonly #IDEOGRAPHIC_SPACE = '\u3000'; // 全角スペース
 
 	/**
 	 * Convert execution
