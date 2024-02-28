@@ -23,8 +23,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w '@w0s/html-escape'
-      - run: npm run test -w '@w0s/html-escape'
+      - run: npm test -w '@w0s/html-escape'
 
       - uses: coverallsapp/github-action@v2
         with:
