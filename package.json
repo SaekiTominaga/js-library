@@ -1,7 +1,7 @@
 {
 	"name": "npm",
 	"scripts": {
-		"js-format": "prettier -w packages/*/src/*.ts",
+		"format": "prettier -w packages/*/src/*.ts",
 		"github-actions-lint": "yamllint .github/workflows/*.yml"
 	},
 	"devDependencies": {
