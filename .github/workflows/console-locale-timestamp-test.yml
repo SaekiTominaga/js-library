@@ -23,8 +23,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w 'console-locale-timestamp'
-      - run: npm run test -w 'console-locale-timestamp'
+      - run: npm test -w 'console-locale-timestamp'
 
       - uses: coverallsapp/github-action@v2
         with:

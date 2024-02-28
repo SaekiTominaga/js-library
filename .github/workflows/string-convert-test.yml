@@ -23,8 +23,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build -w '@w0s/string-convert'
-      - run: npm run test -w '@w0s/string-convert'
+      - run: npm test -w '@w0s/string-convert'
 
       - uses: coverallsapp/github-action@v2
         with:
