@@ -56,12 +56,12 @@ console2.table({
 constructor(locales?: string, options?: object, quote?: string[], separator?: string)
 ```
 
-| name | type | deault | example | Description |
-|-|-|-|-|-|
-| locales | string | undefined | 'en-US' | The specified value will be used as the first argument of `Date.prototype.toLocaleTimeString()`. |
-| options | object | undefined | { minute: '2-digit', second: '2-digit' } | The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`. |
-| quote | string[] | [''] | ['[', ']'] | The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. |
-| separator | string | '' | ' - ' | Delimiter between the timestamp and the message that follows. |
+| name      | type     | deault    | example                                  | Description                                                                                                             |
+| --------- | -------- | --------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| locales   | string   | undefined | 'en-US'                                  | The specified value will be used as the first argument of `Date.prototype.toLocaleTimeString()`.                        |
+| options   | object   | undefined | { minute: '2-digit', second: '2-digit' } | The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`.                       |
+| quote     | string[] | ['']      | ['[', ']']                               | The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. |
+| separator | string   | ''        | ' - '                                    | Delimiter between the timestamp and the message that follows.                                                           |
 
 ## Methods
 
