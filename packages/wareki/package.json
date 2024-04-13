@@ -1,0 +1,36 @@
+{
+	"name": "@w0s/wareki",
+	"version": "1.0.0",
+	"description": "西暦データから和暦を取得",
+	"keywords": [
+		"wareki",
+		"和暦"
+	],
+	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"bugs": {
+		"url": "https://github.com/SaekiTominaga/npm/issues"
+	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "dist/Wareki.js",
+	"module": "dist/Wareki.js",
+	"types": "dist/Wareki.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaekiTominaga/npm.git"
+	},
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "eslint src/*.ts __tests__/*.js",
+		"pretest": "npm run build",
+		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --roots packages/wareki"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
