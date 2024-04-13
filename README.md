@@ -7,3 +7,4 @@
 - [Parsing a PA-API 5.0 Item Image URL](packages/paapi-item-image-url-parser)
 - [Converts newlines in a string, `trim()`, half-width / full-width conversion, etc](packages/string-convert)
 - [Support characters other than "&" as URL query separator](packages/urlsearchparams-custom-separator)
+- [Obtain Japanese calendar from Western calendar data（西暦データから和暦を取得）](packages/wareki)
