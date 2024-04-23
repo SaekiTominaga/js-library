@@ -40,7 +40,7 @@ export default class {
 		if (this.#fileSize === null) {
 			this.#url.pathname = `${this.#dir}/${this.#fileId}${this.#fileExtension}`;
 		} else {
-			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${this.#fileSize}_${this.#fileExtension}`;
+			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${String(this.#fileSize)}_${this.#fileExtension}`;
 		}
 
 		return this.#url.toString();
