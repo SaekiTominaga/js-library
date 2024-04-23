@@ -18,7 +18,7 @@ wareki1.getYearParts(); // [ { type: 'era', value: '平成' }, { type: 'year', v
 
 const wareki2 = new Wareki('2000'); // 年月または年のみのデータでも極力特定を試みます
 wareki2.getYear({ era: 'narrow' }); // H12
-wareki3.getYearParts({ era: 'narrow' }); // [ { type: 'era', value: 'H' }, { type: 'year', value: '12' }, { type: 'literal', value: '年' } ]
+wareki2.getYearParts({ era: 'narrow' }); // [ { type: 'era', value: 'H' }, { type: 'year', value: '12' }, { type: 'literal', value: '年' } ]
 
 const wareki3 = new Wareki('1989-01'); // 1989年1月は昭和64年と平成元年の両方が考えられるため、特定が不可能です
 wareki3.getYear(); // undefined
