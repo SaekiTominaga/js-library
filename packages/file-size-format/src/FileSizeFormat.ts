@@ -4,17 +4,7 @@ interface Option {
 	digits?: number; // Number of digits after the decimal point to round. The default is `0`, and the decimal point is always rounded to an integer. In the case of BigInt, the value specified here has no effect because the language specification does not allow decimals to be expressed.
 }
 
-interface UnitTable {
-	1: string;
-	2: string;
-	3: string;
-	4: string;
-	5: string;
-	6: string;
-	7: string;
-	8: string;
-	9: string;
-}
+type UnitTable = Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9, string>;
 
 /**
  * Expressing file size in a unit system
@@ -32,7 +22,7 @@ export default class {
 		const optionsInited = this.#optionsInit(options);
 
 		const BASE = 1024;
-		const UNIT_TABLE = { 1: optionsInited.byte, 2: 'KiB', 3: 'MiB', 4: 'GiB', 5: 'TiB', 6: 'PiB', 7: 'EiB', 8: 'ZiB', 9: 'YiB' };
+		const UNIT_TABLE: UnitTable = { 1: optionsInited.byte, 2: 'KiB', 3: 'MiB', 4: 'GiB', 5: 'TiB', 6: 'PiB', 7: 'EiB', 8: 'ZiB', 9: 'YiB' };
 
 		return typeof size === 'number'
 			? this.#formatNumber(size, BASE, UNIT_TABLE, optionsInited)
@@ -51,7 +41,7 @@ export default class {
 		const optionsInited = this.#optionsInit(options);
 
 		const BASE = 1000;
-		const UNIT_TABLE = { 1: optionsInited.byte, 2: 'kB', 3: 'MB', 4: 'GB', 5: 'TB', 6: 'PB', 7: 'EB', 8: 'ZB', 9: 'YB' };
+		const UNIT_TABLE: UnitTable = { 1: optionsInited.byte, 2: 'kB', 3: 'MB', 4: 'GB', 5: 'TB', 6: 'PB', 7: 'EB', 8: 'ZB', 9: 'YB' };
 
 		return typeof size === 'number'
 			? this.#formatNumber(size, BASE, UNIT_TABLE, optionsInited)
@@ -99,7 +89,7 @@ export default class {
 			throw new RangeError('The file size must be a number greater than or equal to 0.');
 		}
 		if (!Number.isSafeInteger(size)) {
-			throw new RangeError(`\`BigInt\` should be used when specifying huge numbers (Value greater than ${Number.MAX_SAFE_INTEGER}).`);
+			throw new RangeError(`\`BigInt\` should be used when specifying huge numbers (Value greater than ${String(Number.MAX_SAFE_INTEGER)}).`);
 		}
 
 		const space = options.space ? ' ' : '';
@@ -109,7 +99,7 @@ export default class {
 		for (const [exponentStr, unit] of Object.entries(unitTable)) {
 			const exponent = Number(exponentStr); // べき指数
 			if (size < base ** exponent) {
-				format = `${Math.round((size / base ** (exponent - 1)) * chusu) / chusu}${space}${unit}`;
+				format = `${String(Math.round((size / base ** (exponent - 1)) * chusu) / chusu)}${space}${unit}`;
 				break;
 			}
 		}
@@ -138,7 +128,7 @@ export default class {
 			const exponent = BigInt(exponentStr); // べき指数
 			if (size < base ** exponent) {
 				const denominator = base ** (exponent - 1n);
-				return `${(size + denominator / 2n) / denominator}${space}${unit}`;
+				return `${String((size + denominator / 2n) / denominator)}${space}${unit}`;
 			}
 		}
 
@@ -146,6 +136,6 @@ export default class {
 		const exponents = Object.keys(unitTable);
 		const units = Object.values(unitTable);
 
-		return `${size / base ** (BigInt(exponents.at(-1)!) - 1n)}${space}${units.at(-1)}`;
+		return `${String(size / base ** (BigInt(exponents.at(-1)!) - 1n))}${space}${units.at(-1)!}`;
 	}
 }
