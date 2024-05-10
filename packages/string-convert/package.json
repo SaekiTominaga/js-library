@@ -24,7 +24,7 @@
 		"watch": "tsc -w",
 		"lint": "eslint src/*.ts __tests__/*.js",
 		"pretest": "npm run build",
-		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest -c ../../jest.config.mjs --roots packages/string-convert"
+		"test": "node --test --experimental-test-coverage"
 	},
 	"publishConfig": {
 		"access": "public"
