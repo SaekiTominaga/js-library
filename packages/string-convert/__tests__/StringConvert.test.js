@@ -1,23 +1,26 @@
-import { describe, test, expect } from '@jest/globals';
+import { strict as assert } from 'node:assert';
+import { test } from 'node:test';
 import StringConvert from '../dist/StringConvert.js';
 
-describe('README.md', () => {
-	test('Sample 1', () => {
-		expect(
+test('README.md', async (t) => {
+	await t.test('Sample 1', () => {
+		assert.equal(
 			StringConvert.convert('foo\r\nbar', {
 				newline: 'LF',
 			}),
-		).toBe('foo\nbar');
+			'foo\nbar',
+		);
 	});
-	test('Sample 2', () => {
-		expect(
+	await t.test('Sample 2', () => {
+		assert.equal(
 			StringConvert.convert('  foo  \r\n  bar  ', {
 				trim: true,
 			}),
-		).toBe('foo  \r\n  bar');
+			'foo  \r\n  bar',
+		);
 	});
-	test('Sample 3', () => {
-		expect(
+	await t.test('Sample 3', () => {
+		assert.equal(
 			StringConvert.convert('  Ｆｏｏ  \r\n\r\n  Ｂａｒ　　　　　　Ｂａｚ💖  ', {
 				newline: 'LF',
 				trimMultiLine: true,
@@ -30,167 +33,202 @@ describe('README.md', () => {
 					'💖': '⭐',
 				},
 			}),
-		).toBe('foo\nbar baz⭐');
+			'foo\nbar baz⭐',
+		);
 	});
 });
 
-describe('変換', () => {
-	test('newline (CR → LF)', () => {
-		expect(
+test('変換', async (t) => {
+	await t.test('newline (CR → LF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\r\r  piyo  \r\r\r  fuga  ', {
 				newline: 'LF',
 			}),
-		).toBe('  hoge  \n\n\n  piyo  \n\n\n  fuga  ');
+			'  hoge  \n\n\n  piyo  \n\n\n  fuga  ',
+		);
 	});
-	test('newline (CRLF → CR)', () => {
-		expect(
+	await t.test('newline (CRLF → CR)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\n\r\n\r\n  piyo  \r\n\r\n\r\n  fuga  ', {
 				newline: 'CR',
 			}),
-		).toBe('  hoge  \r\r\r  piyo  \r\r\r  fuga  ');
+			'  hoge  \r\r\r  piyo  \r\r\r  fuga  ',
+		);
 	});
-	test('newline (LF → CRLF)', () => {
-		expect(
+	await t.test('newline (LF → CRLF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \n\n\n  piyo  \n\n\n  fuga  ', {
 				newline: 'CRLF',
 			}),
-		).toBe('  hoge  \r\n\r\n\r\n  piyo  \r\n\r\n\r\n  fuga  ');
+			'  hoge  \r\n\r\n\r\n  piyo  \r\n\r\n\r\n  fuga  ',
+		);
 	});
-	test('newline (不正な改行コード指定)', () => {
-		// @ts-ignore
-		expect(StringConvert.convert('  hoge  \n\n\n  piyo  \n\n\n  fuga  ', { newline: 'foo' })).toBe('  hoge  \n\n\n  piyo  \n\n\n  fuga  ');
+	await t.test('newline (不正な改行コード指定)', () => {
+		assert.equal(StringConvert.convert('  hoge  \n\n\n  piyo  \n\n\n  fuga  ', { newline: 'foo' }), '  hoge  \n\n\n  piyo  \n\n\n  fuga  ');
 	});
-	test('trim', () => {
-		expect(
+	await t.test('trim', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \n\n\n  piyo    \n\n\n  fuga  ', {
 				trim: true,
 			}),
-		).toBe('hoge  \n\n\n  piyo    \n\n\n  fuga');
+			'hoge  \n\n\n  piyo    \n\n\n  fuga',
+		);
 	});
-	test('trimMultiLine (CR)', () => {
-		expect(
+	await t.test('trimMultiLine (CR)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\r\r  piyo    \r\r\r  fuga  ', {
 				trimMultiLine: true,
 			}),
-		).toBe('hoge\r\r\rpiyo\r\r\rfuga');
+			'hoge\r\r\rpiyo\r\r\rfuga',
+		);
 	});
-	test('trimMultiLine (LF)', () => {
-		expect(
+	await t.test('trimMultiLine (LF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \n\n\n  piyo    \n\n\n  fuga  ', {
 				trimMultiLine: true,
 			}),
-		).toBe('hoge\n\n\npiyo\n\n\nfuga');
+			'hoge\n\n\npiyo\n\n\nfuga',
+		);
 	});
-	test('trimMultiLine (CRLF)', () => {
-		expect(
+	await t.test('trimMultiLine (CRLF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\n\r\n\r\n  piyo    \r\n\r\n\r\n  fuga  ', {
 				trimMultiLine: true,
 			}),
-		).toBe('hoge\r\n\r\n\r\npiyo\r\n\r\n\r\nfuga');
+			'hoge\r\n\r\n\r\npiyo\r\n\r\n\r\nfuga',
+		);
 	});
-	test('noBlankLine (CR)', () => {
-		expect(
+	await t.test('noBlankLine (CR)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\r\r  piyo  \r\r\r  fuga  ', {
 				noBlankLine: true,
 			}),
-		).toBe('  hoge  \r  piyo  \r  fuga  ');
+			'  hoge  \r  piyo  \r  fuga  ',
+		);
 	});
-	test('noBlankLine (LF)', () => {
-		expect(
+	await t.test('noBlankLine (LF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \n\n\n  piyo  \n\n\n  fuga  ', {
 				noBlankLine: true,
 			}),
-		).toBe('  hoge  \n  piyo  \n  fuga  ');
+			'  hoge  \n  piyo  \n  fuga  ',
+		);
 	});
-	test('noBlankLine (CRLF)', () => {
-		expect(
+	await t.test('noBlankLine (CRLF)', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  \r\n\r\n\r\n  piyo  \r\n\r\n\r\n  fuga  ', {
 				noBlankLine: true,
 			}),
-		).toBe('  hoge  \r\n  piyo  \r\n  fuga  ');
+			'  hoge  \r\n  piyo  \r\n  fuga  ',
+		);
 	});
-	test('toHankakuEisu', () => {
-		expect(
+	await t.test('toHankakuEisu', () => {
+		assert.equal(
 			StringConvert.convert(' ｈｏｇｅＨＯＧＥ１２３ ', {
 				toHankakuEisu: true,
 			}),
-		).toBe(' hogeHOGE123 ');
+			' hogeHOGE123 ',
+		);
 	});
-	test('toZenkakuEisu', () => {
-		expect(
+	await t.test('toZenkakuEisu', () => {
+		assert.equal(
 			StringConvert.convert(' hogeHOGE123 ', {
 				toZenkakuEisu: true,
 			}),
-		).toBe(' ｈｏｇｅＨＯＧＥ１２３ ');
+			' ｈｏｇｅＨＯＧＥ１２３ ',
+		);
 	});
-	test('toHankakuSpace', () => {
-		expect(
+	await t.test('toHankakuSpace', () => {
+		assert.equal(
 			StringConvert.convert('　hoge　', {
 				toHankakuSpace: true,
 			}),
-		).toBe(' hoge ');
+			' hoge ',
+		);
 	});
-	test('combineSpace', () => {
-		expect(
+	await t.test('combineSpace', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  ', {
 				combineSpace: true,
 			}),
-		).toBe(' hoge ');
+			' hoge ',
+		);
 	});
-	test('toLowerCase', () => {
-		expect(
+	await t.test('toLowerCase', () => {
+		assert.equal(
 			StringConvert.convert('  HOGE  ', {
 				toLowerCase: true,
 			}),
-		).toBe('  hoge  ');
+			'  hoge  ',
+		);
 	});
-	test('toUpperCase', () => {
-		expect(
+	await t.test('toUpperCase', () => {
+		assert.equal(
 			StringConvert.convert('  hoge  ', {
 				toUpperCase: true,
 			}),
-		).toBe('  HOGE  ');
+			'  HOGE  ',
+		);
 	});
-	test('table', () => {
-		expect(
+	await t.test('table', () => {
+		assert.equal(
 			StringConvert.convert('  hoge．．piyo  ', {
 				table: {
 					'．': '.',
 				},
 			}),
-		).toBe('  hoge..piyo  ');
+			'  hoge..piyo  ',
+		);
 	});
 });
 
-describe('改行コード', () => {
-	test('CR + LF 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\rpiyo\nfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (CR, LF)');
+test('改行コード', async (t) => {
+	await t.test('CR + LF 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\rpiyo\nfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (CR, LF)' },
+		);
 	});
-	test('CR + CRLF 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\rpiyo\r\nfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (CR, CR+LF)');
+	await t.test('CR + CRLF 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\rpiyo\r\nfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (CR, CR+LF)' },
+		);
 	});
-	test('LF + CR 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\npiyo\rfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (CR, LF)');
+	await t.test('LF + CR 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\npiyo\rfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (CR, LF)' },
+		);
 	});
-	test('LF + CRLF 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\npiyo\r\nfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (LF, CR+LF)');
+	await t.test('LF + CRLF 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\npiyo\r\nfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (LF, CR+LF)' },
+		);
 	});
-	test('CRLF + CR 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\r\npiyo\rfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (CR, CR+LF)');
+	await t.test('CRLF + CR 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\r\npiyo\rfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (CR, CR+LF)' },
+		);
 	});
-	test('CRLF + LF 混在', () => {
-		expect(() => {
-			StringConvert.convert('hoge\r\npiyo\nfuga', {});
-		}).toThrow('Multiple newline codes are mixed. (LF, CR+LF)');
+	await t.test('CRLF + LF 混在', () => {
+		assert.throws(
+			() => {
+				StringConvert.convert('hoge\r\npiyo\nfuga', {});
+			},
+			{ name: 'Error', message: 'Multiple newline codes are mixed. (LF, CR+LF)' },
+		);
 	});
 });

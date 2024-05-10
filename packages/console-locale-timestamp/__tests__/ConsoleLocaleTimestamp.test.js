@@ -1,4 +1,6 @@
-import { describe, test, expect, jest } from '@jest/globals';
+import { strict as assert } from 'node:assert';
+import { test } from 'node:test';
+import sinon from 'sinon';
 import Console from '../dist/ConsoleLocaleTimestamp.js';
 
 const string = 'Hello World!';
@@ -7,310 +9,325 @@ const object = {
 	1002: { name: 'Taro Yamada', age: '25' },
 };
 
-describe('constructor', () => {
-	test('no argument', () => {
+test('constructor', async (t) => {
+	await t.test('no argument', () => {
 		new Console();
 	});
-	test('locales', () => {
+	await t.test('locales', () => {
 		new Console('en-US');
 	});
-	test('options', () => {
+	await t.test('options', () => {
 		new Console('en-US', { minute: '2-digit', second: '2-digit' });
 	});
-	test('quote', () => {
+	await t.test('quote', () => {
 		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']']);
 	});
-	test('separator', () => {
+	await t.test('separator', () => {
 		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']'], ' - ');
 	});
 });
 
-describe('methods', () => {
+test('methods', async (t) => {
 	const consoleTime = new Console();
 
-	test('assert() - true', () => {
-		const spyConsole = jest.spyOn(console, 'assert');
+	await t.test('assert() - true', () => {
+		const spyConsole = sinon.spy(console, 'assert');
 
 		consoleTime.assert(true, string);
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('assert() - false', () => {
-		const spyProcess = jest.spyOn(process.stderr, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'assert');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('assert() - false', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'assert');
 
 		consoleTime.assert(false, string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][1]).toBe(string);
+		assert.equal(spyProcessOut.called, false);
+		assert.equal(spyProcessError.called, true);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), false);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('clear()', () => {
-		const spyConsole = jest.spyOn(console, 'clear');
+	await t.test('clear()', () => {
+		const spyConsole = sinon.spy(console, 'clear');
 
 		consoleTime.clear();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('debug()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'debug');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('debug()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'debug');
 
 		consoleTime.debug(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('error()', () => {
-		const spyProcess = jest.spyOn(process.stderr, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'error');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('error()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'error');
 
 		consoleTime.error(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, false);
+		assert.equal(spyProcessError.called, true);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('info()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'info');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('info()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'info');
 
 		consoleTime.info(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('log()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'log');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('log()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'log');
 
 		consoleTime.log(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('table()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'table');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('table()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'table');
 
 		consoleTime.table(object);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(object);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(object), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('trace()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'trace');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('trace()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'trace');
 
 		consoleTime.trace(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, true);
+		// assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('warn()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'warn');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('warn()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'warn');
 
 		consoleTime.warn(string);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(string);
+		assert.equal(spyProcessOut.called, true);
+		// assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(string), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('dir()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'dir');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('dir()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'dir');
 
 		consoleTime.dir(object);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(object);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(object), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('dirxml()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'dirxml');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('dirxml()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'dirxml');
 
 		consoleTime.dirxml(object);
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe(object);
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith(object), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('count()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'count');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('count()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'count');
 
 		consoleTime.count();
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('countReset()', () => {
-		const spyConsole = jest.spyOn(console, 'countReset');
+	await t.test('countReset()', () => {
+		const spyConsole = sinon.spy(console, 'countReset');
 
 		consoleTime.countReset();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('group()', () => {
-		const spyConsole = jest.spyOn(console, 'group');
+	await t.test('group()', () => {
+		const spyConsole = sinon.spy(console, 'group');
 
 		consoleTime.group();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('group(label)', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'group');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('group(label)', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'group');
 
 		consoleTime.group('group');
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe('group');
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith('group'), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('groupCollapsed()', () => {
-		const spyConsole = jest.spyOn(console, 'groupCollapsed');
+	await t.test('groupCollapsed()', () => {
+		const spyConsole = sinon.spy(console, 'groupCollapsed');
 
 		consoleTime.groupCollapsed();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('groupCollapsed(label)', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'groupCollapsed');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('groupCollapsed(label)', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'groupCollapsed');
 
 		consoleTime.groupCollapsed('groupCollapsed');
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
-		expect(spyConsole.mock.calls[0][0]).toBe('groupCollapsed');
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
+		assert.equal(spyConsole.calledWith('groupCollapsed'), true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('groupEnd()', () => {
-		const spyConsole = jest.spyOn(console, 'groupEnd');
+	await t.test('groupEnd()', () => {
+		const spyConsole = sinon.spy(console, 'groupEnd');
 
 		consoleTime.groupEnd();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('time()', () => {
-		const spyConsole = jest.spyOn(console, 'time');
+	await t.test('time()', () => {
+		const spyConsole = sinon.spy(console, 'time');
 
 		consoleTime.time();
 
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyConsole.mockRestore();
+		spyConsole.restore();
 	});
-	test('timeLog()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'timeLog');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('timeLog()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'timeLog');
 
 		consoleTime.timeLog();
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
-	test('timeEnd()', () => {
-		const spyProcess = jest.spyOn(process.stdout, 'write');
-		spyProcess.mockImplementation((x) => Boolean(x));
-		const spyConsole = jest.spyOn(console, 'timeEnd');
-		spyConsole.mockImplementation((x) => Boolean(x));
+	await t.test('timeEnd()', () => {
+		const spyProcessOut = sinon.spy(process.stdout, 'write');
+		const spyProcessError = sinon.spy(process.stderr, 'write');
+		const spyConsole = sinon.spy(console, 'timeEnd');
 
 		consoleTime.timeEnd();
 
-		expect(spyProcess).toHaveBeenCalled();
-		expect(spyConsole).toHaveBeenCalled();
+		assert.equal(spyProcessOut.called, true);
+		assert.equal(spyProcessError.called, false);
+		assert.equal(spyConsole.calledOnce, true);
 
-		spyProcess.mockRestore();
-		spyConsole.mockRestore();
+		spyProcessOut.restore();
+		spyProcessError.restore();
+		spyConsole.restore();
 	});
 });

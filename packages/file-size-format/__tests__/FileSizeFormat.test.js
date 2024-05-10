@@ -1,184 +1,206 @@
-import { describe, test, expect } from '@jest/globals';
+import { strict as assert } from 'node:assert';
+import { test } from 'node:test';
 import FileSizeFormat from '../dist/FileSizeFormat.js';
 
-describe('2進接頭辞', () => {
-	test('Byte - min', () => {
-		expect(FileSizeFormat.iec(0)).toBe('0byte');
+test('2進接頭辞', async (t) => {
+	await t.test('Byte - min', () => {
+		assert.equal(FileSizeFormat.iec(0), '0byte');
 	});
-	test('Byte - max', () => {
-		expect(FileSizeFormat.iec(1024 ** 1 - 1)).toBe('1023byte');
+	await t.test('Byte - max', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 1 - 1), '1023byte');
 	});
-	test('KiB - min', () => {
-		expect(FileSizeFormat.iec(1024 ** 1)).toBe('1KiB');
+	await t.test('KiB - min', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 1), '1KiB');
 	});
-	test('KiB - max', () => {
-		expect(FileSizeFormat.iec(1024 ** 2 - 1)).toBe('1024KiB');
+	await t.test('KiB - max', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 2 - 1), '1024KiB');
 	});
-	test('MiB - min', () => {
-		expect(FileSizeFormat.iec(1024 ** 2)).toBe('1MiB');
+	await t.test('MiB - min', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 2), '1MiB');
 	});
-	test('MiB - max', () => {
-		expect(FileSizeFormat.iec(1024 ** 3 - 1)).toBe('1024MiB');
+	await t.test('MiB - max', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 3 - 1), '1024MiB');
 	});
-	test('GiB - min', () => {
-		expect(FileSizeFormat.iec(1024 ** 3)).toBe('1GiB');
+	await t.test('GiB - min', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 3), '1GiB');
 	});
-	test('GiB - max', () => {
-		expect(FileSizeFormat.iec(1024 ** 4 - 1)).toBe('1024GiB');
+	await t.test('GiB - max', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 4 - 1), '1024GiB');
 	});
-	test('TiB - min', () => {
-		expect(FileSizeFormat.iec(1024 ** 4)).toBe('1TiB');
+	await t.test('TiB - min', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 4), '1TiB');
 	});
-	test('TiB - max', () => {
-		expect(FileSizeFormat.iec(1024 ** 5 - 1)).toBe('1024TiB');
+	await t.test('TiB - max', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 5 - 1), '1024TiB');
 	});
-	test('PiB - min', () => {
-		expect(FileSizeFormat.iec(1024 ** 5)).toBe('1PiB');
+	await t.test('PiB - min', () => {
+		assert.equal(FileSizeFormat.iec(1024 ** 5), '1PiB');
 	});
-	test('PiB - max', () => {
-		expect(FileSizeFormat.iec(BigInt('1152921504606846975'))).toBe('1024PiB');
+	await t.test('PiB - max', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1152921504606846975')), '1024PiB');
 	});
-	test('EiB - min', () => {
-		expect(FileSizeFormat.iec(BigInt('1152921504606846976'))).toBe('1EiB');
+	await t.test('EiB - min', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1152921504606846976')), '1EiB');
 	});
-	test('EiB - max', () => {
-		expect(FileSizeFormat.iec(BigInt('1180591620717411303423'))).toBe('1024EiB');
+	await t.test('EiB - max', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1180591620717411303423')), '1024EiB');
 	});
-	test('ZiB - min', () => {
-		expect(FileSizeFormat.iec(BigInt('1180591620717411303424'))).toBe('1ZiB');
+	await t.test('ZiB - min', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1180591620717411303424')), '1ZiB');
 	});
-	test('ZiB - max', () => {
-		expect(FileSizeFormat.iec(BigInt('1208925819614629174706175'))).toBe('1024ZiB');
+	await t.test('ZiB - max', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1208925819614629174706175')), '1024ZiB');
 	});
-	test('YiB - min', () => {
-		expect(FileSizeFormat.iec(BigInt('1208925819614629174706176'))).toBe('1YiB');
+	await t.test('YiB - min', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1208925819614629174706176')), '1YiB');
 	});
-	test('YiB - max', () => {
-		expect(FileSizeFormat.iec(BigInt('1237940039285380274899124223'))).toBe('1024YiB');
+	await t.test('YiB - max', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1237940039285380274899124223')), '1024YiB');
 	});
-	test('YiB - over', () => {
-		expect(FileSizeFormat.iec(BigInt('1237940039285380274899124224'))).toBe('1024YiB');
-	});
-});
-
-describe('SI接頭辞', () => {
-	test('Byte - min', () => {
-		expect(FileSizeFormat.si(0)).toBe('0byte');
-	});
-	test('Byte - max', () => {
-		expect(FileSizeFormat.si(1000 ** 1 - 1)).toBe('999byte');
-	});
-	test('KB - min', () => {
-		expect(FileSizeFormat.si(1000 ** 1)).toBe('1kB');
-	});
-	test('KB - max', () => {
-		expect(FileSizeFormat.si(1000 ** 2 - 1)).toBe('1000kB');
-	});
-	test('MB - min', () => {
-		expect(FileSizeFormat.si(1000 ** 2)).toBe('1MB');
-	});
-	test('MB - max', () => {
-		expect(FileSizeFormat.si(1000 ** 3 - 1)).toBe('1000MB');
-	});
-	test('GB - min', () => {
-		expect(FileSizeFormat.si(1000 ** 3)).toBe('1GB');
-	});
-	test('GB - max', () => {
-		expect(FileSizeFormat.si(1000 ** 4 - 1)).toBe('1000GB');
-	});
-	test('TB - min', () => {
-		expect(FileSizeFormat.si(1000 ** 4)).toBe('1TB');
-	});
-	test('TB - max', () => {
-		expect(FileSizeFormat.si(1000 ** 5 - 1)).toBe('1000TB');
-	});
-	test('PB - min', () => {
-		expect(FileSizeFormat.si(1000 ** 5)).toBe('1PB');
-	});
-	test('PB - max', () => {
-		expect(FileSizeFormat.si(BigInt('999999999999999999'))).toBe('1000PB');
-	});
-	test('EB - min', () => {
-		expect(FileSizeFormat.si(BigInt('1000000000000000000'))).toBe('1EB');
-	});
-	test('EB - max', () => {
-		expect(FileSizeFormat.si(BigInt('999999999999999999999'))).toBe('1000EB');
-	});
-	test('ZB - min', () => {
-		expect(FileSizeFormat.si(BigInt('1000000000000000000000'))).toBe('1ZB');
-	});
-	test('ZB - max', () => {
-		expect(FileSizeFormat.si(BigInt('999999999999999999999999'))).toBe('1000ZB');
-	});
-	test('YB - min', () => {
-		expect(FileSizeFormat.si(BigInt('1000000000000000000000000'))).toBe('1YB');
-	});
-	test('YB - max', () => {
-		expect(FileSizeFormat.si(BigInt('999999999999999999999999999'))).toBe('1000YB');
-	});
-	test('YB - over', () => {
-		expect(FileSizeFormat.si(BigInt('1000000000000000000000000000'))).toBe('1000YB');
+	await t.test('YiB - over', () => {
+		assert.equal(FileSizeFormat.iec(BigInt('1237940039285380274899124224')), '1024YiB');
 	});
 });
 
-describe('オプション', () => {
-	test('byte (IEC・Number)', () => {
-		expect(FileSizeFormat.iec(512, { byte: 'B' })).toBe('512B');
+test('SI接頭辞', async (t) => {
+	await t.test('Byte - min', () => {
+		assert.equal(FileSizeFormat.si(0), '0byte');
 	});
-	test('byte (SI・BigInt)', () => {
-		expect(FileSizeFormat.si(BigInt(512), { byte: 'B' })).toBe('512B');
+	await t.test('Byte - max', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 1 - 1), '999byte');
 	});
-	test('space (IEC・Number)', () => {
-		expect(FileSizeFormat.iec(1024, { space: true })).toBe('1 KiB');
+	await t.test('KB - min', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 1), '1kB');
 	});
-	test('space (SI・BigInt)', () => {
-		expect(FileSizeFormat.si(BigInt(1024), { space: true })).toBe('1 kB');
+	await t.test('KB - max', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 2 - 1), '1000kB');
 	});
-	test('digits (IEC・Number)', () => {
-		expect(FileSizeFormat.iec(1280, { digits: 1 })).toBe('1.3KiB');
+	await t.test('MB - min', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 2), '1MB');
 	});
-	test('digits (IEC・Number)', () => {
-		expect(FileSizeFormat.iec(1280, { digits: 3 })).toBe('1.25KiB');
+	await t.test('MB - max', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 3 - 1), '1000MB');
 	});
-	test('digits (SI・BigInt)', () => {
-		expect(FileSizeFormat.si(BigInt(1280), { digits: 2 })).toBe('1kB'); // BigInt なので効果なし
+	await t.test('GB - min', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 3), '1GB');
 	});
-	test('digits (小数)', () => {
-		expect(() => {
-			FileSizeFormat.iec(0, { digits: 1.1 });
-		}).toThrow('The options `digits` must be an integer greater than or equal to 0.');
+	await t.test('GB - max', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 4 - 1), '1000GB');
 	});
-	test('digits (マイナスの値)', () => {
-		expect(() => {
-			FileSizeFormat.iec(0, { digits: -1 });
-		}).toThrow('The options `digits` must be an integer greater than or equal to 0.');
+	await t.test('TB - min', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 4), '1TB');
+	});
+	await t.test('TB - max', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 5 - 1), '1000TB');
+	});
+	await t.test('PB - min', () => {
+		assert.equal(FileSizeFormat.si(1000 ** 5), '1PB');
+	});
+	await t.test('PB - max', () => {
+		assert.equal(FileSizeFormat.si(BigInt('999999999999999999')), '1000PB');
+	});
+	await t.test('EB - min', () => {
+		assert.equal(FileSizeFormat.si(BigInt('1000000000000000000')), '1EB');
+	});
+	await t.test('EB - max', () => {
+		assert.equal(FileSizeFormat.si(BigInt('999999999999999999999')), '1000EB');
+	});
+	await t.test('ZB - min', () => {
+		assert.equal(FileSizeFormat.si(BigInt('1000000000000000000000')), '1ZB');
+	});
+	await t.test('ZB - max', () => {
+		assert.equal(FileSizeFormat.si(BigInt('999999999999999999999999')), '1000ZB');
+	});
+	await t.test('YB - min', () => {
+		assert.equal(FileSizeFormat.si(BigInt('1000000000000000000000000')), '1YB');
+	});
+	await t.test('YB - max', () => {
+		assert.equal(FileSizeFormat.si(BigInt('999999999999999999999999999')), '1000YB');
+	});
+	await t.test('YB - over', () => {
+		assert.equal(FileSizeFormat.si(BigInt('1000000000000000000000000000')), '1000YB');
 	});
 });
 
-describe('不正な値', () => {
-	test('マイナス (Number)', () => {
-		expect(() => {
-			FileSizeFormat.iec(-1);
-		}).toThrow('The file size must be a number greater than or equal to 0.');
+test('オプション', async (t) => {
+	await t.test('byte (IEC・Number)', () => {
+		assert.equal(FileSizeFormat.iec(512, { byte: 'B' }), '512B');
 	});
-	test('マイナス (BigInt)', () => {
-		expect(() => {
-			FileSizeFormat.iec(BigInt(-1));
-		}).toThrow('The file size must be a number greater than or equal to 0.');
+	await t.test('byte (SI・BigInt)', () => {
+		assert.equal(FileSizeFormat.si(BigInt(512), { byte: 'B' }), '512B');
 	});
-	test('NaN', () => {
-		expect(() => {
-			FileSizeFormat.iec(NaN);
-		}).toThrow('The file size must be a number greater than or equal to 0.');
+	await t.test('space (IEC・Number)', () => {
+		assert.equal(FileSizeFormat.iec(1024, { space: true }), '1 KiB');
 	});
-	test('Infinity', () => {
-		expect(() => {
-			FileSizeFormat.iec(Infinity);
-		}).toThrow('The file size must be a number greater than or equal to 0.');
+	await t.test('space (SI・BigInt)', () => {
+		assert.equal(FileSizeFormat.si(BigInt(1024), { space: true }), '1 kB');
 	});
-	test('unsafe', () => {
-		expect(() => {
-			FileSizeFormat.iec(9007199254740992);
-		}).toThrow('`BigInt` should be used when specifying huge numbers (Value greater than 9007199254740991).');
+	await t.test('digits (IEC・Number)', () => {
+		assert.equal(FileSizeFormat.iec(1280, { digits: 1 }), '1.3KiB');
+	});
+	await t.test('digits (IEC・Number)', () => {
+		assert.equal(FileSizeFormat.iec(1280, { digits: 3 }), '1.25KiB');
+	});
+	await t.test('digits (SI・BigInt)', () => {
+		assert.equal(FileSizeFormat.si(BigInt(1280), { digits: 2 }), '1kB'); // BigInt なので効果なし
+	});
+	await t.test('digits (小数)', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(0, { digits: 1.1 });
+			},
+			{ name: 'RangeError', message: 'The options `digits` must be an integer greater than or equal to 0.' },
+		);
+	});
+	await t.test('digits (マイナスの値)', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(0, { digits: -1 });
+			},
+			{ name: 'RangeError', message: 'The options `digits` must be an integer greater than or equal to 0.' },
+		);
+	});
+});
+
+test('不正な値', async (t) => {
+	await t.test('マイナス (Number)', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(-1);
+			},
+			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+		);
+	});
+	await t.test('マイナス (BigInt)', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(BigInt(-1));
+			},
+			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+		);
+	});
+	await t.test('NaN', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(NaN);
+			},
+			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+		);
+	});
+	await t.test('Infinity', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(Infinity);
+			},
+			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+		);
+	});
+	await t.test('unsafe', () => {
+		assert.throws(
+			() => {
+				FileSizeFormat.iec(9007199254740992);
+			},
+			{ name: 'RangeError', message: '`BigInt` should be used when specifying huge numbers (Value greater than 9007199254740991).' },
+		);
 	});
 });
