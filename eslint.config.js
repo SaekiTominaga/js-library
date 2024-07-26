@@ -1,0 +1,36 @@
+// @ts-check
+
+import tseslint from 'typescript-eslint';
+import w0sConfig from '@w0s/eslint-config';
+
+/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray} */
+export default tseslint.config(
+	...w0sConfig,
+	{
+		ignores: ['@types/', 'packages/*/dist/'],
+	},
+	{
+		files: ['packages/console-locale-timestamp/src/ConsoleLocaleTimestamp.ts'],
+		rules: {
+			'class-methods-use-this': 'off',
+			'no-console': 'off',
+		},
+	},
+	{
+		files: ['packages/html-escape/__tests__/HtmlEscape.test.js', 'packages/html-escape/src/HtmlEscape.ts'],
+		rules: {
+			'no-underscore-dangle': [
+				'error',
+				{
+					allow: ['__'],
+				},
+			],
+		},
+	},
+	{
+		files: ['packages/wareki/src/Wareki.ts'],
+		rules: {
+			'class-methods-use-this': 'off',
+		},
+	},
+);
