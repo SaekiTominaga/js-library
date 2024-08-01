@@ -9,6 +9,12 @@ export default [
 		ignores: ['@types', 'packages/*/dist'],
 	},
 	{
+		files: ['packages/*/__tests__/**/*.test.js'],
+		rules: {
+			'import/no-unresolved': 'off', // Github Actions 環境では /dist/ ファイルが存在しないためテスト不可
+		},
+	},
+	{
 		files: ['packages/*/src/**/*.ts'],
 		rules: {
 			'@typescript-eslint/no-non-null-assertion': 'off',
