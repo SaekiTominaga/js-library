@@ -1,13 +1,24 @@
 // @ts-check
 
-import tseslint from 'typescript-eslint';
 import w0sConfig from '@w0s/eslint-config';
 
 /** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray} */
-export default tseslint.config(
+export default [
 	...w0sConfig,
 	{
-		ignores: ['@types/', 'packages/*/dist/'],
+		ignores: ['@types', 'packages/*/dist'],
+	},
+	{
+		files: ['packages/*/__tests__/**/*.test.js'],
+		rules: {
+			'import/no-unresolved': 'off', // Github Actions 環境では /dist/ ファイルが存在しないためテスト不可
+		},
+	},
+	{
+		files: ['packages/*/src/**/*.ts'],
+		rules: {
+			'@typescript-eslint/no-non-null-assertion': 'off',
+		},
 	},
 	{
 		files: ['packages/console-locale-timestamp/src/ConsoleLocaleTimestamp.ts'],
@@ -33,4 +44,4 @@ export default tseslint.config(
 			'class-methods-use-this': 'off',
 		},
 	},
-);
+];
