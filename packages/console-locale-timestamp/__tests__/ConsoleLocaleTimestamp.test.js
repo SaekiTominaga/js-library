@@ -152,7 +152,7 @@ test('methods', async (t) => {
 		consoleTime.trace(string);
 
 		assert.equal(spyProcessOut.called, true);
-		// assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results
+		/* assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results */
 		assert.equal(spyConsole.calledOnce, true);
 		assert.equal(spyConsole.calledWith(string), true);
 
@@ -168,7 +168,7 @@ test('methods', async (t) => {
 		consoleTime.warn(string);
 
 		assert.equal(spyProcessOut.called, true);
-		// assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results
+		/* assert.equal(spyProcessError.called, false); // TODO: For some reason, it doesn't produce the expected results */
 		assert.equal(spyConsole.calledOnce, true);
 		assert.equal(spyConsole.calledWith(string), true);
 
