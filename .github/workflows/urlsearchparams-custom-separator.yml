@@ -1,12 +1,12 @@
-name: Running the `string-convert` test
+name: urlsearchparams-custom-separator
 
 on:
   pull_request:
     branches:
       - main
     paths:
-      - 'packages/string-convert/__tests__/**/*.test.js'
-      - 'packages/string-convert/src/**/*.ts'
+      - 'packages/urlsearchparams-custom-separator/__tests__/**/*.test.js'
+      - 'packages/urlsearchparams-custom-separator/src/**/*.ts'
   workflow_dispatch:
 
 jobs:
@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - run: npm test -w '@w0s/string-convert'
+      - run: npm test -w '@w0s/urlsearchparams-custom-separator'

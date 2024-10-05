@@ -1,4 +1,4 @@
-name: Running the `file-size-format` test
+name: file-size-format
 
 on:
   pull_request:
