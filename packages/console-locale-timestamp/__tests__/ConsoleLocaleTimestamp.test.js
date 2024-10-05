@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import sinon from 'sinon';
+import { spy } from 'sinon';
 import Console from '../dist/ConsoleLocaleTimestamp.js';
 
 const string = 'Hello World!';
@@ -31,7 +31,7 @@ test('methods', async (t) => {
 	const consoleTime = new Console();
 
 	await t.test('assert() - true', () => {
-		const spyConsole = sinon.spy(console, 'assert');
+		const spyConsole = spy(console, 'assert');
 
 		consoleTime.assert(true, string);
 
@@ -40,9 +40,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('assert() - false', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'assert');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'assert');
 
 		consoleTime.assert(false, string);
 
@@ -56,7 +56,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('clear()', () => {
-		const spyConsole = sinon.spy(console, 'clear');
+		const spyConsole = spy(console, 'clear');
 
 		consoleTime.clear();
 
@@ -65,9 +65,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('debug()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'debug');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'debug');
 
 		consoleTime.debug(string);
 
@@ -81,9 +81,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('error()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'error');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'error');
 
 		consoleTime.error(string);
 
@@ -97,9 +97,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('info()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'info');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'info');
 
 		consoleTime.info(string);
 
@@ -113,9 +113,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('log()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'log');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'log');
 
 		consoleTime.log(string);
 
@@ -129,9 +129,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('table()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'table');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'table');
 
 		consoleTime.table(object);
 
@@ -145,9 +145,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('trace()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'trace');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'trace');
 
 		consoleTime.trace(string);
 
@@ -161,9 +161,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('warn()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'warn');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'warn');
 
 		consoleTime.warn(string);
 
@@ -177,9 +177,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('dir()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'dir');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'dir');
 
 		consoleTime.dir(object);
 
@@ -193,9 +193,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('dirxml()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'dirxml');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'dirxml');
 
 		consoleTime.dirxml(object);
 
@@ -209,9 +209,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('count()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'count');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'count');
 
 		consoleTime.count();
 
@@ -224,7 +224,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('countReset()', () => {
-		const spyConsole = sinon.spy(console, 'countReset');
+		const spyConsole = spy(console, 'countReset');
 
 		consoleTime.countReset();
 
@@ -233,7 +233,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('group()', () => {
-		const spyConsole = sinon.spy(console, 'group');
+		const spyConsole = spy(console, 'group');
 
 		consoleTime.group();
 
@@ -242,9 +242,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('group(label)', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'group');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'group');
 
 		consoleTime.group('group');
 
@@ -258,7 +258,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('groupCollapsed()', () => {
-		const spyConsole = sinon.spy(console, 'groupCollapsed');
+		const spyConsole = spy(console, 'groupCollapsed');
 
 		consoleTime.groupCollapsed();
 
@@ -267,9 +267,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('groupCollapsed(label)', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'groupCollapsed');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'groupCollapsed');
 
 		consoleTime.groupCollapsed('groupCollapsed');
 
@@ -283,7 +283,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('groupEnd()', () => {
-		const spyConsole = sinon.spy(console, 'groupEnd');
+		const spyConsole = spy(console, 'groupEnd');
 
 		consoleTime.groupEnd();
 
@@ -292,7 +292,7 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('time()', () => {
-		const spyConsole = sinon.spy(console, 'time');
+		const spyConsole = spy(console, 'time');
 
 		consoleTime.time();
 
@@ -301,9 +301,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('timeLog()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'timeLog');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'timeLog');
 
 		consoleTime.timeLog();
 
@@ -316,9 +316,9 @@ test('methods', async (t) => {
 		spyConsole.restore();
 	});
 	await t.test('timeEnd()', () => {
-		const spyProcessOut = sinon.spy(process.stdout, 'write');
-		const spyProcessError = sinon.spy(process.stderr, 'write');
-		const spyConsole = sinon.spy(console, 'timeEnd');
+		const spyProcessOut = spy(process.stdout, 'write');
+		const spyProcessError = spy(process.stderr, 'write');
+		const spyConsole = spy(console, 'timeEnd');
 
 		consoleTime.timeEnd();
 
