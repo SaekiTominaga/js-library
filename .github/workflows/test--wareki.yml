@@ -1,26 +1,21 @@
-name: wareki-test
+name: Running the `wareki` test
+
 on:
   pull_request:
     branches:
       - main
     paths:
-      - 'packages/wareki/__tests__/*.test.js'
-      - 'packages/wareki/src/*.ts'
-  push:
-    branches:
-      - main
-    paths:
-      - 'packages/wareki/__tests__/*.test.js'
-      - 'packages/wareki/src/*.ts'
+      - 'packages/wareki/__tests__/**/*.test.js'
+      - 'packages/wareki/src/**/*.ts'
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - run: npm ci
       - run: npm test -w '@w0s/wareki'

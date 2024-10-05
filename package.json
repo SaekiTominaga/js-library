@@ -3,7 +3,8 @@
 	"type": "module",
 	"scripts": {
 		"format": "prettier -w .",
-		"github-actions-lint": "yamllint .github/workflows/*.yml"
+		"js-lint": "eslint packages/*/src/**/*.ts packages/*/__tests__/**/*.test.js",
+		"yaml-lint": "yamllint .github/workflows/*.yml"
 	},
 	"devDependencies": {
 		"@types/node": "^20.12.11",
