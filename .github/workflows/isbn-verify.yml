@@ -1,12 +1,12 @@
-name: Running the `html-escape` test
+name: isbn-verify
 
 on:
   pull_request:
     branches:
       - main
     paths:
-      - 'packages/html-escape/__tests__/**/*.test.js'
-      - 'packages/html-escape/src/**/*.ts'
+      - 'packages/isbn-verify/__tests__/**/*.test.js'
+      - 'packages/isbn-verify/src/**/*.ts'
   workflow_dispatch:
 
 jobs:
@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - run: npm test -w '@w0s/html-escape'
+      - run: npm test -w '@w0s/isbn-verify'

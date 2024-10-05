@@ -1,7 +1,7 @@
 # Console with locale timestamp
 
 [![npm version](https://badge.fury.io/js/console-locale-timestamp.svg)](https://www.npmjs.com/package/console-locale-timestamp)
-[![test status](https://github.com/SaekiTominaga/npm/actions/workflows/console-locale-timestamp-test.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/console-locale-timestamp-test.yml)
+[![Workflow status](https://github.com/SaekiTominaga/npm/actions/workflows/console-locale-timestamp.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/console-locale-timestamp.yml)
 
 Provides a console debugging facilities with a timestamp. Timestamps are written using `Date.prototype.toLocaleTimeString()`.
 

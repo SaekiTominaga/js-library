@@ -1,4 +1,4 @@
-name: Running the `wareki` test
+name: wareki
 
 on:
   pull_request:
