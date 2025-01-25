@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import PaapiItemImageUrlParser from '../dist/PaapiItemImageUrlParser.js';
+import PaapiItemImageUrlParser from './PaapiItemImageUrlParser.js';
 
-test('オリジナルサイズ', async (t) => {
+await test('オリジナルサイズ', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -20,7 +20,7 @@ test('オリジナルサイズ', async (t) => {
 	});
 });
 
-test('オリジナルサイズ URL の幅を変更（直接指定）', async (t) => {
+await test('オリジナルサイズ URL の幅を変更（直接指定）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -34,7 +34,7 @@ test('オリジナルサイズ URL の幅を変更（直接指定）', async (t)
 	});
 });
 
-test('オリジナルサイズ URL の幅を変更（乗算指定）', async (t) => {
+await test('オリジナルサイズ URL の幅を変更（乗算指定）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -62,7 +62,7 @@ test('オリジナルサイズ URL の幅を変更（乗算指定）', async (t)
 	});
 });
 
-test('幅指定 URL', async (t) => {
+await test('幅指定 URL', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -80,7 +80,7 @@ test('幅指定 URL', async (t) => {
 	});
 });
 
-test('幅指定 URL の幅を変更（直接指定）', async (t) => {
+await test('幅指定 URL の幅を変更（直接指定）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -94,7 +94,7 @@ test('幅指定 URL の幅を変更（直接指定）', async (t) => {
 	});
 });
 
-test('幅指定 URL の幅を変更（乗算指定）', async (t) => {
+await test('幅指定 URL の幅を変更（乗算指定）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -108,7 +108,7 @@ test('幅指定 URL の幅を変更（乗算指定）', async (t) => {
 	});
 });
 
-test('幅指定 URL の幅を変更（乗算指定・普通に計算すると 0 になってしまうケース）', async (t) => {
+await test('幅指定 URL の幅を変更（乗算指定・普通に計算すると 0 になってしまうケース）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -122,7 +122,7 @@ test('幅指定 URL の幅を変更（乗算指定・普通に計算すると 0 
 	});
 });
 
-test('幅指定 URL の幅を変更（除算指定）', async (t) => {
+await test('幅指定 URL の幅を変更（除算指定）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -136,7 +136,7 @@ test('幅指定 URL の幅を変更（除算指定）', async (t) => {
 	});
 });
 
-test('幅指定 URL の幅を変更（除算指定・普通に計算すると 0 になってしまうケース）', async (t) => {
+await test('幅指定 URL の幅を変更（除算指定・普通に計算すると 0 になってしまうケース）', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -150,7 +150,7 @@ test('幅指定 URL の幅を変更（除算指定・普通に計算すると 0 
 	});
 });
 
-test('幅指定 URL の幅を削除', async (t) => {
+await test('幅指定 URL の幅を削除', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
 	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 
@@ -164,7 +164,7 @@ test('幅指定 URL の幅を削除', async (t) => {
 	});
 });
 
-test('invalid', async (t) => {
+await test('invalid', async (t) => {
 	await t.test('ID に想定外記号', () => {
 		assert.throws(
 			() => {

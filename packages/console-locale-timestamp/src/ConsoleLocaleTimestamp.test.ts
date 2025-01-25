@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { spy } from 'sinon';
-import Console from '../dist/ConsoleLocaleTimestamp.js';
+import Console from './ConsoleLocaleTimestamp.js';
 
 const string = 'Hello World!';
 const object = {
@@ -9,7 +9,7 @@ const object = {
 	1002: { name: 'Taro Yamada', age: '25' },
 };
 
-test('constructor', async (t) => {
+await test('constructor', async (t) => {
 	await t.test('no argument', () => {
 		new Console();
 	});
@@ -27,7 +27,7 @@ test('constructor', async (t) => {
 	});
 });
 
-test('methods', async (t) => {
+await test('methods', async (t) => {
 	const consoleTime = new Console();
 
 	await t.test('assert() - true', () => {

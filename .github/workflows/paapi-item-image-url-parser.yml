@@ -5,7 +5,6 @@ on:
     branches:
       - main
     paths:
-      - 'packages/paapi-item-image-url-parser/__tests__/**/*.test.js'
       - 'packages/paapi-item-image-url-parser/src/**/*.ts'
   workflow_dispatch:
 

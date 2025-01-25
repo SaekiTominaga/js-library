@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import IsbnVerify from '../dist/IsbnVerify.js';
+import IsbnVerify from './IsbnVerify.js';
 
-test('ISBN-13（ハイフンあり）', async (t) => {
+await test('ISBN-13（ハイフンあり）', async (t) => {
 	const isbnVerify = new IsbnVerify('978-4-06-519981-7');
 
 	await t.test('正当', () => {
@@ -25,7 +25,7 @@ test('ISBN-13（ハイフンあり）', async (t) => {
 	});
 });
 
-test('ISBN-13（ハイフンあり・Strictモード）', async (t) => {
+await test('ISBN-13（ハイフンあり・Strictモード）', async (t) => {
 	const isbnVerify = new IsbnVerify('978-4-06-519981-7', { strict: true });
 
 	await t.test('正当', () => {
@@ -48,7 +48,7 @@ test('ISBN-13（ハイフンあり・Strictモード）', async (t) => {
 	});
 });
 
-test('ISBN-13（ハイフンなし）', async (t) => {
+await test('ISBN-13（ハイフンなし）', async (t) => {
 	const isbnVerify = new IsbnVerify('9784065199817');
 
 	await t.test('正当', () => {
@@ -71,7 +71,7 @@ test('ISBN-13（ハイフンなし）', async (t) => {
 	});
 });
 
-test('ISBN-13（ハイフンなし・Strictモード）', async (t) => {
+await test('ISBN-13（ハイフンなし・Strictモード）', async (t) => {
 	const isbnVerify = new IsbnVerify('9784065199817', { strict: true });
 
 	await t.test('正当', () => {
@@ -94,7 +94,7 @@ test('ISBN-13（ハイフンなし・Strictモード）', async (t) => {
 	});
 });
 
-test('ISBN-10（ハイフンあり）', async (t) => {
+await test('ISBN-10（ハイフンあり）', async (t) => {
 	const isbnVerify = new IsbnVerify('4-06-519981-6');
 
 	await t.test('正当', () => {
@@ -117,7 +117,7 @@ test('ISBN-10（ハイフンあり）', async (t) => {
 	});
 });
 
-test('ISBN-10（ハイフンあり・Strictモード）', async (t) => {
+await test('ISBN-10（ハイフンあり・Strictモード）', async (t) => {
 	const isbnVerify = new IsbnVerify('4-06-519981-6', { strict: true });
 
 	await t.test('正当', () => {
@@ -140,7 +140,7 @@ test('ISBN-10（ハイフンあり・Strictモード）', async (t) => {
 	});
 });
 
-test('ISBN-10（ハイフンなし）', async (t) => {
+await test('ISBN-10（ハイフンなし）', async (t) => {
 	const isbnVerify = new IsbnVerify('4065199816');
 
 	await t.test('正当', () => {
@@ -163,7 +163,7 @@ test('ISBN-10（ハイフンなし）', async (t) => {
 	});
 });
 
-test('ISBN-10（ハイフンなし・Strictモード）', async (t) => {
+await test('ISBN-10（ハイフンなし・Strictモード）', async (t) => {
 	const isbnVerify = new IsbnVerify('4065199816', { strict: true });
 
 	await t.test('正当', () => {
@@ -186,7 +186,7 @@ test('ISBN-10（ハイフンなし・Strictモード）', async (t) => {
 	});
 });
 
-test('ISBN-13（ハイフンあり）、チェックデジットが違う', async (t) => {
+await test('ISBN-13（ハイフンあり）、チェックデジットが違う', async (t) => {
 	const isbnVerify = new IsbnVerify('978-4-06-519981-0');
 
 	await t.test('正当', () => {
@@ -209,7 +209,7 @@ test('ISBN-13（ハイフンあり）、チェックデジットが違う', asyn
 	});
 });
 
-test('ISBN-13（ハイフンなし）、チェックデジットが違う', async (t) => {
+await test('ISBN-13（ハイフンなし）、チェックデジットが違う', async (t) => {
 	const isbnVerify = new IsbnVerify('9784065199810');
 
 	await t.test('正当', () => {
@@ -232,7 +232,7 @@ test('ISBN-13（ハイフンなし）、チェックデジットが違う', asyn
 	});
 });
 
-test('ISBN-10（ハイフンあり）、チェックデジットが違う', async (t) => {
+await test('ISBN-10（ハイフンあり）、チェックデジットが違う', async (t) => {
 	const isbnVerify = new IsbnVerify('4-06-519981-X');
 
 	await t.test('正当', () => {
@@ -255,7 +255,7 @@ test('ISBN-10（ハイフンあり）、チェックデジットが違う', asyn
 	});
 });
 
-test('ISBN-10（ハイフンなし）、チェックデジットが違う', async (t) => {
+await test('ISBN-10（ハイフンなし）、チェックデジットが違う', async (t) => {
 	const isbnVerify = new IsbnVerify('406519981X');
 
 	await t.test('正当', () => {
@@ -278,7 +278,7 @@ test('ISBN-10（ハイフンなし）、チェックデジットが違う', asyn
 	});
 });
 
-test('ハイフンのパターン', async (t) => {
+await test('ハイフンのパターン', async (t) => {
 	await t.test('ISBN-13（ハイフン中途半端）', () => {
 		const isbnVerify = new IsbnVerify('978-4065199817');
 		assert.equal(isbnVerify.isIsbn13(), true);
@@ -329,7 +329,7 @@ test('ハイフンのパターン', async (t) => {
 	});
 });
 
-test('いろいろな文字列を入れてみる', async (t) => {
+await test('いろいろな文字列を入れてみる', async (t) => {
 	await t.test('13桁のチェックデジットが 0', () => {
 		const isbnVerify = new IsbnVerify('978-4-8356-3517-0');
 		assert.equal(isbnVerify.isValid(), true);

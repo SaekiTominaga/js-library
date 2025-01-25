@@ -28,9 +28,9 @@
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc -w",
-		"lint": "eslint src/*.ts __tests__/*.js",
+		"lint": "eslint src/**/*.ts",
 		"pretest": "npm run build",
-		"test": "node --test --experimental-test-coverage"
+		"test": "node --experimental-test-coverage --test **/*.test.js"
 	},
 	"publishConfig": {
 		"access": "public"

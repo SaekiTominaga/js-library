@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import FileSizeFormat from '../dist/FileSizeFormat.js';
+import FileSizeFormat from './FileSizeFormat.js';
 
-test('2進接頭辞', async (t) => {
+await test('2進接頭辞', async (t) => {
 	await t.test('Byte - min', () => {
 		assert.equal(FileSizeFormat.iec(0), '0byte');
 	});
@@ -62,7 +62,7 @@ test('2進接頭辞', async (t) => {
 	});
 });
 
-test('SI接頭辞', async (t) => {
+await test('SI接頭辞', async (t) => {
 	await t.test('Byte - min', () => {
 		assert.equal(FileSizeFormat.si(0), '0byte');
 	});
@@ -122,7 +122,7 @@ test('SI接頭辞', async (t) => {
 	});
 });
 
-test('オプション', async (t) => {
+await test('オプション', async (t) => {
 	await t.test('byte (IEC・Number)', () => {
 		assert.equal(FileSizeFormat.iec(512, { byte: 'B' }), '512B');
 	});
@@ -162,7 +162,7 @@ test('オプション', async (t) => {
 	});
 });
 
-test('不正な値', async (t) => {
+await test('不正な値', async (t) => {
 	await t.test('マイナス (Number)', () => {
 		assert.throws(
 			() => {
