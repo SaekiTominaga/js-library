@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import StringConvert from '../dist/StringConvert.js';
+import StringConvert from './StringConvert.js';
 
-test('README.md', async (t) => {
+await test('README.md', async (t) => {
 	await t.test('Sample 1', () => {
 		assert.equal(
 			StringConvert.convert('foo\r\nbar', {
@@ -38,7 +38,7 @@ test('README.md', async (t) => {
 	});
 });
 
-test('変換', async (t) => {
+await test('変換', async (t) => {
 	await t.test('newline (CR → LF)', () => {
 		assert.equal(
 			StringConvert.convert('  hoge  \r\r\r  piyo  \r\r\r  fuga  ', {
@@ -64,6 +64,7 @@ test('変換', async (t) => {
 		);
 	});
 	await t.test('newline (不正な改行コード指定)', () => {
+		// @ts-expect-error: ts(2322)
 		assert.equal(StringConvert.convert('  hoge  \n\n\n  piyo  \n\n\n  fuga  ', { newline: 'foo' }), '  hoge  \n\n\n  piyo  \n\n\n  fuga  ');
 	});
 	await t.test('trim', () => {
@@ -182,7 +183,7 @@ test('変換', async (t) => {
 	});
 });
 
-test('改行コード', async (t) => {
+await test('改行コード', async (t) => {
 	await t.test('CR + LF 混在', () => {
 		assert.throws(
 			() => {

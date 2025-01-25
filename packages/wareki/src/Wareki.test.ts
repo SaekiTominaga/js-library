@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import Wareki from '../dist/Wareki.js';
+import Wareki from './Wareki.js';
 
-test('日付フォーマット', async (t) => {
+await test('日付フォーマット', async (t) => {
 	await t.test('文字列・YYYY-MM-DD', () => {
 		const wareki = new Wareki('2000-01-01');
 
@@ -37,7 +37,7 @@ test('日付フォーマット', async (t) => {
 	});
 });
 
-test('era オプション', async (t) => {
+await test('era オプション', async (t) => {
 	const wareki = new Wareki('2019-12-31');
 
 	await t.test('無指定', () => {
@@ -57,7 +57,7 @@ test('era オプション', async (t) => {
 	});
 });
 
-test('元号の境目・YYYY-MM-DD', async (t) => {
+await test('元号の境目・YYYY-MM-DD', async (t) => {
 	await t.test('明治初日の前日', () => {
 		const wareki = new Wareki('1868-09-07');
 
@@ -119,7 +119,7 @@ test('元号の境目・YYYY-MM-DD', async (t) => {
 	});
 });
 
-test('元号の境目・YYYY-MM', async (t) => {
+await test('元号の境目・YYYY-MM', async (t) => {
 	await t.test('明治初日の前月', () => {
 		const wareki = new Wareki('1868-08');
 
@@ -217,7 +217,7 @@ test('元号の境目・YYYY-MM', async (t) => {
 	});
 });
 
-test('元号の境目・YYYY', async (t) => {
+await test('元号の境目・YYYY', async (t) => {
 	await t.test('明治初日の前年', () => {
 		const wareki = new Wareki('1867');
 

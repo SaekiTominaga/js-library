@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import URLSearchParamsCustomSeparator from '../dist/URLSearchParamsCustomSeparator.js';
+import URLSearchParamsCustomSeparator from './URLSearchParamsCustomSeparator.js';
 
-test('URL オブジェクト', async (t) => {
+await test('URL オブジェクト', async (t) => {
 	await t.test('区切り文字の設定', () => {
 		const urlSearchParams = new URLSearchParamsCustomSeparator(new URL('https://example.com/path/to?foo=1&bar=2;baz=3;qux=4:quux=5'), [';', ':']);
 
@@ -25,7 +25,7 @@ test('URL オブジェクト', async (t) => {
 	});
 });
 
-test('文字列', async (t) => {
+await test('文字列', async (t) => {
 	await t.test('区切り文字の設定', () => {
 		const urlSearchParams = new URLSearchParamsCustomSeparator('/path/to?foo=1&bar=2;baz=3;qux=4:quux=5', [';', ':']);
 

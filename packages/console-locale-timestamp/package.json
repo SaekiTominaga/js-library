@@ -12,7 +12,14 @@
 	"license": "MIT",
 	"author": "Saeki Tominaga",
 	"files": [
-		"dist"
+		"dist/**/*.d.ts",
+		"!dist/**/*.test.d.ts",
+		"dist/**/*.d.ts.map",
+		"!dist/**/*.test.d.ts.map",
+		"dist/**/*.js",
+		"!dist/**/*.test.js",
+		"dist/**/*.js.map",
+		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
 	"main": "dist/ConsoleLocaleTimestamp.js",
@@ -26,9 +33,9 @@
 		"build": "tsc",
 		"watch": "tsc -w",
 		"sample": "node sample.js",
-		"lint": "eslint src/*.ts __tests__/*.js",
+		"lint": "eslint src/**/*.ts",
 		"pretest": "npm run build",
-		"test": "node --test --experimental-test-coverage"
+		"test": "node --experimental-test-coverage --test **/*.test.js"
 	},
 	"publishConfig": {
 		"access": "public"

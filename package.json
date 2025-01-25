@@ -3,11 +3,12 @@
 	"type": "module",
 	"scripts": {
 		"format": "prettier -w .",
-		"js-lint": "eslint packages/*/src/**/*.ts packages/*/__tests__/**/*.test.js",
+		"js-lint": "eslint packages/*/src/**/*.ts",
 		"yaml-lint": "yamllint .github/workflows/*.yml"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.10",
+		"@types/sinon": "^17.0.3",
 		"@w0s/eslint-config": "^8.3.0",
 		"@w0s/tsconfig": "^1.5.1",
 		"eslint": "^9.19.0",

@@ -1,8 +1,8 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import HtmlEscape from '../dist/HtmlEscape.js';
+import HtmlEscape from './HtmlEscape.js';
 
-test('escape()', async (t) => {
+await test('escape()', async (t) => {
 	await t.test('empty', () => {
 		assert.equal(HtmlEscape.escape(''), '');
 	});
@@ -26,7 +26,7 @@ test('escape()', async (t) => {
 	});
 });
 
-test('unescape()', async (t) => {
+await test('unescape()', async (t) => {
 	await t.test('empty', () => {
 		assert.equal(HtmlEscape.unescape(''), '');
 	});
@@ -54,7 +54,7 @@ test('unescape()', async (t) => {
 	});
 });
 
-test('template``', async (t) => {
+await test('template``', async (t) => {
 	await t.test('empty', () => {
 		assert.equal(HtmlEscape.template``, '');
 	});
