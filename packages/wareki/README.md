@@ -1,7 +1,7 @@
 # 西暦データから和暦を取得
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fwareki.svg)](https://www.npmjs.com/package/@w0s/wareki)
-[![Workflow status](https://github.com/SaekiTominaga/npm/actions/workflows/wareki.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/wareki.yml)
+[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/wareki.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/wareki.yml)
 
 西暦データから和暦を取得します。正確な日付の場合はもちろん、「2000年1月」など曖昧なデータの場合も極力特定を試みます。
 

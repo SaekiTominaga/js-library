@@ -5,9 +5,9 @@
 	"keywords": [
 		"console"
 	],
-	"homepage": "https://github.com/SaekiTominaga/npm#readme",
+	"homepage": "https://github.com/SaekiTominaga/js-library#readme",
 	"bugs": {
-		"url": "https://github.com/SaekiTominaga/npm/issues"
+		"url": "https://github.com/SaekiTominaga/js-library/issues"
 	},
 	"license": "MIT",
 	"author": "Saeki Tominaga",
@@ -27,7 +27,7 @@
 	"types": "dist/ConsoleLocaleTimestamp.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/SaekiTominaga/npm.git"
+		"url": "git+https://github.com/SaekiTominaga/js-library.git"
 	},
 	"scripts": {
 		"build": "tsc",
