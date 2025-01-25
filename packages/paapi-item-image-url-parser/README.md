@@ -1,7 +1,7 @@
 # Parsing a PA-API 5.0 Item Image URL
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fpaapi-item-image-url-parser.svg)](https://www.npmjs.com/package/@w0s/paapi-item-image-url-parser)
-[![Workflow status](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/paapi-item-image-url-parser.yml)
+[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/paapi-item-image-url-parser.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/paapi-item-image-url-parser.yml)
 
 ## Examples
 

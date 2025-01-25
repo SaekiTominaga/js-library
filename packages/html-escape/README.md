@@ -1,7 +1,7 @@
 # Escapes and unescapes the characters for HTML
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fhtml-escape.svg)](https://www.npmjs.com/package/@w0s/html-escape)
-[![Workflow status](https://github.com/SaekiTominaga/npm/actions/workflows/html-escape.yml/badge.svg)](https://github.com/SaekiTominaga/npm/actions/workflows/html-escape.yml)
+[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/html-escape.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/html-escape.yml)
 
 - Escapes and unescapes the characters for HTML
 - Tagged templates (Template literals) can also be used to escape only certain parts of the string.
