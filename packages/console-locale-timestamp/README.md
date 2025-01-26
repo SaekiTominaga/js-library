@@ -50,37 +50,43 @@ console2.table({
 └─────────┴───────────────┴──────┘
 ```
 
-## Constructor arguments
+## Constructor
 
 ```TypeScript
-constructor(locales?: string, options?: object, quote?: string[], separator?: string)
+constructor(locales?: string, options?: Readonly<Intl.DateTimeFormatOptions>, quote?: [string, string?], separator?: string)
 ```
 
-| name      | type     | deault    | example                                  | Description                                                                                                             |
-| --------- | -------- | --------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| locales   | string   | undefined | 'en-US'                                  | The specified value will be used as the first argument of `Date.prototype.toLocaleTimeString()`.                        |
-| options   | object   | undefined | { minute: '2-digit', second: '2-digit' } | The specified value will be used as the second argument of `Date.prototype.toLocaleTimeString()`.                       |
-| quote     | string[] | ['']      | ['[', ']']                               | The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. |
-| separator | string   | ''        | ' - '                                    | Delimiter between the timestamp and the message that follows.                                                           |
+### Parameters
+
+<dl>
+<dt><code>locales</code></dt>
+<dd>The specified value will be used as the first argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a></dd>
+<dt><code>options</code></dt>
+<dd>The specified value will be used as the second argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a></dd>
+<dt><code>quote</code></dt>
+<dd>The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied</dd>
+<dt><code>separator</code></dt>
+<dd>Delimiter between the timestamp and the message that follows</dd>
+</dl>
 
 ## Methods
 
-- [assert(condition?: boolean, ...data: any[])](https://console.spec.whatwg.org/#assert)
-- [clear()](https://console.spec.whatwg.org/#clear)
-- [debug(...data: any[])](https://console.spec.whatwg.org/#debug)
-- [error(...data: any[])](https://console.spec.whatwg.org/#error)
-- [info(...data: any[])](https://console.spec.whatwg.org/#info)
-- [log(...data: any[])](https://console.spec.whatwg.org/#log)
-- [table(tabularData?: any, properties?: string[])](https://console.spec.whatwg.org/#table)
-- [trace(...data: any[])](https://console.spec.whatwg.org/#trace)
-- [warn(...data: any[])](https://console.spec.whatwg.org/#warn)
-- [dir(item?: any, options?: any)](https://console.spec.whatwg.org/#dir)
-- [dirxml(...data: any[])](https://console.spec.whatwg.org/#dirxml)
-- [count(label?: string)](https://console.spec.whatwg.org/#count)
-- [countReset(label?: string)](https://console.spec.whatwg.org/#countreset)
-- [group(...data: any[])](https://console.spec.whatwg.org/#group)
-- [groupCollapsed(...data: any[])](https://console.spec.whatwg.org/#groupcollapsed)
-- [groupEnd()](https://console.spec.whatwg.org/#groupend)
-- [time(label?: string)](https://console.spec.whatwg.org/#time)
-- [timeLog(label?: string, ...data: any[])](https://console.spec.whatwg.org/#timelog)
-- [timeEnd(label?: string)](https://console.spec.whatwg.org/#timeend)
+- [`assert(condition?: boolean, ...data: any[]): void`](https://console.spec.whatwg.org/#assert)
+- [`clear(): void`](https://console.spec.whatwg.org/#clear)
+- [`debug(...data: any[]): void`](https://console.spec.whatwg.org/#debug)
+- [`error(...data: any[]): void`](https://console.spec.whatwg.org/#error)
+- [`info(...data: any[]): void`](https://console.spec.whatwg.org/#info)
+- [`log(...data: any[]): void`](https://console.spec.whatwg.org/#log)
+- [`table(tabularData?: any, properties?: string[]): void`](https://console.spec.whatwg.org/#table)
+- [`trace(...data: any[]): void`](https://console.spec.whatwg.org/#trace)
+- [`warn(...data: any[]): void`](https://console.spec.whatwg.org/#warn)
+- [`dir(item?: any, options?: any): void`](https://console.spec.whatwg.org/#dir)
+- [`dirxml(...data: any[]): void`](https://console.spec.whatwg.org/#dirxml)
+- [`count(label?: string): void`](https://console.spec.whatwg.org/#count)
+- [`countReset(label?: string): void`](https://console.spec.whatwg.org/#countreset)
+- [`group(...data: any[]): void`](https://console.spec.whatwg.org/#group)
+- [`groupCollapsed(...data: any[]): void`](https://console.spec.whatwg.org/#groupcollapsed)
+- [`groupEnd(): void`](https://console.spec.whatwg.org/#groupend)
+- [`time(label?: string): void`](https://console.spec.whatwg.org/#time)
+- [`timeLog(label?: string, ...data: any[]): void`](https://console.spec.whatwg.org/#timelog)
+- [`timeEnd(label?: string): void`](https://console.spec.whatwg.org/#timeend)

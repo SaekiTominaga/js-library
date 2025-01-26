@@ -27,7 +27,7 @@ export default class ConsoleLocaleTimestamp {
 	 * @param quote - The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. (e.g. [''] => '0:00:00' , ['[', ']'] => '[0:00:00]' )
 	 * @param separator - Delimiter between the timestamp and the message that follows. (e.g. ' - ' => '0:00:00 - Log message.' )
 	 */
-	constructor(locales?: string, options?: Intl.DateTimeFormatOptions, quote?: [string, string?], separator?: string) {
+	constructor(locales?: string, options?: Readonly<Intl.DateTimeFormatOptions>, quote?: [string, string?], separator?: string) {
 		if (locales !== undefined) {
 			if (Object.prototype.toString.call(locales) !== '[object String]') {
 				throw new TypeError('The argument `locales` must be an String.');
@@ -53,9 +53,9 @@ export default class ConsoleLocaleTimestamp {
 				throw new TypeError('The contents of the Array of arguments `quote` must be a String.');
 			}
 
-			// eslint-disable-next-line prefer-destructuring
-			this.#openQuote = quote[0];
-			this.#closeQuote = quote.length === 1 ? quote[0] : quote[1]!;
+			const [open, close] = quote;
+			this.#openQuote = open;
+			this.#closeQuote = close ?? open;
 		}
 
 		if (separator !== undefined) {
