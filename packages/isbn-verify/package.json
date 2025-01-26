@@ -22,9 +22,9 @@
 		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
-	"main": "dist/IsbnVerify.js",
-	"module": "dist/IsbnVerify.js",
-	"types": "dist/IsbnVerify.d.ts",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"
