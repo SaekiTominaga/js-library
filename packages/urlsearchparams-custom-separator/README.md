@@ -28,7 +28,7 @@ urlSearchParams3.toString(); // foo=1&bar=2&baz=3&qux=4&quux=5
 ## Constructor
 
 ```TypeScript
-new URLSearchParamsCustomSeparator(url: URL | string, separators: string[])
+constructor(url: URL | string, separators: string[])
 ```
 
 ### Parameters

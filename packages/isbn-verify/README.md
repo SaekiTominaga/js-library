@@ -27,7 +27,7 @@ isbnVerify3.isValid(); // false
 ## Constructor
 
 ```TypeScript
-new IsbnVerify(isbn: string, options?: Option)
+constructor(isbn: string, options?: Option)
 ```
 
 ### Parameters
