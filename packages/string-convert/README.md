@@ -42,7 +42,7 @@ try {
 ## Functions
 
 <dl>
-<dt><code>const convert = (text: string, options: Readonly<Option>): string</code></dt>
+<dt><code>const convert = (text: string, options: Readonly&lt;Option&gt;): string</code></dt>
 <dd>Convert execution</dd>
 </dl>
 
