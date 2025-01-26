@@ -23,9 +23,9 @@
 		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
-	"main": "dist/PaapiItemImageUrlParser.js",
-	"module": "dist/PaapiItemImageUrlParser.js",
-	"types": "dist/PaapiItemImageUrlParser.d.ts",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"

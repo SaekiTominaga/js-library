@@ -58,7 +58,7 @@ paapiItemImageUrlParser.getSize(); // 320
 ## Constructor
 
 ```TypeScript
-new PaapiItemImageUrlParser(inputUrl: URL)
+constructor(inputUrl: URL)
 ```
 
 ### Parameters

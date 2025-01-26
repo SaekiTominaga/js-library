@@ -22,9 +22,9 @@
 		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
-	"main": "dist/ConsoleLocaleTimestamp.js",
-	"module": "dist/ConsoleLocaleTimestamp.js",
-	"types": "dist/ConsoleLocaleTimestamp.d.ts",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"

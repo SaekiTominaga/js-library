@@ -23,9 +23,9 @@
 		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
-	"main": "dist/URLSearchParamsCustomSeparator.js",
-	"module": "dist/URLSearchParamsCustomSeparator.js",
-	"types": "dist/URLSearchParamsCustomSeparator.d.ts",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"

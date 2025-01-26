@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { spy } from 'sinon';
-import Console from './ConsoleLocaleTimestamp.js';
+import Console from './Console.js';
 
 const string = 'Hello World!';
 const object = {
@@ -11,19 +11,19 @@ const object = {
 
 await test('constructor', async (t) => {
 	await t.test('no argument', () => {
-		new Console();
+		new Console().debug('constructor – no argument');
 	});
 	await t.test('locales', () => {
-		new Console('en-US');
+		new Console('en-US').debug('constructor – locales');
 	});
 	await t.test('options', () => {
-		new Console('en-US', { minute: '2-digit', second: '2-digit' });
+		new Console('en-US', { minute: '2-digit', second: '2-digit' }).debug('constructor – options');
 	});
 	await t.test('quote', () => {
-		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']']);
+		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']']).debug('constructor – quote');
 	});
 	await t.test('separator', () => {
-		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']'], ' - ');
+		new Console('en-US', { minute: '2-digit', second: '2-digit' }, ['[', ']'], ' - ').debug('constructor – separator');
 	});
 });
 

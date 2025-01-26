@@ -33,7 +33,7 @@ try {
 ## コンストラクター
 
 ```TypeScript
-new Wareki(date: Date | string)
+constructor(date: Date | string)
 ```
 
 ### パラメーター
