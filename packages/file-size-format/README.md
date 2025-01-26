@@ -12,27 +12,27 @@ Expresses the size of a file in human-readable units such as `KiB` or `MB`.
 ## Examples
 
 ```JavaScript
-import FileSizeFormat from '@w0s/file-size-format';
+import { iec, si } from '@w0s/file-size-format';
 
-FileSizeFormat.iec(1024); // 1KiB
-FileSizeFormat.si(1000); // 1kB
+iec(1024); // 1KiB
+si(1000); // 1kB
 
-FileSizeFormat.iec(512, { byte: 'B' }); // 512B
-FileSizeFormat.iec(1280, { digits: 1, space: true }); // 1.3 KiB
+iec(512, { byte: 'B' }); // 512B
+iec(1280, { digits: 1, space: true }); // 1.3 KiB
 
-FileSizeFormat.iec(1208925819614629174706176n); // 1YiB
-FileSizeFormat.iec(BigInt('1208925819614629174706176')); // 1YiB
+iec(1208925819614629174706176n); // 1YiB
+iec(BigInt('1208925819614629174706176')); // 1YiB
 
-FileSizeFormat.iec(-1); // RangeError: The file size must be a number greater than or equal to 0
-FileSizeFormat.iec(1208925819614629174706176); // RangeError: `BigInt` should be used when specifying huge numbers
+iec(-1); // RangeError: The file size must be a number greater than or equal to 0
+iec(1208925819614629174706176); // RangeError: `BigInt` should be used when specifying huge numbers
 ```
 
-## Methods
+## Functions
 
 <dl>
-<dt><code>static iec(size: number | bigint, options?: Option): string</code></dt>
+<dt><code>const iec = (size: number | bigint, options?: Readonly&lt;Option&gt;): string</code></dt>
 <dd>Expressed with a binary prefix (Byte, KiB, MiB, ...)</dd>
-<dt><code>static si(size: number | bigint, options?: Option): string</code></dt>
+<dt><code>const si = (size: number | bigint, options?: Readonly&lt;Option&gt;): string</code></dt>
 <dd>Expressed with a SI prefix (Byte, kB, MB, ...)</dd>
 </dl>
 

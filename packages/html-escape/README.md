@@ -9,39 +9,22 @@
 ## Examples
 
 ```JavaScript
-import HtmlEscape from '@w0s/html-escape';
+import { escape, unescape, template } from '@w0s/html-escape';
 
-HtmlEscape.escape('<span data-foo="hoge&hoge">text</span>'); // &lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;
-HtmlEscape.unescape('&lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;'); // <span data-foo="hoge&hoge">text</span>
-
-const span = '<span>text</span>';
-HtmlEscape.template`<p>${span}</p>`; // <p>&lt;span&gt;text&lt;span&gt;</p>
-```
-
-```JavaScript
-/* Short method name */
-import Html from '@w0s/html-escape';
-
-Html._('<span data-foo="hoge&hoge">text</span>');
-Html.$('&lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;');
+escape('<span data-foo="hoge&hoge">text</span>'); // &lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;
+unescape('&lt;span data-foo=&quot;hoge&amp;hoge&quot;&gttext&lt;/span&gt;'); // <span data-foo="hoge&hoge">text</span>
 
 const span = '<span>text</span>';
-Html.__`<p>${span}</p>`;
+template`<p>${span}</p>`; // <p>&lt;span&gt;text&lt;span&gt;</p>
 ```
 
 ## Methods
 
 <dl>
-<dt><code>static escape(input: string): string</code></dt>
+<dt><code>const escape = (input: string): string</code></dt>
 <dd>Escapes the characters in a string using character references</dd>
-<dt><code>static _(input: string): string</code></dt>
-<dd>Alias of <code>escape()</code></dd>
-<dt><code>static unescape(input: string): string</code></dt>
+<dt><code>const unescape = (input: string): string</code></dt>
 <dd>Unescape characters for which character references are used</dd>
-<dt><code>static $(input: string): string</code></dt>
-<dd>Alias of <code>unescape()</code></dd>
-<dt><code>static template(input: TemplateStringsArray, ...placeholders: unknown[]): string</code></dt>
+<dt><code>const template = (input: TemplateStringsArray, ...placeholders: unknown[]): string</code></dt>
 <dd>Escapes for the placeholder in template literals</dd>
-<dt><code>static __(input: TemplateStringsArray, ...placeholders: unknown[]): string</code></dt>
-<dd>Alias of <code>template()</code></dd>
 </dl>
