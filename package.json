@@ -13,6 +13,7 @@
 		"@w0s/tsconfig": "^1.5.1",
 		"eslint": "^9.19.0",
 		"prettier": "^3.4.2",
+		"rimraf": "^6.0.1",
 		"sinon": "^19.0.2",
 		"typescript": "^5.7.3",
 		"yaml-lint": "^1.7.0"

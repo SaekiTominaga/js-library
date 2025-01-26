@@ -27,6 +27,7 @@
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"
 	},
 	"scripts": {
+		"prebuild": "rimraf dist/* -g",
 		"build": "tsc",
 		"watch": "tsc -w",
 		"lint": "eslint src/**/*.ts",
