@@ -1,3 +1,3 @@
-import IsbnVerify from './IsbnVerify.js';
+import IsbnVerify from './ISBN.js';
 
 export default IsbnVerify;

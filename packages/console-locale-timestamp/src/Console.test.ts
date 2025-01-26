@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { spy } from 'sinon';
-import Console from './ConsoleLocaleTimestamp.js';
+import Console from './Console.js';
 
 const string = 'Hello World!';
 const object = {

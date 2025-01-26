@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import PaapiItemImageUrlParser from './PaapiItemImageUrlParser.js';
+import PaapiItemImageUrlParser from './PaapiItemImageUrl.js';
 
 await test('オリジナルサイズ', async (t) => {
 	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');

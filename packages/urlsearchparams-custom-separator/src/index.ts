@@ -1,3 +1,3 @@
-import URLSearchParamsCustomSeparator from './URLSearchParamsCustomSeparator.js';
+import URLSearchParamsCustomSeparator from './URLSearchParams.js';
 
 export default URLSearchParamsCustomSeparator;

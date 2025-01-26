@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import IsbnVerify from './IsbnVerify.js';
+import IsbnVerify from './ISBN.js';
 
 await test('ISBN-13（ハイフンあり）', async (t) => {
 	const isbnVerify = new IsbnVerify('978-4-06-519981-7');

@@ -1,3 +1,3 @@
-import ConsoleLocaleTimestamp from './ConsoleLocaleTimestamp.js';
+import ConsoleLocaleTimestamp from './Console.js';
 
 export default ConsoleLocaleTimestamp;
