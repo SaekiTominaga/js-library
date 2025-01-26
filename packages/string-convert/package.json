@@ -19,9 +19,9 @@
 		"!dist/**/*.test.js.map"
 	],
 	"type": "module",
-	"main": "dist/StringConvert.js",
-	"module": "dist/StringConvert.js",
-	"types": "dist/StringConvert.d.ts",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"

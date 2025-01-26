@@ -28,17 +28,6 @@ export default [
 		},
 	},
 	{
-		files: ['packages/html-escape/src/HtmlEscape.ts', 'packages/html-escape/src/HtmlEscape.test.ts'],
-		rules: {
-			'no-underscore-dangle': [
-				'error',
-				{
-					allow: ['__'],
-				},
-			],
-		},
-	},
-	{
 		files: ['packages/wareki/src/Wareki.ts'],
 		rules: {
 			'class-methods-use-this': 'off',
