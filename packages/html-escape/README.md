@@ -18,7 +18,7 @@ const span = '<span>text</span>';
 template`<p>${span}</p>`; // <p>&lt;span&gt;text&lt;span&gt;</p>
 ```
 
-## Methods
+## Functions
 
 <dl>
 <dt><code>const escape = (input: string): string</code></dt>
