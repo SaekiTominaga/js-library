@@ -60,13 +60,13 @@ constructor(locales?: string, options?: Readonly<Intl.DateTimeFormatOptions>, qu
 
 <dl>
 <dt><code>locales</code></dt>
-<dd>The specified value will be used as the first argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a></dd>
+<dd>The specified value will be used as the first argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a>.</dd>
 <dt><code>options</code></dt>
-<dd>The specified value will be used as the second argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a></dd>
+<dd>The specified value will be used as the second argument of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code></a>.</dd>
 <dt><code>quote</code></dt>
-<dd>The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied</dd>
+<dd>The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied.</dd>
 <dt><code>separator</code></dt>
-<dd>Delimiter between the timestamp and the message that follows</dd>
+<dd>Delimiter between the timestamp and the message that follows. The default value when omitted is ' ' (U+0020 SPACE).</dd>
 </dl>
 
 ## Methods
