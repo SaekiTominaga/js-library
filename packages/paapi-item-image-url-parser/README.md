@@ -14,7 +14,7 @@ const paapiItemImageUrlParser = new PaapiItemImageUrlParser(imageUrl);
 paapiItemImageUrlParser.getId(); // '5198TOs+rnL'
 paapiItemImageUrlParser.getSize(); // 160
 paapiItemImageUrlParser.getExtension(); // '.jpg'
-paapiItemImageUrlParser.toString(); // 'https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg'
+paapiItemImageUrlParser.getURL(); // URL { href: 'https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg', ... }
 
 paapiItemImageUrlParser.setSizeMultiply(2);
 paapiItemImageUrlParser.getSize(); // 320
@@ -27,7 +27,7 @@ paapiItemImageUrlParser.getSize(); // 320
 
 paapiItemImageUrlParser.removeSize();
 paapiItemImageUrlParser.getSize(); // null
-paapiItemImageUrlParser.toString(); // 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg'
+paapiItemImageUrlParser.getURL(); // URL { href: 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg', ... }
 ```
 
 ```JavaScript
@@ -39,7 +39,7 @@ const paapiItemImageUrlParser = new PaapiItemImageUrlParser(imageUrl);
 paapiItemImageUrlParser.getId(); // '5198TOs+rnL'
 paapiItemImageUrlParser.getSize(); // null
 paapiItemImageUrlParser.getExtension(); // '.jpg'
-paapiItemImageUrlParser.toString(); // 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg'
+paapiItemImageUrlParser.getURL(); // URL { href: 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg', ... }
 
 try {
   paapiItemImageUrlParser.setSizeMultiply(2); // Error
@@ -72,7 +72,9 @@ constructor(inputUrl: URL)
 
 <dl>
 <dt><code>toString(): string</code></dt>
-<dd>Get the entire Image URL string.</dd>
+<dd>Get the entire Image URL string</dd>
+<dt><code>getURL(): URL</code></dt>
+<dd>Get the entire Image URL</dd>
 <dt><code>getId(): string</code></dt>
 <dd>Get the ID part of URL</dd>
 <dt><code>getSize(): number | null</code></dt>

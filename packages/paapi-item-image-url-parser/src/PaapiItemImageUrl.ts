@@ -32,18 +32,27 @@ export default class {
 	}
 
 	/**
-	 * Get the entire Image URL string.
+	 * Get the entire Image URL string
+	 *
+	 * @returns Image URL string
+	 */
+	toString(): string {
+		return this.getURL().toString();
+	}
+
+	/**
+	 * Get the entire Image URL
 	 *
 	 * @returns Image URL
 	 */
-	toString(): string {
+	getURL(): URL {
 		if (this.#fileSize === null) {
 			this.#url.pathname = `${this.#dir}/${this.#fileId}${this.#fileExtension}`;
 		} else {
 			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${String(this.#fileSize)}_${this.#fileExtension}`;
 		}
 
-		return this.#url.toString();
+		return this.#url;
 	}
 
 	/**

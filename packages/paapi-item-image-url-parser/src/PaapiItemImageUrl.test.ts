@@ -16,6 +16,9 @@ await test('オリジナルサイズ', async (t) => {
 		assert.equal(paapiItemImageUrlParser.getExtension(), '.jpg');
 	});
 	await t.test('URL', () => {
+		assert.equal(paapiItemImageUrlParser.getURL().toString(), 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');
+	});
+	await t.test('URL string', () => {
 		assert.equal(paapiItemImageUrlParser.toString(), 'https://m.media-amazon.com/images/I/5198TOs+rnL.jpg');
 	});
 });
