@@ -8,7 +8,7 @@ export default class {
 
 	readonly #fileId: string;
 
-	#fileSize: number | null;
+	#fileSize: number | undefined;
 
 	readonly #fileExtension: string;
 
@@ -27,8 +27,24 @@ export default class {
 
 		this.#dir = dir!;
 		this.#fileId = id!;
-		this.#fileSize = size !== undefined ? Number(size) : null;
+		this.#fileSize = size !== undefined ? Number(size) : undefined;
 		this.#fileExtension = ext!;
+	}
+
+	/**
+	 * Common process to change values
+	 *
+	 * @param data - Value to change
+	 * @param data.size - Image size (e.g. 160)
+	 */
+	#set(data?: { size?: number }): void {
+		this.#fileSize = data?.size;
+
+		if (data?.size === undefined) {
+			this.#url.pathname = `${this.#dir}/${this.#fileId}${this.#fileExtension}`;
+		} else {
+			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${String(data.size)}_${this.#fileExtension}`;
+		}
 	}
 
 	/**
@@ -37,7 +53,7 @@ export default class {
 	 * @returns Image URL string
 	 */
 	toString(): string {
-		return this.getURL().toString();
+		return this.#url.toString();
 	}
 
 	/**
@@ -46,12 +62,6 @@ export default class {
 	 * @returns Image URL
 	 */
 	getURL(): URL {
-		if (this.#fileSize === null) {
-			this.#url.pathname = `${this.#dir}/${this.#fileId}${this.#fileExtension}`;
-		} else {
-			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${String(this.#fileSize)}_${this.#fileExtension}`;
-		}
-
 		return this.#url;
 	}
 
@@ -70,7 +80,7 @@ export default class {
 	 * @returns Image size (e.g. 160)
 	 */
 	getSize(): number | null {
-		return this.#fileSize;
+		return this.#fileSize ?? null;
 	}
 
 	/**
@@ -86,14 +96,16 @@ export default class {
 			throw new RangeError('The image size must be a value greater than or equal to 1 (px).');
 		}
 
-		this.#fileSize = size;
+		this.#set({
+			size: size,
+		});
 	}
 
 	/**
 	 * Remove the image size (Used to get the original size image)
 	 */
 	removeSize(): void {
-		this.#fileSize = null;
+		this.#set();
 	}
 
 	/**
@@ -105,12 +117,14 @@ export default class {
 		if (multiply <= 0) {
 			throw new RangeError('The value to be multiply must be greater than zero.');
 		}
-		if (this.#fileSize === null) {
+		if (this.#fileSize === undefined) {
 			throw new Error('It is not possible to multiply the size of an image whose size is not specified. Please execute the `setSize()` method before this.');
 		}
 
 		const size = Math.round(this.#fileSize * multiply);
-		this.#fileSize = size < 1 ? 1 : size;
+		this.#set({
+			size: size < 1 ? 1 : size,
+		});
 	}
 
 	/**
@@ -122,12 +136,14 @@ export default class {
 		if (division <= 0) {
 			throw new RangeError('The value to be division must be greater than zero.');
 		}
-		if (this.#fileSize === null) {
+		if (this.#fileSize === undefined) {
 			throw new Error('It is not possible to division the size of an image whose size is not specified. Please execute the `setSize()` method before this.');
 		}
 
 		const size = Math.round(this.#fileSize / division);
-		this.#fileSize = size < 1 ? 1 : size;
+		this.#set({
+			size: size < 1 ? 1 : size,
+		});
 	}
 
 	/**
