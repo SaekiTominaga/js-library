@@ -242,3 +242,17 @@ await test('invalid', async (t) => {
 		);
 	});
 });
+
+await test('値渡し', () => {
+	const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
+	const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
+
+	const beforeUrl = paapiItemImageUrlParser.getURL();
+
+	paapiItemImageUrlParser.setSize(320);
+
+	const afterUrl = paapiItemImageUrlParser.getURL();
+
+	assert.equal(beforeUrl.toString(), 'https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg');
+	assert.equal(afterUrl.toString(), 'https://m.media-amazon.com/images/I/5198TOs+rnL._SL320_.jpg');
+});
