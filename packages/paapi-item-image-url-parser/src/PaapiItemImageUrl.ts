@@ -6,11 +6,11 @@ export default class {
 
 	readonly #dir: string;
 
-	readonly #fileId: string;
+	readonly #id: string;
 
-	#fileSize: number | null;
+	#size: number | undefined;
 
-	readonly #fileExtension: string;
+	readonly #extension: string;
 
 	/**
 	 * @param inputUrl - Image URL (e.g. new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_.jpg') )
@@ -26,24 +26,43 @@ export default class {
 		const { dir, id, size, ext } = matchGroups;
 
 		this.#dir = dir!;
-		this.#fileId = id!;
-		this.#fileSize = size !== undefined ? Number(size) : null;
-		this.#fileExtension = ext!;
+		this.#id = id!;
+		this.#size = size !== undefined ? Number(size) : undefined;
+		this.#extension = ext!;
 	}
 
 	/**
-	 * Get the entire Image URL string.
+	 * Common process to change values
+	 *
+	 * @param data - Value to change
+	 * @param data.size - Image size (e.g. 160)
+	 */
+	#set(data?: { size?: number }): void {
+		this.#size = data?.size;
+
+		if (data?.size === undefined) {
+			this.#url.pathname = `${this.#dir}/${this.#id}${this.#extension}`;
+		} else {
+			this.#url.pathname = `${this.#dir}/${this.#id}._SL${String(data.size)}_${this.#extension}`;
+		}
+	}
+
+	/**
+	 * Get the entire Image URL string
+	 *
+	 * @returns Image URL string
+	 */
+	toString(): string {
+		return this.#url.toString();
+	}
+
+	/**
+	 * Get the entire Image URL
 	 *
 	 * @returns Image URL
 	 */
-	toString(): string {
-		if (this.#fileSize === null) {
-			this.#url.pathname = `${this.#dir}/${this.#fileId}${this.#fileExtension}`;
-		} else {
-			this.#url.pathname = `${this.#dir}/${this.#fileId}._SL${String(this.#fileSize)}_${this.#fileExtension}`;
-		}
-
-		return this.#url.toString();
+	getURL(): URL {
+		return this.#url;
 	}
 
 	/**
@@ -52,7 +71,7 @@ export default class {
 	 * @returns ID of the image file name (e.g. '5198TOs+rnL')
 	 */
 	getId(): string {
-		return this.#fileId;
+		return this.#id;
 	}
 
 	/**
@@ -61,7 +80,7 @@ export default class {
 	 * @returns Image size (e.g. 160)
 	 */
 	getSize(): number | null {
-		return this.#fileSize;
+		return this.#size ?? null;
 	}
 
 	/**
@@ -77,14 +96,16 @@ export default class {
 			throw new RangeError('The image size must be a value greater than or equal to 1 (px).');
 		}
 
-		this.#fileSize = size;
+		this.#set({
+			size: size,
+		});
 	}
 
 	/**
 	 * Remove the image size (Used to get the original size image)
 	 */
 	removeSize(): void {
-		this.#fileSize = null;
+		this.#set();
 	}
 
 	/**
@@ -96,12 +117,14 @@ export default class {
 		if (multiply <= 0) {
 			throw new RangeError('The value to be multiply must be greater than zero.');
 		}
-		if (this.#fileSize === null) {
+		if (this.#size === undefined) {
 			throw new Error('It is not possible to multiply the size of an image whose size is not specified. Please execute the `setSize()` method before this.');
 		}
 
-		const size = Math.round(this.#fileSize * multiply);
-		this.#fileSize = size < 1 ? 1 : size;
+		const size = Math.round(this.#size * multiply);
+		this.#set({
+			size: size < 1 ? 1 : size,
+		});
 	}
 
 	/**
@@ -113,12 +136,14 @@ export default class {
 		if (division <= 0) {
 			throw new RangeError('The value to be division must be greater than zero.');
 		}
-		if (this.#fileSize === null) {
+		if (this.#size === undefined) {
 			throw new Error('It is not possible to division the size of an image whose size is not specified. Please execute the `setSize()` method before this.');
 		}
 
-		const size = Math.round(this.#fileSize / division);
-		this.#fileSize = size < 1 ? 1 : size;
+		const size = Math.round(this.#size / division);
+		this.#set({
+			size: size < 1 ? 1 : size,
+		});
 	}
 
 	/**
@@ -127,6 +152,6 @@ export default class {
 	 * @returns Image file extension (e.g. '.jpg')
 	 */
 	getExtension(): string {
-		return this.#fileExtension;
+		return this.#extension;
 	}
 }
