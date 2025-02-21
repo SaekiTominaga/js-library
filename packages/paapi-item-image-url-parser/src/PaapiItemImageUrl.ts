@@ -62,7 +62,7 @@ export default class {
 	 * @returns Image URL
 	 */
 	getURL(): URL {
-		return this.#url;
+		return new URL(this.#url);
 	}
 
 	/**
