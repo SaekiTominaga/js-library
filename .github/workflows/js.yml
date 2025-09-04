@@ -1,4 +1,4 @@
-name: Linting JavaScript files
+name: JavaScript files
 
 on:
   pull_request:
