@@ -18,7 +18,9 @@ export default class {
 	constructor(inputUrl: URL) {
 		this.#url = inputUrl;
 
-		const matchGroups = /(?<dir>\/images\/[A-Z])\/(?<id>[a-zA-Z0-9\-_+%]+)(\._SL(?<size>[0-9]+)_)?(?<ext>\.[a-zA-Z0-9]+)$/.exec(inputUrl.pathname)?.groups;
+		const matchGroups = /(?<dir>\/images\/[A-Z])\/(?<id>[a-zA-Z0-9\-_+%]+)(\._SL(?<size>[0-9]+)_)?(?<ext>\.[a-zA-Z0-9]+)$/.exec(
+			decodeURIComponent(inputUrl.pathname),
+		)?.groups;
 		if (matchGroups === undefined) {
 			throw new Error('The format of the URL does not seem to be that of an Amazon product image.');
 		}
