@@ -1,7 +1,7 @@
 # Expressing file size in a unit system
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Ffile-size-format.svg)](https://www.npmjs.com/package/@w0s/file-size-format)
-[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/file-size-format.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/file-size-format.yml)
+[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/package-file-size-format.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/package-file-size-format.yml)
 
 Expresses the size of a file in human-readable units such as `KiB` or `MB`.
 
