@@ -2,8 +2,6 @@ name: urlsearchparams-custom-separator
 
 on:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/urlsearchparams-custom-separator/src/**/*.ts'
   workflow_dispatch:

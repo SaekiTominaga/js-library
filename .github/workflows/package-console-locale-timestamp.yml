@@ -2,8 +2,6 @@ name: console-locale-timestamp
 
 on:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/console-locale-timestamp/src/**/*.ts'
   workflow_dispatch:

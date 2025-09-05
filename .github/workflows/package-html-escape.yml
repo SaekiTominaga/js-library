@@ -2,8 +2,6 @@ name: html-escape
 
 on:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/html-escape/src/**/*.ts'
   workflow_dispatch:

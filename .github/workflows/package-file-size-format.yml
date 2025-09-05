@@ -2,8 +2,6 @@ name: file-size-format
 
 on:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/file-size-format/src/**/*.ts'
   workflow_dispatch:

@@ -2,8 +2,6 @@ name: wareki
 
 on:
   pull_request:
-    branches:
-      - main
     paths:
       - 'packages/wareki/src/**/*.ts'
   workflow_dispatch:
