@@ -23,12 +23,6 @@ export default [
 		},
 	},
 	{
-		files: ['packages/*/src/**/*.test.ts'],
-		rules: {
-			'import/no-unresolved': 'off', // Github Actions 環境では /dist/ ファイルが存在しないためテスト不可
-		},
-	},
-	{
 		files: ['packages/console-locale-timestamp/src/Console.ts'],
 		rules: {
 			'class-methods-use-this': 'off',
