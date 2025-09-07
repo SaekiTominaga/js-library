@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { iec, si } from './format.js';
+import { iec, si } from './format.ts';
 
 await test('2進接頭辞', async (t) => {
 	await t.test('Byte - min', () => {

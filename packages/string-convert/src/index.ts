@@ -1,4 +1,4 @@
-import { convert } from './convert.js';
+import { convert } from './convert.ts';
 
 export type NewlineSequence = '\r' | '\n' | '\r\n';
 

@@ -1,4 +1,4 @@
-import { iec, si } from './format.js';
+import { iec, si } from './format.ts';
 
 export interface Option {
 	space?: boolean; // Whether to insert a space between the number and the unit. The default is `false`.

@@ -9,15 +9,17 @@ export default [
 		ignores: ['@types', 'packages/*/dist'],
 	},
 	{
-		files: ['packages/*/src/**/*.ts'],
-		rules: {
-			'@typescript-eslint/no-non-null-assertion': 'off',
+		files: ['**/*.ts'],
+		languageOptions: {
+			parserOptions: {
+				tsconfigRootDir: import.meta.dirname,
+			},
 		},
 	},
 	{
-		files: ['packages/*/src/**/*.test.ts'],
+		files: ['packages/*/src/**/*.ts'],
 		rules: {
-			'import/no-unresolved': 'off', // Github Actions 環境では /dist/ ファイルが存在しないためテスト不可
+			'@typescript-eslint/no-non-null-assertion': 'off',
 		},
 	},
 	{

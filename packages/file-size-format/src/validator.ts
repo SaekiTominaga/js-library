@@ -1,4 +1,4 @@
-import type { Option } from './index.js';
+import type { Option } from './index.ts';
 
 /**
  * オプションの初期処理

@@ -1,4 +1,4 @@
-import type { NewlineSequence } from '../index.js';
+import type { NewlineSequence } from '../index.ts';
 
 /**
  * 改行コードを判定する

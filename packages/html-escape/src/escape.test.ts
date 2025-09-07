@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { escape, unescape, template } from './escape.js';
+import { escape, unescape, template } from './escape.ts';
 
 await test('escape()', async (t) => {
 	await t.test('empty', () => {

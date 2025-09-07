@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import URLSearchParamsCustomSeparator from './URLSearchParams.js';
+import URLSearchParamsCustomSeparator from './URLSearchParams.ts';
 
 await test('URL オブジェクト', async (t) => {
 	await t.test('区切り文字の設定', () => {

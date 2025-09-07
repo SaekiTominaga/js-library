@@ -1,5 +1,5 @@
 {
-	"name": "npm",
+	"name": "js-library",
 	"type": "module",
 	"scripts": {
 		"format": "prettier -w .",
@@ -7,14 +7,14 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.3.1",
-		"@types/sinon": "^17.0.3",
-		"@w0s/eslint-config": "^8.3.0",
-		"@w0s/tsconfig": "^1.5.1",
+		"@types/sinon": "^17.0.4",
+		"@w0s/eslint-config": "^8.6.0",
+		"@w0s/tsconfig": "^1.6.1",
 		"eslint": "^9.35.0",
-		"prettier": "^3.4.2",
+		"prettier": "^3.6.2",
 		"rimraf": "^6.0.1",
 		"sinon": "^21.0.0",
-		"typescript": "^5.7.3"
+		"typescript": "^5.9.2"
 	},
 	"private": true,
 	"workspaces": [

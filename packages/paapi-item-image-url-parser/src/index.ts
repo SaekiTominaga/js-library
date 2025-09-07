@@ -1,3 +1,3 @@
-import PaapiItemImageUrlParser from './PaapiItemImageUrl.js';
+import PaapiItemImageUrlParser from './PaapiItemImageUrl.ts';
 
 export default PaapiItemImageUrlParser;

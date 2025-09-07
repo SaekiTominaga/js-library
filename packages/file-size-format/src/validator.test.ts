@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { option } from './validator.js';
+import { option } from './validator.ts';
 
 await test('digits', async (t) => {
 	await t.test('decimal', () => {

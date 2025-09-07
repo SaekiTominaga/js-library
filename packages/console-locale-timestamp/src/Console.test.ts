@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { spy } from 'sinon';
-import Console from './Console.js';
+import Console from './Console.ts';
 
 const string = 'Hello World!';
 const object = {
