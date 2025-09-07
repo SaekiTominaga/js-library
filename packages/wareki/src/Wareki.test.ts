@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import Wareki from './Wareki.js';
+import Wareki from './Wareki.ts';
 
 await test('日付フォーマット', async (t) => {
 	await t.test('文字列・YYYY-MM-DD', () => {

@@ -1,5 +1,5 @@
-import { option as optionValidator } from './validator.js';
-import type { Option } from './index.js';
+import { option as optionValidator } from './validator.ts';
+import type { Option } from './index.ts';
 
 type UnitTable = Record<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9, string>;
 

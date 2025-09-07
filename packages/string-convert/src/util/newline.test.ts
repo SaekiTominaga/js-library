@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { getSequence } from './newline.js';
+import { getSequence } from './newline.ts';
 
 await test('single line', () => {
 	assert.equal(getSequence('hogepiyofuga'), undefined);
