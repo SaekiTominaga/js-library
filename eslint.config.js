@@ -21,7 +21,7 @@ export default [
 		},
 	},
 	{
-		files: ['packages/console-locale-timestamp/src/ConsoleLocaleTimestamp.ts'],
+		files: ['packages/console-locale-timestamp/src/Console.ts'],
 		rules: {
 			'class-methods-use-this': 'off',
 			'no-console': 'off',
