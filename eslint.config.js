@@ -13,6 +13,7 @@ export default [
 		languageOptions: {
 			parserOptions: {
 				tsconfigRootDir: import.meta.dirname,
+				project: './packages/*/tsconfig.lint.json',
 			},
 		},
 	},
