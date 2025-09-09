@@ -13,13 +13,9 @@
 	"author": "Saeki Tominaga",
 	"files": [
 		"dist/**/*.d.ts",
-		"!dist/**/*.test.d.ts",
 		"dist/**/*.d.ts.map",
-		"!dist/**/*.test.d.ts.map",
 		"dist/**/*.js",
-		"!dist/**/*.test.js",
-		"dist/**/*.js.map",
-		"!dist/**/*.test.js.map"
+		"dist/**/*.js.map"
 	],
 	"type": "module",
 	"main": "dist/index.js",
@@ -35,8 +31,7 @@
 		"watch": "tsc -w",
 		"sample": "node sample.js",
 		"lint": "eslint src/**/*.ts",
-		"pretest": "npm run build",
-		"test": "node --experimental-test-coverage --test **/*.test.js"
+		"test": "node --experimental-test-coverage --test src/**/*.test.ts"
 	},
 	"publishConfig": {
 		"access": "public"
