@@ -31,6 +31,12 @@ export default [
 		},
 	},
 	{
+		files: ['packages/console-locale-timestamp/sample.ts'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+	{
 		files: ['packages/wareki/src/Wareki.ts'],
 		rules: {
 			'class-methods-use-this': 'off',
