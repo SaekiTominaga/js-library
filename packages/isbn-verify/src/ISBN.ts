@@ -21,24 +21,24 @@ export default class {
 	 * @param options - Characteristics related to the handling of ISBN values
 	 */
 	constructor(isbn: string, options?: Readonly<Option>) {
-		const isbnNormalization = isbn.replace(/-/g, '');
+		const isbnNormalization = isbn.replace(/-/gu, '');
 		this.#isbnNormalization = isbnNormalization;
 
 		if (options?.strict) {
 			const { length } = isbn;
 
-			if (length === 17 /* performance */ && /^(978|979)-[0-9]{1,5}-[0-9]{1,7}-[0-9]{1,7}-[0-9]$/.test(isbn)) {
+			if (length === 17 /* performance */ && /^(978|979)-[0-9]{1,5}-[0-9]{1,7}-[0-9]{1,7}-[0-9]$/u.test(isbn)) {
 				this.#isbn13 = true;
-			} else if (length === 13 /* performance */ && /^[0-9]{1,5}-[0-9]{1,7}-[0-9]{1,7}-[0-9X]$/.test(isbn)) {
+			} else if (length === 13 /* performance */ && /^[0-9]{1,5}-[0-9]{1,7}-[0-9]{1,7}-[0-9X]$/u.test(isbn)) {
 				this.#isbn10 = true;
 			}
 		} else if (!isbn.includes('--')) {
-			if (/^(978|979)[0-9]{10}$/.test(isbnNormalization)) {
-				if (/^[0-9][-0-9]{11,15}[0-9]$/.test(isbn)) {
+			if (/^(978|979)[0-9]{10}$/u.test(isbnNormalization)) {
+				if (/^[0-9][-0-9]{11,15}[0-9]$/u.test(isbn)) {
 					this.#isbn13 = true;
 				}
-			} else if (/^[0-9]{9}[0-9X]$/.test(isbnNormalization)) {
-				if (/^[0-9][-0-9]{8,11}[0-9X]$/.test(isbn)) {
+			} else if (/^[0-9]{9}[0-9X]$/u.test(isbnNormalization)) {
+				if (/^[0-9][-0-9]{8,11}[0-9X]$/u.test(isbn)) {
 					this.#isbn10 = true;
 				}
 			}

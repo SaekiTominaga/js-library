@@ -58,15 +58,15 @@ export const convert = (text: string, options: Readonly<Option>): string => {
 
 	if (options.noBlankLine && replacedNewlineSequence !== undefined) {
 		/* 空行を削除 */
-		convertedText = convertedText.replaceAll(new RegExp(`[${replacedNewlineSequence}]+`, 'g'), replacedNewlineSequence);
+		convertedText = convertedText.replaceAll(new RegExp(`[${replacedNewlineSequence}]+`, 'gu'), replacedNewlineSequence);
 	}
 
 	if (options.toHankakuEisu) {
 		/* 英数字を半角化 */
-		convertedText = convertedText.replaceAll(/[ａ-ｚＡ-Ｚ０-９]/g, (str) => String.fromCharCode(str.charCodeAt(0) - 0xfee0));
+		convertedText = convertedText.replaceAll(/[ａ-ｚＡ-Ｚ０-９]/gu, (str) => String.fromCharCode(str.charCodeAt(0) - 0xfee0));
 	} else if (options.toZenkakuEisu) {
 		/* 英数字を全角化 */
-		convertedText = convertedText.replaceAll(/[a-zA-Z0-9]/g, (str) => String.fromCharCode(str.charCodeAt(0) + 0xfee0));
+		convertedText = convertedText.replaceAll(/[a-zA-Z0-9]/gu, (str) => String.fromCharCode(str.charCodeAt(0) + 0xfee0));
 	}
 
 	if (options.toHankakuSpace) {
@@ -76,7 +76,7 @@ export const convert = (text: string, options: Readonly<Option>): string => {
 
 	if (options.combineSpace) {
 		/* 連続したスペースを統合 */
-		convertedText = convertedText.replaceAll(new RegExp(`${SPACE}+`, 'g'), SPACE);
+		convertedText = convertedText.replaceAll(new RegExp(`${SPACE}+`, 'gu'), SPACE);
 	}
 
 	if (options.toLowerCase) {

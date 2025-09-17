@@ -17,13 +17,13 @@ export default class {
 			return;
 		}
 
-		if (/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(date)) {
+		if (/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/u.test(date)) {
 			const year = Number(date.substring(0, 4));
 			const month = Number(date.substring(5, 7));
 			const day = Number(date.substring(8, 10));
 
 			this.#date = new Date(year, month - 1, day);
-		} else if (/^[0-9]{4}-[0-9]{2}$/.test(date)) {
+		} else if (/^[0-9]{4}-[0-9]{2}$/u.test(date)) {
 			const year = Number(date.substring(0, 4));
 			const month = Number(date.substring(5, 7));
 
@@ -36,7 +36,7 @@ export default class {
 			}
 
 			this.#date = firstDay;
-		} else if (/^[0-9]{4}$/.test(date)) {
+		} else if (/^[0-9]{4}$/u.test(date)) {
 			const year = Number(date.substring(0, 4));
 
 			const firstDay = new Date(year, 0); // その年の最初の日（1月1日）
