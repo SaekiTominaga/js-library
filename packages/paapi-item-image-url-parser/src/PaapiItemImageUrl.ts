@@ -18,7 +18,7 @@ export default class {
 	constructor(inputUrl: URL) {
 		this.#url = inputUrl;
 
-		const matchGroups = /(?<dir>\/images\/[A-Z])\/(?<id>[a-zA-Z0-9\-_+%]+)(\._SL(?<size>[0-9]+)_)?(?<ext>\.[a-zA-Z0-9]+)$/.exec(
+		const matchGroups = /(?<dir>\/images\/[A-Z])\/(?<id>[a-zA-Z0-9\-_+%]+)(\._SL(?<size>[0-9]+)_)?(?<ext>\.[a-zA-Z0-9]+)$/u.exec(
 			decodeURIComponent(inputUrl.pathname),
 		)?.groups;
 		if (matchGroups === undefined) {

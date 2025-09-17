@@ -12,8 +12,8 @@ export const getSequence = (text: string): NewlineSequence | undefined => {
 	const LF = '\n';
 	const CRLF = `${CR}${LF}`;
 
-	const existCr = new RegExp(`${CR}(?!${LF})`).test(text);
-	const existLf = new RegExp(`(?<!${CR})${LF}`).test(text);
+	const existCr = new RegExp(`${CR}(?!${LF})`, 'u').test(text);
+	const existLf = new RegExp(`(?<!${CR})${LF}`, 'u').test(text);
 	const existCrlf = text.includes(CRLF);
 
 	if (existCr && existLf) {
