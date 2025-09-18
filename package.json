@@ -6,7 +6,7 @@
 		"js-lint": "eslint packages/*/src/**/*.ts"
 	},
 	"devDependencies": {
-		"@types/node": "^24.5.1",
+		"@types/node": "^24.5.2",
 		"@types/sinon": "^17.0.4",
 		"@w0s/eslint-config": "^9.1.0",
 		"@w0s/tsconfig": "^1.6.2",
