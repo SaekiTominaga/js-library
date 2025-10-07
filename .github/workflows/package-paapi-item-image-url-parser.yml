@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/paapi-item-image-url-parser/src/**/*.ts'
+      - 'packages/paapi-item-image-url-parser/package.json'
+      - 'package.json'
   workflow_dispatch:
 
 permissions: {}

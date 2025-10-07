@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/wareki/src/**/*.ts'
+      - 'packages/wareki/package.json'
+      - 'package.json'
   workflow_dispatch:
 
 permissions: {}
