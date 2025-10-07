@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/urlsearchparams-custom-separator/src/**/*.ts'
+      - 'packages/urlsearchparams-custom-separator/package.json'
+      - 'package.json'
   workflow_dispatch:
 
 permissions: {}

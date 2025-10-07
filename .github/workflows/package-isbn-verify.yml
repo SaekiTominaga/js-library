@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/isbn-verify/src/**/*.ts'
+      - 'packages/isbn-verify/package.json'
+      - 'package.json'
   workflow_dispatch:
 
 permissions: {}
