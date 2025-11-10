@@ -1,6 +1,12 @@
 type JSType = string | number | boolean | Date | URL | undefined;
 type SQLiteType = string | number | null; // https://www.sqlite.org/datatype3.html
 
+export function jsToSQLite(value: undefined): null;
+export function jsToSQLite(value: string | URL): string;
+export function jsToSQLite(value: number | Date): number;
+export function jsToSQLite(value: boolean): 0 | 1;
+export function jsToSQLite(value: JSType): SQLiteType;
+
 /**
  * Converting JavaScript types to SQLite types
  *
@@ -8,7 +14,7 @@ type SQLiteType = string | number | null; // https://www.sqlite.org/datatype3.ht
  *
  * @returns SQLite value
  */
-export const jsToSQLite = (value: JSType): SQLiteType => {
+export function jsToSQLite(value: JSType): SQLiteType {
 	if (value === undefined) {
 		return null;
 	}
@@ -30,7 +36,7 @@ export const jsToSQLite = (value: JSType): SQLiteType => {
 	}
 
 	return value; // never
-};
+}
 
 export function sqliteToJS(value: string): string;
 export function sqliteToJS(value: string | null): string | undefined;
