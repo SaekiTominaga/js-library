@@ -1,11 +1,19 @@
 type JSType = string | number | boolean | Date | URL | undefined;
 type SQLiteType = string | number | null; // https://www.sqlite.org/datatype3.html
 
-export function jsToSQLite(value: undefined): null;
-export function jsToSQLite(value: string | URL): string;
-export function jsToSQLite(value: number | Date): number;
-export function jsToSQLite(value: boolean): 0 | 1;
-export function jsToSQLite(value: JSType): SQLiteType;
+type JsToSQLite<T> = T extends string
+	? string
+	: T extends number
+		? number
+		: T extends boolean
+			? 0 | 1
+			: T extends Date
+				? number
+				: T extends URL
+					? string
+					: T extends undefined
+						? null
+						: never;
 
 /**
  * Converting JavaScript types to SQLite types
@@ -14,29 +22,29 @@ export function jsToSQLite(value: JSType): SQLiteType;
  *
  * @returns SQLite value
  */
-export function jsToSQLite(value: JSType): SQLiteType {
+export const jsToSQLite = <T extends JSType>(value: T): JsToSQLite<T> => {
 	if (value === undefined) {
-		return null;
+		return null as JsToSQLite<T>;
 	}
 
 	if (typeof value === 'string' || typeof value === 'number') {
-		return value;
+		return value as unknown as JsToSQLite<T>;
 	}
 
 	if (typeof value === 'boolean') {
-		return value ? 1 : 0;
+		return (value ? 1 : 0) as JsToSQLite<T>;
 	}
 
 	if (value instanceof Date) {
-		return Math.round(value.getTime() / 1000); // Unix Time, the number of seconds
+		return Math.round(value.getTime() / 1000) as JsToSQLite<T>; // Unix Time, the number of seconds
 	}
 
 	if (value instanceof URL) {
-		return value.toString();
+		return value.toString() as JsToSQLite<T>;
 	}
 
-	return value; // never
-}
+	throw new TypeError('Unsupported JavaScript type');
+};
 
 export function sqliteToJS(value: string): string;
 export function sqliteToJS(value: string | null): string | undefined;
