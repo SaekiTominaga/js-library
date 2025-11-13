@@ -2,7 +2,7 @@ import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
 import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
 
-await test('jsToSQLiteWhere', async (t) => {
+await test('jsToSQLiteComparison', async (t) => {
 	await t.test('string', () => {
 		assert.equal(jsToSQLiteComparison('text'), 'text');
 	});
@@ -28,7 +28,7 @@ await test('jsToSQLiteWhere', async (t) => {
 	});
 });
 
-await test('jsToSQLite', async (t) => {
+await test('jsToSQLiteAssignment', async (t) => {
 	await t.test('string', () => {
 		assert.equal(jsToSQLiteAssignment('text'), 'text');
 	});
