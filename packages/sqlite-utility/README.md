@@ -86,7 +86,7 @@ type SQLiteType = string | number | null;
 ```
 
 <dl>
-<dt><code>const jsToSQLiteComparison = (value: Exclude<JSType, undefined>): Exclude<SQLiteType, null></code></dt>
+<dt><code>const jsToSQLiteComparison = (value: Exclude&lt;JSType, undefined&gt;): Exclude&lt;SQLiteType, null&gt;</code></dt>
 <dd>Converting JavaScript types to SQLite types for comparison context (e.g. <code>WHERE</code> / <code>HAVING</code> / <code>ON</code> / <code>CASE</code> clause)</dd>
 <dt><code>const jsToSQLiteAssignment = (value: JSType): SQLiteType</code></dt>
 <dd>Converting JavaScript types to SQLite types for assignment context (e.g. <code>SET</code> / <code>VALUES</code> clause)</dd>
