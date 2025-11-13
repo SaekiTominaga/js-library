@@ -1,6 +1,32 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
+import { jsToSQLiteWhere, jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
+
+await test('jsToSQLiteWhere', async (t) => {
+	await t.test('string', () => {
+		assert.equal(jsToSQLiteWhere('text'), 'text');
+	});
+
+	await t.test('number', () => {
+		assert.equal(jsToSQLiteWhere(123), 123);
+	});
+
+	await t.test('true', () => {
+		assert.equal(jsToSQLiteWhere(true), 1);
+	});
+
+	await t.test('false', () => {
+		assert.equal(jsToSQLiteWhere(false), 0);
+	});
+
+	await t.test('Date', () => {
+		assert.equal(jsToSQLiteWhere(new Date('2000-01-01')), 946684800);
+	});
+
+	await t.test('URL', () => {
+		assert.equal(jsToSQLiteWhere(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
+	});
+});
 
 await test('jsToSQLite', async (t) => {
 	await t.test('string', () => {
@@ -11,8 +37,11 @@ await test('jsToSQLite', async (t) => {
 		assert.equal(jsToSQLite(123), 123);
 	});
 
-	await t.test('boolean', () => {
+	await t.test('true', () => {
 		assert.equal(jsToSQLite(true), 1);
+	});
+
+	await t.test('false', () => {
 		assert.equal(jsToSQLite(false), 0);
 	});
 
@@ -38,8 +67,11 @@ await test('sqliteToJS', async (t) => {
 		assert.equal(sqliteToJS(123), 123);
 	});
 
-	await t.test('boolean', () => {
+	await t.test('true', () => {
 		assert.equal(sqliteToJS(1, 'boolean'), true);
+	});
+
+	await t.test('false', () => {
 		assert.equal(sqliteToJS(0, 'boolean'), false);
 	});
 

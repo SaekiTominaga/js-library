@@ -1,6 +1,18 @@
 type JSType = string | number | boolean | Date | URL | undefined;
 type SQLiteType = string | number | null; // https://www.sqlite.org/datatype3.html
 
+type JsToSQLiteWhere<T> = T extends string
+	? string
+	: T extends number
+		? number
+		: T extends boolean
+			? 0 | 1
+			: T extends Date
+				? number
+				: T extends URL
+					? string
+					: never;
+
 type JsToSQLite<T> = T extends string
 	? string
 	: T extends number
@@ -22,28 +34,39 @@ type JsToSQLite<T> = T extends string
  *
  * @returns SQLite value
  */
+export const jsToSQLiteWhere = <T extends Exclude<JSType, undefined>>(value: T): JsToSQLiteWhere<T> => {
+	if (typeof value === 'string' || typeof value === 'number') {
+		return value as unknown as JsToSQLiteWhere<T>;
+	}
+
+	if (typeof value === 'boolean') {
+		return (value ? 1 : 0) as JsToSQLiteWhere<T>;
+	}
+
+	if (value instanceof Date) {
+		return Math.round(value.getTime() / 1000) as JsToSQLiteWhere<T>; // Unix Time, the number of seconds
+	}
+
+	if (value instanceof URL) {
+		return value.toString() as JsToSQLiteWhere<T>;
+	}
+
+	throw new TypeError('Unsupported JavaScript type');
+};
+
+/**
+ * Converting JavaScript types to SQLite types
+ *
+ * @param value - JavaScript value
+ *
+ * @returns SQLite value
+ */
 export const jsToSQLite = <T extends JSType>(value: T): JsToSQLite<T> => {
 	if (value === undefined) {
 		return null as JsToSQLite<T>;
 	}
 
-	if (typeof value === 'string' || typeof value === 'number') {
-		return value as unknown as JsToSQLite<T>;
-	}
-
-	if (typeof value === 'boolean') {
-		return (value ? 1 : 0) as JsToSQLite<T>;
-	}
-
-	if (value instanceof Date) {
-		return Math.round(value.getTime() / 1000) as JsToSQLite<T>; // Unix Time, the number of seconds
-	}
-
-	if (value instanceof URL) {
-		return value.toString() as JsToSQLite<T>;
-	}
-
-	throw new TypeError('Unsupported JavaScript type');
+	return jsToSQLiteWhere(value);
 };
 
 export function sqliteToJS(value: string): string;
