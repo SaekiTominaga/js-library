@@ -1,60 +1,60 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { jsToSQLiteWhere, jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
+import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
 
 await test('jsToSQLiteWhere', async (t) => {
 	await t.test('string', () => {
-		assert.equal(jsToSQLiteWhere('text'), 'text');
+		assert.equal(jsToSQLiteComparison('text'), 'text');
 	});
 
 	await t.test('number', () => {
-		assert.equal(jsToSQLiteWhere(123), 123);
+		assert.equal(jsToSQLiteComparison(123), 123);
 	});
 
 	await t.test('true', () => {
-		assert.equal(jsToSQLiteWhere(true), 1);
+		assert.equal(jsToSQLiteComparison(true), 1);
 	});
 
 	await t.test('false', () => {
-		assert.equal(jsToSQLiteWhere(false), 0);
+		assert.equal(jsToSQLiteComparison(false), 0);
 	});
 
 	await t.test('Date', () => {
-		assert.equal(jsToSQLiteWhere(new Date('2000-01-01')), 946684800);
+		assert.equal(jsToSQLiteComparison(new Date('2000-01-01')), 946684800);
 	});
 
 	await t.test('URL', () => {
-		assert.equal(jsToSQLiteWhere(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
+		assert.equal(jsToSQLiteComparison(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
 	});
 });
 
 await test('jsToSQLite', async (t) => {
 	await t.test('string', () => {
-		assert.equal(jsToSQLite('text'), 'text');
+		assert.equal(jsToSQLiteAssignment('text'), 'text');
 	});
 
 	await t.test('number', () => {
-		assert.equal(jsToSQLite(123), 123);
+		assert.equal(jsToSQLiteAssignment(123), 123);
 	});
 
 	await t.test('true', () => {
-		assert.equal(jsToSQLite(true), 1);
+		assert.equal(jsToSQLiteAssignment(true), 1);
 	});
 
 	await t.test('false', () => {
-		assert.equal(jsToSQLite(false), 0);
+		assert.equal(jsToSQLiteAssignment(false), 0);
 	});
 
 	await t.test('Date', () => {
-		assert.equal(jsToSQLite(new Date('2000-01-01')), 946684800);
+		assert.equal(jsToSQLiteAssignment(new Date('2000-01-01')), 946684800);
 	});
 
 	await t.test('URL', () => {
-		assert.equal(jsToSQLite(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
+		assert.equal(jsToSQLiteAssignment(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
 	});
 
 	await t.test('undefined', () => {
-		assert.equal(jsToSQLite(undefined), null);
+		assert.equal(jsToSQLiteAssignment(undefined), null);
 	});
 });
 

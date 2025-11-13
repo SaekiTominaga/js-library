@@ -1,7 +1,7 @@
 type JSType = string | number | boolean | Date | URL | undefined;
 type SQLiteType = string | number | null; // https://www.sqlite.org/datatype3.html
 
-type JsToSQLiteWhere<T> = T extends string
+type JsToSQLiteComparison<T> = T extends string
 	? string
 	: T extends number
 		? number
@@ -13,7 +13,7 @@ type JsToSQLiteWhere<T> = T extends string
 					? string
 					: never;
 
-type JsToSQLite<T> = T extends string
+type JsToSQLiteAssignment<T> = T extends string
 	? string
 	: T extends number
 		? number
@@ -28,45 +28,45 @@ type JsToSQLite<T> = T extends string
 						: never;
 
 /**
- * Converting JavaScript types to SQLite types
+ * Converting JavaScript types to SQLite types for comparison context (e.g. WHERE / HAVING / ON / CASE clause)
  *
  * @param value - JavaScript value
  *
  * @returns SQLite value
  */
-export const jsToSQLiteWhere = <T extends Exclude<JSType, undefined>>(value: T): JsToSQLiteWhere<T> => {
+export const jsToSQLiteComparison = <T extends Exclude<JSType, undefined>>(value: T): JsToSQLiteComparison<T> => {
 	if (typeof value === 'string' || typeof value === 'number') {
-		return value as unknown as JsToSQLiteWhere<T>;
+		return value as unknown as JsToSQLiteComparison<T>;
 	}
 
 	if (typeof value === 'boolean') {
-		return (value ? 1 : 0) as JsToSQLiteWhere<T>;
+		return (value ? 1 : 0) as JsToSQLiteComparison<T>;
 	}
 
 	if (value instanceof Date) {
-		return Math.round(value.getTime() / 1000) as JsToSQLiteWhere<T>; // Unix Time, the number of seconds
+		return Math.round(value.getTime() / 1000) as JsToSQLiteComparison<T>; // Unix Time, the number of seconds
 	}
 
 	if (value instanceof URL) {
-		return value.toString() as JsToSQLiteWhere<T>;
+		return value.toString() as JsToSQLiteComparison<T>;
 	}
 
 	throw new TypeError('Unsupported JavaScript type');
 };
 
 /**
- * Converting JavaScript types to SQLite types
+ * Converting JavaScript types to SQLite types for assignment context (e.g. SET / VALUES clause)
  *
  * @param value - JavaScript value
  *
  * @returns SQLite value
  */
-export const jsToSQLite = <T extends JSType>(value: T): JsToSQLite<T> => {
+export const jsToSQLiteAssignment = <T extends JSType>(value: T): JsToSQLiteAssignment<T> => {
 	if (value === undefined) {
-		return null as JsToSQLite<T>;
+		return null as JsToSQLiteAssignment<T>;
 	}
 
-	return jsToSQLiteWhere(value);
+	return jsToSQLiteComparison(value);
 };
 
 export function sqliteToJS(value: string): string;
@@ -140,7 +140,7 @@ export const prepareSelect = (where: Readonly<Record<string, JSType>>): { sqlWhe
 		})
 		.join(' AND ');
 
-	const bindParams = Object.fromEntries(whereArray.filter(([, value]) => value !== undefined).map(([key, value]) => [`:${key}`, jsToSQLite(value)]));
+	const bindParams = Object.fromEntries(whereArray.filter(([, value]) => value !== undefined).map(([key, value]) => [`:${key}`, jsToSQLiteAssignment(value)]));
 
 	return {
 		sqlWhere: sqlWhere,
@@ -161,7 +161,7 @@ export const prepareInsert = (into: Readonly<Record<string, JSType>>): { sqlInto
 	const sqlInto = `(${intoArray.map(([key]) => key).join(', ')})`;
 	const sqlValues = `(${intoArray.map(([key]) => `:${key}`).join(', ')})`;
 
-	const bindParams = Object.fromEntries(intoArray.map(([key, value]) => [`:${key}`, jsToSQLite(value)]));
+	const bindParams = Object.fromEntries(intoArray.map(([key, value]) => [`:${key}`, jsToSQLiteAssignment(value)]));
 
 	return {
 		sqlInto: sqlInto,
@@ -196,7 +196,7 @@ export const prepareUpdate = (
 		})
 		.join(' AND ');
 
-	const bindParams = Object.fromEntries([...setArray, ...whereArray].map(([key, value]) => [`:${key}`, jsToSQLite(value)]));
+	const bindParams = Object.fromEntries([...setArray, ...whereArray].map(([key, value]) => [`:${key}`, jsToSQLiteAssignment(value)]));
 
 	return {
 		sqlSet: sqlSet,
