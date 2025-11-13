@@ -6,15 +6,18 @@
 ## Examples
 
 ```JavaScript
-import { jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from '@w0s/sqlite-utility';
+import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from '@w0s/sqlite-utility';
 
-jsToSQLite('text'); // 'text'
-jsToSQLite(123); // 123
-jsToSQLite(true); // 1
-jsToSQLite(false); // 0
-jsToSQLite(new Date('2000-01-01')); // 946684800
-jsToSQLite(new URL('http://example.com/foo?bar#baz')); // 'http://example.com/foo?bar#baz'
-jsToSQLite(undefined); // null
+jsToSQLiteComparison('text'); // 'text'
+jsToSQLiteComparison(123); // 123
+jsToSQLiteComparison(true); // 1
+jsToSQLiteComparison(false); // 0
+jsToSQLiteComparison(new Date('2000-01-01')); // 946684800
+jsToSQLiteComparison(new URL('http://example.com/foo?bar#baz')); // 'http://example.com/foo?bar#baz'
+
+jsToSQLiteAssignment('text'); // 'text'
+...
+jsToSQLiteAssignment(undefined); // null
 
 sqliteToJS('text'); // 'text'
 sqliteToJS(123); // 123
@@ -83,8 +86,10 @@ type SQLiteType = string | number | null;
 ```
 
 <dl>
-<dt><code>const jsToSQLite = (value: JSType): SQLiteType</code></dt>
-<dd>Converting JavaScript types to SQLite types</dd>
+<dt><code>const jsToSQLiteComparison = (value: Exclude&lt;JSType, undefined&gt;): Exclude&lt;SQLiteType, null&gt;</code></dt>
+<dd>Converting JavaScript types to SQLite types for comparison context (e.g. <code>WHERE</code> / <code>HAVING</code> / <code>ON</code> / <code>CASE</code> clause)</dd>
+<dt><code>const jsToSQLiteAssignment = (value: JSType): SQLiteType</code></dt>
+<dd>Converting JavaScript types to SQLite types for assignment context (e.g. <code>SET</code> / <code>VALUES</code> clause)</dd>
 <dt><code>function sqliteToJS(value: SQLiteType, type?: 'boolean' | 'date' | 'url'): JSType</code></dt>
 <dd>Converting SQLite types to JavaScript types</dd>
 <dt><code>const prepareSelect = (where: Readonly&lt;Record&lt;string, JSType&gt;&gt;): { sqlWhere: string; bindParams: Record&lt;string, SQLiteType&gt; }</code></dt>

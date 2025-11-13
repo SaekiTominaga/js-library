@@ -1,3 +1,12 @@
-import { jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
+import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
 
-export { jsToSQLite, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete };
+export {
+	jsToSQLiteComparison,
+	jsToSQLiteAssignment,
+	jsToSQLiteAssignment as jsToSQLite, // Ensuring backward compatibility
+	sqliteToJS,
+	prepareSelect,
+	prepareInsert,
+	prepareUpdate,
+	prepareDelete,
+};
