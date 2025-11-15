@@ -8,7 +8,7 @@ export default class {
 	 * @param url - URL object, or full string of URL or substring of URL
 	 * @param separators - List of URL query separator
 	 */
-	constructor(url: URL | string, separators: string[]) {
+	constructor(url: URL | string, separators: readonly string[]) {
 		let search = '';
 		if (typeof url === 'string') {
 			const searchIndex = url.indexOf('?');

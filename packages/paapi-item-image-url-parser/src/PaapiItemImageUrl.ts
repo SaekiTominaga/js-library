@@ -39,7 +39,7 @@ export default class {
 	 * @param data - Value to change
 	 * @param data.size - Image size (e.g. 160)
 	 */
-	#set(data?: { size?: number }): void {
+	#set(data?: Readonly<{ size?: number }>): void {
 		this.#size = data?.size;
 
 		if (data?.size === undefined) {
