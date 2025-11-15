@@ -13,7 +13,7 @@ export interface Option {
 	combineSpace?: boolean; // Consolidate contiguous spaces
 	toLowerCase?: boolean; // Make the alphabet lowercase (Only one of `toLowerCase` and `toUpperCase` can be specified)
 	toUpperCase?: boolean; // Make the alphabet uppercase (Only one of `toLowerCase` and `toUpperCase` can be specified)
-	table?: Record<string, string>; // Proprietary conversion table (An associative array that specifies the character string before conversion as the key and the character string after conversion as the value)
+	table?: Readonly<Record<string, string>>; // Proprietary conversion table (An associative array that specifies the character string before conversion as the key and the character string after conversion as the value)
 }
 
 export { convert };

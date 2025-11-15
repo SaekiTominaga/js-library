@@ -20,7 +20,7 @@ export default class ConsoleLocaleTimestamp {
 	 * @param quote - The characters that surround the timestamp. If you omit the second value, the same characters as the first are applied. (e.g. [''] => '0:00:00' , ['[', ']'] => '[0:00:00]' )
 	 * @param separator - Delimiter between the timestamp and the message that follows. (e.g. ' - ' => '0:00:00 - Log message.' )
 	 */
-	constructor(locales?: string, options?: Readonly<Intl.DateTimeFormatOptions>, quote?: [string, string?], separator?: string) {
+	constructor(locales?: string, options?: Readonly<Intl.DateTimeFormatOptions>, quote?: readonly [string, string?], separator?: string) {
 		this.#locales = locales;
 
 		this.#options = options;
@@ -78,7 +78,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.assert() <https://console.spec.whatwg.org/#assert>
 	 */
-	assert(condition?: boolean, ...data: unknown[]): void {
+	assert(condition?: boolean, ...data: readonly unknown[]): void {
 		if (!condition) {
 			this.#printTimestamp('error');
 		}
@@ -101,7 +101,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.debug() <https://console.spec.whatwg.org/#debug>
 	 */
-	debug(...data: unknown[]): void {
+	debug(...data: readonly unknown[]): void {
 		this.#printTimestamp('log');
 		console.debug(...data);
 	}
@@ -113,7 +113,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.error() <https://console.spec.whatwg.org/#error>
 	 */
-	error(...data: unknown[]): void {
+	error(...data: readonly unknown[]): void {
 		this.#printTimestamp('error');
 		console.error(...data);
 	}
@@ -125,7 +125,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.info() <https://console.spec.whatwg.org/#info>
 	 */
-	info(...data: unknown[]): void {
+	info(...data: readonly unknown[]): void {
 		this.#printTimestamp('info');
 		console.info(...data);
 	}
@@ -137,7 +137,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.log() <https://console.spec.whatwg.org/#log>
 	 */
-	log(...data: unknown[]): void {
+	log(...data: readonly unknown[]): void {
 		this.#printTimestamp('log');
 		console.log(...data);
 	}
@@ -150,7 +150,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.table() <https://console.spec.whatwg.org/#table>
 	 */
-	table(tabularData?: unknown, properties?: string[]): void {
+	table(tabularData?: unknown, properties?: readonly string[]): void {
 		this.#printlnTimestamp('log');
 		console.table(tabularData, properties);
 	}
@@ -162,7 +162,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.trace() <https://console.spec.whatwg.org/#trace>
 	 */
-	trace(...data: unknown[]): void {
+	trace(...data: readonly unknown[]): void {
 		this.#printTimestamp('log');
 		console.trace(...data);
 	}
@@ -174,7 +174,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.warn() <https://console.spec.whatwg.org/#warn>
 	 */
-	warn(...data: unknown[]): void {
+	warn(...data: readonly unknown[]): void {
 		this.#printTimestamp('warn');
 		console.warn(...data);
 	}
@@ -199,7 +199,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.dirxml() <https://console.spec.whatwg.org/#dirxml>
 	 */
-	dirxml(...data: unknown[]): void {
+	dirxml(...data: readonly unknown[]): void {
 		this.#printTimestamp('log');
 		console.dirxml(...data);
 	}
@@ -234,7 +234,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.group() <https://console.spec.whatwg.org/#group>
 	 */
-	group(...label: unknown[]): void {
+	group(...label: readonly unknown[]): void {
 		if (label.length > 0) {
 			this.#printTimestamp('log');
 		}
@@ -248,7 +248,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.groupCollapsed() <https://console.spec.whatwg.org/#groupcollapsed>
 	 */
-	groupCollapsed(...label: unknown[]): void {
+	groupCollapsed(...label: readonly unknown[]): void {
 		if (label.length > 0) {
 			this.#printTimestamp('log');
 		}
@@ -283,7 +283,7 @@ export default class ConsoleLocaleTimestamp {
 	 *
 	 * @see console.timeLog() <https://console.spec.whatwg.org/#timelog>
 	 */
-	timeLog(label?: string, ...data: unknown[]): void {
+	timeLog(label?: string, ...data: readonly unknown[]): void {
 		this.#printTimestamp('log');
 		console.timeLog(label, ...data);
 	}

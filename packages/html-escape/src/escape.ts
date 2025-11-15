@@ -50,7 +50,7 @@ export const unescape = (input: string): string => {
  *
  * @returns Escaped string
  */
-export const template = (input: TemplateStringsArray, ...placeholders: unknown[]): string =>
+export const template = (input: Readonly<TemplateStringsArray>, ...placeholders: readonly unknown[]): string =>
 	input.reduce((previous, current, index) => {
 		const placeholder = String(placeholders.at(index - 1));
 		return `${previous}${escape(placeholder)}${current}`;
