@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/string-convert",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"description": "Converts newlines in a string, `trim()`, half-width / full-width conversion, etc",
 	"homepage": "https://github.com/SaekiTominaga/js-library#readme",
 	"bugs": {
