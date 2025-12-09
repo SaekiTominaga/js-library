@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/env-value-type",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Get the value of `process.env` with specified types",
 	"keywords": [
 		"env"
