@@ -13,7 +13,6 @@
 		"eslint": "^9.39.1",
 		"prettier": "^3.7.3",
 		"rimraf": "^6.1.2",
-		"sinon": "^21.0.0",
 		"typescript": "^5.9.3"
 	},
 	"private": true,
