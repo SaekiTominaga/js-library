@@ -40,7 +40,7 @@ export function getValue(key: string, type?: 'string' | 'string[]' | 'number' | 
 			return Number(value);
 		}
 		case 'number[]': {
-			return value.split(separator).map((split) => Number(split));
+			return value.split(separator).map(Number);
 		}
 		case 'boolean': {
 			return value === 'true';
