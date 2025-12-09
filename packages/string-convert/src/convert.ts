@@ -89,9 +89,9 @@ export const convert = (text: string, options: Readonly<Option>): string => {
 
 	if (options.table !== undefined) {
 		/* 変換テーブルによる変換 */
-		for (const [search, replace] of Object.entries(options.table)) {
+		Object.entries(options.table).forEach(([search, replace]) => {
 			convertedText = convertedText.replaceAll(search, replace);
-		}
+		});
 	}
 
 	return convertedText;
