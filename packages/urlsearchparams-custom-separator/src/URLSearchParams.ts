@@ -20,9 +20,9 @@ export default class {
 		}
 
 		if (search !== '') {
-			for (const separator of separators) {
+			separators.forEach((separator) => {
 				search = search.replaceAll(separator, '&');
-			}
+			});
 		}
 
 		this.#search = new URLSearchParams(search);
