@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/sqlite-utility",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"description": "SQLite Utilities",
 	"keywords": [
 		"SQLite"
