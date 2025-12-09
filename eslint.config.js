@@ -24,16 +24,15 @@ export default [
 		},
 	},
 	{
-		files: ['packages/console-locale-timestamp/src/Console.ts'],
+		files: ['packages/file-size-format/src/format.ts', 'packages/html-escape/src/escape.ts'],
 		rules: {
-			'class-methods-use-this': 'off',
-			'no-console': 'off',
+			'functional/no-loop-statements': 'off',
 		},
 	},
 	{
-		files: ['packages/console-locale-timestamp/sample.ts'],
+		files: ['packages/html-escape/src/escape.ts'],
 		rules: {
-			'no-console': 'off',
+			'functional/functional-parameters': 'off',
 		},
 	},
 	{
