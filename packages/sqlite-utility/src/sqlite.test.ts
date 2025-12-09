@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from './sqlite.ts';
+import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS } from './sqlite.ts';
 
 await test('jsToSQLiteComparison', async (t) => {
 	await t.test('string', () => {
@@ -123,68 +123,5 @@ await test('sqliteToJS', async (t) => {
 				{ name: 'Error', message: 'Database columns must be a string type when convert to a URL type' },
 			);
 		});
-	});
-});
-
-await test('prepareSelect', () => {
-	const { sqlWhere, bindParams } = prepareSelect({
-		string: 'foo',
-		number: 123,
-		undefined: undefined,
-	});
-
-	assert.equal(sqlWhere, 'string = :string AND number = :number AND undefined IS NULL');
-	assert.deepEqual(bindParams, {
-		':string': 'foo',
-		':number': 123,
-	});
-});
-
-await test('prepareInsert', () => {
-	const { sqlInto, sqlValues, bindParams } = prepareInsert({
-		string: 'foo',
-		undefined: undefined,
-	});
-
-	assert.equal(sqlInto, '(string, undefined)');
-	assert.equal(sqlValues, '(:string, :undefined)');
-	assert.deepEqual(bindParams, {
-		':string': 'foo',
-		':undefined': null,
-	});
-});
-
-await test('prepareUpdate', () => {
-	const { sqlSet, sqlWhere, bindParams } = prepareUpdate(
-		{
-			string: 'foo',
-			undefined: undefined,
-		},
-		{
-			number: 123,
-			undefined: undefined,
-		},
-	);
-
-	assert.equal(sqlSet, 'string = :string, undefined = :undefined');
-	assert.equal(sqlWhere, 'number = :number AND undefined IS NULL');
-	assert.deepEqual(bindParams, {
-		':string': 'foo',
-		':undefined': null,
-		':number': 123,
-	});
-});
-
-await test('prepareDelete', () => {
-	const { sqlWhere, bindParams } = prepareDelete({
-		string: 'foo',
-		number: 123,
-		undefined: undefined,
-	});
-
-	assert.equal(sqlWhere, 'string = :string AND number = :number AND undefined IS NULL');
-	assert.deepEqual(bindParams, {
-		':string': 'foo',
-		':number': 123,
 	});
 });

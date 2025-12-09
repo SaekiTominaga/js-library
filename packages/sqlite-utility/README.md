@@ -38,44 +38,6 @@ try {
 } catch {
 }
 sqliteToJS(null); // undefined
-
-const { sqlWhere, bindParams } = prepareSelect({
-  string: 'foo',
-  number: 123,
-  undefined: undefined,
-});
-// sqlWhere: 'string = :string AND number = :number AND undefined IS NULL'
-// bindParams: { ':string': 'foo', ':number': 123 }
-
-const { sqlInto, sqlValues, bindParams } = prepareInsert({
-  string: 'foo',
-  undefined: undefined,
-});
-// sqlInto: '(string, undefined)'
-// sqlValues: '(:string, :undefined)'
-// bindParams: { ':string': 'foo', ':undefined': null }
-
-const { sqlSet, sqlWhere, bindParams } = prepareUpdate(
-  {
-    string: 'foo',
-    undefined: undefined,
-  },
-  {
-    number: 123,
-    undefined: undefined,
-  },
-);
-// sqlSet: 'string = :string, undefined = :undefined'
-// sqlWhere: 'number = :number AND undefined IS NULL'
-// bindParams: { ':string': 'foo', ':undefined': null, ':number': 123 }
-
-const { sqlWhere, bindParams } = prepareDelete({
-  string: 'foo',
-  number: 123,
-  undefined: undefined,
-});
-// sqlWhere: 'string = :string AND number = :number AND undefined IS NULL'
-// bindParams: { ':string': 'foo', ':number': 123 }
 ```
 
 ## Functions
@@ -92,12 +54,4 @@ type SQLiteType = string | number | null;
 <dd>Converting JavaScript types to SQLite types for assignment context (e.g. <code>SET</code> / <code>VALUES</code> clause)</dd>
 <dt><code>function sqliteToJS(value: SQLiteType, type?: 'boolean' | 'date' | 'url'): JSType</code></dt>
 <dd>Converting SQLite types to JavaScript types</dd>
-<dt><code>const prepareSelect = (where: Readonly&lt;Record&lt;string, JSType&gt;&gt;): { sqlWhere: string; bindParams: Record&lt;string, SQLiteType&gt; }</code></dt>
-<dd>Prepared statement for SELECT</dd>
-<dt><code>const prepareInsert = (into: Readonly&lt;Record&lt;string, JSType&gt;&gt;): { sqlInto: string; sqlValues: string; bindParams: Record&lt;string, SQLiteType&gt; }</code></dt>
-<dd>Prepared statement for INSERT</dd>
-<dt><code>const prepareUpdate = (set: Readonly&lt;Record&lt;string, JSType&gt;&gt;,	where: Readonly&lt;Record&lt;string, JSType&gt;&gt;): { sqlSet: string; sqlWhere: string; bindParams: Record&lt;string, SQLiteType&gt; }</code></dt>
-<dd>Prepared statement for UPDATE</dd>
-<dt><code>const prepareDelete = (where: Readonly&lt;Record&lt;string, JSType&gt;&gt;): { sqlWhere: string; bindParams: Record&lt;string, SQLiteType&gt; }</code></dt>
-<dd>Prepared statement for DELETE</dd>
 </dl>
