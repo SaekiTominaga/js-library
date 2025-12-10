@@ -1,3 +1,5 @@
+import { compareEra } from './util.ts';
+
 interface FormatOption {
 	era?: 'long' | 'short' | 'narrow'; // 元号の表現方法（`Intl.DateTimeFormat()` コンストラクターの `era` オプションと同等）
 }
@@ -12,7 +14,7 @@ export default class {
 	 * @param date - 西暦による日付データ
 	 */
 	constructor(date: Date | string) {
-		if (typeof date !== 'string') {
+		if (date instanceof Date) {
 			this.#date = new Date(date);
 			return;
 		}
@@ -30,19 +32,19 @@ export default class {
 			const firstDay = new Date(year, month - 1); // その月の最初の日（1日）
 			const lastDay = new Date(year, month, 0); // その月の最後の日（30日や31日）
 
-			if (this.#getEra(firstDay) !== this.#getEra(lastDay)) {
+			if (!compareEra(firstDay, lastDay)) {
 				/* 元号またぎの月が指定された場合 */
 				return;
 			}
 
 			this.#date = firstDay;
 		} else if (/^[0-9]{4}$/u.test(date)) {
-			const year = Number(date.substring(0, 4));
+			const year = Number(date);
 
 			const firstDay = new Date(year, 0); // その年の最初の日（1月1日）
 			const lastDay = new Date(year, 11, 31); // その年の最後の日（12月31日）
 
-			if (this.#getEra(firstDay) !== this.#getEra(lastDay)) {
+			if (!compareEra(firstDay, lastDay)) {
 				/* 元号またぎの年が指定された場合 */
 				return;
 			}
@@ -51,21 +53,6 @@ export default class {
 		} else {
 			throw new Error('Date must be in the format `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`');
 		}
-	}
-
-	/**
-	 * 元号を取得する
-	 *
-	 * @param date - 日時データ
-	 *
-	 * @returns 元号
-	 */
-	#getEra(date: Date): string {
-		return new Intl.DateTimeFormat('ja-JP-u-ca-japanese')
-			.formatToParts(date)
-			.filter((part) => part.type === 'era')
-			.map((part) => part.value)
-			.join('');
 	}
 
 	/**
