@@ -71,7 +71,17 @@ export const iec = (size: number | bigint, options?: Readonly<Option>): string =
 	const optionsValidated = optionValidator(options);
 
 	const BASE = 1024;
-	const UNIT_TABLE: Readonly<UnitTable> = { 1: optionsValidated.byte, 2: 'KiB', 3: 'MiB', 4: 'GiB', 5: 'TiB', 6: 'PiB', 7: 'EiB', 8: 'ZiB', 9: 'YiB' };
+	const UNIT_TABLE: Readonly<UnitTable> = {
+		1: optionsValidated.byte,
+		2: 'KiB',
+		3: 'MiB',
+		4: 'GiB',
+		5: 'TiB',
+		6: 'PiB',
+		7: 'EiB',
+		8: 'ZiB',
+		9: 'YiB',
+	};
 
 	return format(size, BASE, UNIT_TABLE, optionsValidated);
 };
@@ -88,7 +98,17 @@ export const si = (size: number | bigint, options?: Readonly<Option>): string =>
 	const optionsValidated = optionValidator(options);
 
 	const BASE = 1000;
-	const UNIT_TABLE: Readonly<UnitTable> = { 1: optionsValidated.byte, 2: 'kB', 3: 'MB', 4: 'GB', 5: 'TB', 6: 'PB', 7: 'EB', 8: 'ZB', 9: 'YB' };
+	const UNIT_TABLE: Readonly<UnitTable> = {
+		1: optionsValidated.byte,
+		2: 'kB',
+		3: 'MB',
+		4: 'GB',
+		5: 'TB',
+		6: 'PB',
+		7: 'EB',
+		8: 'ZB',
+		9: 'YB',
+	};
 
 	return format(size, BASE, UNIT_TABLE, optionsValidated);
 };

@@ -26,7 +26,10 @@ await test('日付フォーマット', async (t) => {
 			() => {
 				new Wareki('2000/01/01');
 			},
-			{ name: 'Error', message: 'Date must be in the format `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`' },
+			{
+				name: 'Error',
+				message: 'Date must be in the format `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`',
+			},
 		);
 	});
 

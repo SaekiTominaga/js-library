@@ -174,7 +174,10 @@ await test('invalid', async (t) => {
 				const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL^._SL160_.jpg');
 				new PaapiItemImageUrlParser(url);
 			},
-			{ name: 'Error', message: 'The format of the URL does not seem to be that of an Amazon product image.' },
+			{
+				name: 'Error',
+				message: 'The format of the URL does not seem to be that of an Amazon product image.',
+			},
 		);
 	});
 
@@ -184,7 +187,10 @@ await test('invalid', async (t) => {
 				const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL_.jpg');
 				new PaapiItemImageUrlParser(url);
 			},
-			{ name: 'Error', message: 'The format of the URL does not seem to be that of an Amazon product image.' },
+			{
+				name: 'Error',
+				message: 'The format of the URL does not seem to be that of an Amazon product image.',
+			},
 		);
 	});
 
@@ -194,7 +200,10 @@ await test('invalid', async (t) => {
 				const url = new URL('https://m.media-amazon.com/images/I/5198TOs+rnL._SL160_');
 				new PaapiItemImageUrlParser(url);
 			},
-			{ name: 'Error', message: 'The format of the URL does not seem to be that of an Amazon product image.' },
+			{
+				name: 'Error',
+				message: 'The format of the URL does not seem to be that of an Amazon product image.',
+			},
 		);
 	});
 
@@ -205,7 +214,10 @@ await test('invalid', async (t) => {
 				const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 				paapiItemImageUrlParser.setSize(0);
 			},
-			{ name: 'RangeError', message: 'The image size must be a value greater than or equal to 1 (px).' },
+			{
+				name: 'RangeError',
+				message: 'The image size must be a value greater than or equal to 1 (px).',
+			},
 		);
 	});
 
@@ -216,7 +228,10 @@ await test('invalid', async (t) => {
 				const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 				paapiItemImageUrlParser.setSize(2.5);
 			},
-			{ name: 'TypeError', message: 'The image size must be specified as an integer.' },
+			{
+				name: 'TypeError',
+				message: 'The image size must be specified as an integer.',
+			},
 		);
 	});
 
@@ -227,7 +242,10 @@ await test('invalid', async (t) => {
 				const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 				paapiItemImageUrlParser.setSizeMultiply(0);
 			},
-			{ name: 'RangeError', message: 'The value to be multiply must be greater than zero.' },
+			{
+				name: 'RangeError',
+				message: 'The value to be multiply must be greater than zero.',
+			},
 		);
 	});
 
@@ -238,7 +256,10 @@ await test('invalid', async (t) => {
 				const paapiItemImageUrlParser = new PaapiItemImageUrlParser(url);
 				paapiItemImageUrlParser.setSizeDivision(0);
 			},
-			{ name: 'RangeError', message: 'The value to be division must be greater than zero.' },
+			{
+				name: 'RangeError',
+				message: 'The value to be division must be greater than zero.',
+			},
 		);
 	});
 });

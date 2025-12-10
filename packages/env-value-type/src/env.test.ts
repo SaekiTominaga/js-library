@@ -51,7 +51,10 @@ await test('separator', async (t) => {
 			() => {
 				getValue('TEST_STRING', undefined, { separator: ' ' });
 			},
-			{ name: 'Error', message: 'If the type is not an array format, the optional `separator` cannot be specified' },
+			{
+				name: 'Error',
+				message: 'If the type is not an array format, the optional `separator` cannot be specified',
+			},
 		);
 	});
 
@@ -60,7 +63,10 @@ await test('separator', async (t) => {
 			() => {
 				getValue('TEST_STRING', 'string', { separator: ' ' });
 			},
-			{ name: 'Error', message: 'If the type is not an array format, the optional `separator` cannot be specified' },
+			{
+				name: 'Error',
+				message: 'If the type is not an array format, the optional `separator` cannot be specified',
+			},
 		);
 	});
 

@@ -100,7 +100,10 @@ await test('sqliteToJS', async (t) => {
 					// @ts-expect-error: ts(2769)
 					sqliteToJS('text', 'boolean');
 				},
-				{ name: 'Error', message: 'Database columns must be a 0 or 1 when convert to a boolean type' },
+				{
+					name: 'Error',
+					message: 'Database columns must be a 0 or 1 when convert to a boolean type',
+				},
 			);
 		});
 
@@ -110,7 +113,10 @@ await test('sqliteToJS', async (t) => {
 					// @ts-expect-error: ts(2769)
 					sqliteToJS('text', 'date');
 				},
-				{ name: 'Error', message: 'Database columns must be a integer when convert to a Date type' },
+				{
+					name: 'Error',
+					message: 'Database columns must be a integer when convert to a Date type',
+				},
 			);
 		});
 
@@ -120,7 +126,10 @@ await test('sqliteToJS', async (t) => {
 					// @ts-expect-error: ts(2769)
 					sqliteToJS(123, 'url');
 				},
-				{ name: 'Error', message: 'Database columns must be a string type when convert to a URL type' },
+				{
+					name: 'Error',
+					message: 'Database columns must be a string type when convert to a URL type',
+				},
 			);
 		});
 	});
