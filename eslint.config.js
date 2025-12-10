@@ -35,10 +35,4 @@ export default [
 			'functional/functional-parameters': 'off',
 		},
 	},
-	{
-		files: ['packages/wareki/src/Wareki.ts'],
-		rules: {
-			'class-methods-use-this': 'off',
-		},
-	},
 ];
