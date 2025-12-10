@@ -194,7 +194,10 @@ await test('不正な値', async (t) => {
 			() => {
 				iec(-1);
 			},
-			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The file size must be a number greater than or equal to 0.',
+			},
 		);
 	});
 
@@ -203,7 +206,10 @@ await test('不正な値', async (t) => {
 			() => {
 				iec(BigInt(-1));
 			},
-			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The file size must be a number greater than or equal to 0.',
+			},
 		);
 	});
 
@@ -212,7 +218,10 @@ await test('不正な値', async (t) => {
 			() => {
 				iec(NaN);
 			},
-			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The file size must be a number greater than or equal to 0.',
+			},
 		);
 	});
 
@@ -221,7 +230,10 @@ await test('不正な値', async (t) => {
 			() => {
 				iec(Infinity);
 			},
-			{ name: 'RangeError', message: 'The file size must be a number greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The file size must be a number greater than or equal to 0.',
+			},
 		);
 	});
 
@@ -230,7 +242,10 @@ await test('不正な値', async (t) => {
 			() => {
 				iec(9007199254740992);
 			},
-			{ name: 'RangeError', message: '`BigInt` should be used when specifying huge numbers (Value greater than 9007199254740991).' },
+			{
+				name: 'RangeError',
+				message: '`BigInt` should be used when specifying huge numbers (Value greater than 9007199254740991).',
+			},
 		);
 	});
 });

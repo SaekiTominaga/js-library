@@ -8,7 +8,10 @@ await test('digits', async (t) => {
 			() => {
 				option({ digits: 1.1 });
 			},
-			{ name: 'RangeError', message: 'The options `digits` must be an integer greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The options `digits` must be an integer greater than or equal to 0.',
+			},
 		);
 	});
 
@@ -17,7 +20,10 @@ await test('digits', async (t) => {
 			() => {
 				option({ digits: -1 });
 			},
-			{ name: 'RangeError', message: 'The options `digits` must be an integer greater than or equal to 0.' },
+			{
+				name: 'RangeError',
+				message: 'The options `digits` must be an integer greater than or equal to 0.',
+			},
 		);
 	});
 });
@@ -27,5 +33,9 @@ await test('undefined', () => {
 });
 
 await test('all properties', () => {
-	assert.deepEqual(option({ space: true, byte: 'xxx', digits: 1 }), { space: true, byte: 'xxx', digits: 1 });
+	assert.deepEqual(option({ space: true, byte: 'xxx', digits: 1 }), {
+		space: true,
+		byte: 'xxx',
+		digits: 1,
+	});
 });
