@@ -28,8 +28,8 @@
 	"scripts": {
 		"prebuild": "rimraf dist/* -g",
 		"build": "tsc",
-		"watch": "tsc -w",
 		"lint": "eslint src/**/*.ts",
+		"pretest": "tsc --noEmit",
 		"test": "node --experimental-test-coverage --test src/**/*.test.ts"
 	},
 	"publishConfig": {
