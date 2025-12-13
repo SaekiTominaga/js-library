@@ -3,8 +3,8 @@ name: env-value-type
 on:
   pull_request:
     paths:
-      - 'packages/env-value-type/src/**/*.ts'
-      - 'packages/env-value-type/package.json'
+      - 'packages/env-value-type/**'
+      - '!packages/env-value-type/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

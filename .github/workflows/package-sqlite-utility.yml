@@ -3,8 +3,8 @@ name: sqlite-utility
 on:
   pull_request:
     paths:
-      - 'packages/sqlite-utility/src/**/*.ts'
-      - 'packages/sqlite-utility/package.json'
+      - 'packages/sqlite-utility/**'
+      - '!packages/sqlite-utility/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

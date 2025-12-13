@@ -3,8 +3,8 @@ name: urlsearchparams-custom-separator
 on:
   pull_request:
     paths:
-      - 'packages/urlsearchparams-custom-separator/src/**/*.ts'
-      - 'packages/urlsearchparams-custom-separator/package.json'
+      - 'packages/urlsearchparams-custom-separator/**'
+      - '!packages/urlsearchparams-custom-separator/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

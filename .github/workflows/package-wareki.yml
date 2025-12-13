@@ -3,8 +3,8 @@ name: wareki
 on:
   pull_request:
     paths:
-      - 'packages/wareki/src/**/*.ts'
-      - 'packages/wareki/package.json'
+      - 'packages/wareki/**'
+      - '!packages/wareki/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

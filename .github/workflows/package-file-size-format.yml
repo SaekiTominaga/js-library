@@ -3,8 +3,8 @@ name: file-size-format
 on:
   pull_request:
     paths:
-      - 'packages/file-size-format/src/**/*.ts'
-      - 'packages/file-size-format/package.json'
+      - 'packages/file-size-format/**'
+      - '!packages/file-size-format/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

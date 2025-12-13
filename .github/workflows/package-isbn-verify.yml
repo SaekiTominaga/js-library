@@ -3,8 +3,8 @@ name: isbn-verify
 on:
   pull_request:
     paths:
-      - 'packages/isbn-verify/src/**/*.ts'
-      - 'packages/isbn-verify/package.json'
+      - 'packages/isbn-verify/**'
+      - '!packages/isbn-verify/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

@@ -3,8 +3,8 @@ name: paapi-item-image-url-parser
 on:
   pull_request:
     paths:
-      - 'packages/paapi-item-image-url-parser/src/**/*.ts'
-      - 'packages/paapi-item-image-url-parser/package.json'
+      - 'packages/paapi-item-image-url-parser/**'
+      - '!packages/paapi-item-image-url-parser/**/*.md'
       - 'package.json'
   workflow_dispatch:
 
