@@ -3,8 +3,8 @@ name: html-escape
 on:
   pull_request:
     paths:
-      - 'packages/html-escape/src/**/*.ts'
-      - 'packages/html-escape/package.json'
+      - 'packages/html-escape/**'
+      - '!packages/html-escape/**/*.md'
       - 'package.json'
   workflow_dispatch:
 

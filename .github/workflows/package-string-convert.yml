@@ -3,8 +3,8 @@ name: string-convert
 on:
   pull_request:
     paths:
-      - 'packages/string-convert/src/**/*.ts'
-      - 'packages/string-convert/package.json'
+      - 'packages/string-convert/**'
+      - '!packages/string-convert/**/*.md'
       - 'package.json'
   workflow_dispatch:
 
