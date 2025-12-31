@@ -5,7 +5,7 @@
 
 西暦データから和暦を取得します。正確な日付の場合はもちろん、「2000年1月」など曖昧なデータの場合も極力特定を試みます。
 
-内部的には [`Intl.DateTimeFormat`](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) を使用しており、将来的に新しい元号に切り替わっても（ブラウザや Node.js のアップデートにより）自動的に対応されます。また「明治」より前の元号（「慶応」以前）にも対応しています。
+内部的には [`Intl.DateTimeFormat`](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) を使用しており、元号の日付範囲のハードコーディングはしていません。このため将来的に新しい元号に切り替わっても JavaScript ランタイムのアップデートにより自動的に対応されるはずです。また「明治」より前の元号（「慶応」以前）にも対応しています。
 
 ## 例
 

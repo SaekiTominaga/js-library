@@ -15,7 +15,7 @@ export default class {
 	 */
 	constructor(date: Date | string) {
 		if (date instanceof Date) {
-			this.#date = new Date(date);
+			this.#date = date;
 			return;
 		}
 
