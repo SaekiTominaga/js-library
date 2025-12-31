@@ -31,25 +31,20 @@ const format = (size: number | bigint, base: number, unitTable: Readonly<UnitTab
 
 		const chusu = 10 ** options.digits;
 
-		let formated = '';
-		for (const [exponentStr, unit] of Object.entries(unitTable)) {
-			const exponent = Number(exponentStr); // べき指数
-			if (size < base ** exponent) {
-				formated = `${String(Math.round((size / base ** (exponent - 1)) * chusu) / chusu)}${space}${unit}`;
-				break;
-			}
+		const findUnitTable = Object.entries(unitTable).find(([exponent]) => size < base ** Number(exponent));
+		if (findUnitTable === undefined) {
+			throw new RangeError();
 		}
-
-		return formated;
+		const [exponent, unit] = findUnitTable;
+		return `${String(Math.round((size / base ** (Number(exponent) - 1)) * chusu) / chusu)}${space}${unit}`;
 	}
 
 	/* BigInt */
-	for (const [exponentStr, unit] of Object.entries(unitTable)) {
-		const exponent = BigInt(exponentStr); // べき指数
-		if (size < BigInt(base) ** exponent) {
-			const denominator = BigInt(base) ** (exponent - 1n);
-			return `${String((size + denominator / 2n) / denominator)}${space}${unit}`;
-		}
+	const findUnitTable = Object.entries(unitTable).find(([exponent]) => size < BigInt(base) ** BigInt(exponent));
+	if (findUnitTable !== undefined) {
+		const [exponent, unit] = findUnitTable;
+		const denominator = BigInt(base) ** (BigInt(exponent) - 1n);
+		return `${String((size + denominator / 2n) / denominator)}${space}${unit}`;
 	}
 
 	/* 1024YiB or 1000YB より大きなサイズの場合 */
