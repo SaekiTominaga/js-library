@@ -24,15 +24,10 @@ export default [
 		},
 	},
 	{
-		files: ['packages/file-size-format/src/format.ts', 'packages/html-escape/src/escape.ts'],
-		rules: {
-			'functional/no-loop-statements': 'off',
-		},
-	},
-	{
 		files: ['packages/html-escape/src/escape.ts'],
 		rules: {
 			'functional/functional-parameters': 'off',
+			'functional/no-loop-statements': 'off',
 		},
 	},
 ];
