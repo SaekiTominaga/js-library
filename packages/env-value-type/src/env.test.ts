@@ -10,6 +10,7 @@ process.env['TEST_NUMBERS1'] = '1 2 3';
 process.env['TEST_NUMBERS2'] = '1,2,3';
 process.env['TEST_BOOLEAN1'] = 'true';
 process.env['TEST_BOOLEAN2'] = 'false';
+console.debug(process.env);
 
 await test('exist key', async (t) => {
 	await t.test('no type', () => {
