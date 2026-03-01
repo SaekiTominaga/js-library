@@ -4,11 +4,11 @@ import { compareEra, getEra } from './util.ts';
 
 await test('getEra', async (t) => {
 	await t.test('明治初日の前日', () => {
-		assert.equal(getEra(new Date('1868-09-07')), '慶応');
+		assert.equal(getEra(new Date('1868-10-22')), '慶応');
 	});
 
 	await t.test('明治初日', () => {
-		assert.equal(getEra(new Date('1868-09-08')), 'M');
+		assert.equal(getEra(new Date('1868-10-23')), 'M');
 	});
 
 	await t.test('明治最終日', () => {
@@ -46,10 +46,10 @@ await test('getEra', async (t) => {
 
 await test('compareEra', async (t) => {
 	await t.test('慶応 - 明治', () => {
-		assert.equal(compareEra(new Date('1868-09-07'), new Date('1868-09-08')), false);
+		assert.equal(compareEra(new Date('1868-10-22'), new Date('1868-10-23')), false);
 	});
 
 	await t.test('明治', () => {
-		assert.equal(compareEra(new Date('1868-09-08'), new Date('1912-07-29')), true);
+		assert.equal(compareEra(new Date('1868-10-23'), new Date('1912-07-29')), true);
 	});
 });
