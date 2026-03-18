@@ -26,6 +26,32 @@ await test('jsToSQLiteComparison', async (t) => {
 	await t.test('URL', () => {
 		assert.equal(jsToSQLiteComparison(new URL('http://example.com/foo?bar#baz')), 'http://example.com/foo?bar#baz');
 	});
+
+	await t.test('null', () => {
+		assert.throws(
+			() => {
+				// @ts-expect-error: ts(2769)
+				jsToSQLiteComparison(null);
+			},
+			{
+				name: 'TypeError',
+				message: 'Unsupported JavaScript type: `null`',
+			},
+		);
+	});
+
+	await t.test('object', () => {
+		assert.throws(
+			() => {
+				// @ts-expect-error: ts(2769)
+				jsToSQLiteComparison({ foo: 'hoge' });
+			},
+			{
+				name: 'TypeError',
+				message: 'Unsupported JavaScript type: `[object Object]`',
+			},
+		);
+	});
 });
 
 await test('jsToSQLiteAssignment', async (t) => {
@@ -101,8 +127,8 @@ await test('sqliteToJS', async (t) => {
 					sqliteToJS('text', 'boolean');
 				},
 				{
-					name: 'Error',
-					message: 'Database columns must be a 0 or 1 when convert to a boolean type',
+					name: 'TypeError',
+					message: 'Database columns must be a 0 or 1 when convert to a boolean type, but `text` was specified',
 				},
 			);
 		});
@@ -114,8 +140,8 @@ await test('sqliteToJS', async (t) => {
 					sqliteToJS('text', 'date');
 				},
 				{
-					name: 'Error',
-					message: 'Database columns must be a integer when convert to a Date type',
+					name: 'TypeError',
+					message: 'Database columns must be a integer when convert to a Date type, but `text` was specified',
 				},
 			);
 		});
@@ -127,8 +153,8 @@ await test('sqliteToJS', async (t) => {
 					sqliteToJS(123, 'url');
 				},
 				{
-					name: 'Error',
-					message: 'Database columns must be a string type when convert to a URL type',
+					name: 'TypeError',
+					message: 'Database columns must be a string type when convert to a URL type, but `123` was specified',
 				},
 			);
 		});

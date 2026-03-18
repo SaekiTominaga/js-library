@@ -51,7 +51,7 @@ export const jsToSQLiteComparison = <T extends Exclude<JSType, undefined>>(value
 		return value.toString() as JsToSQLiteComparison<T>;
 	}
 
-	throw new TypeError('Unsupported JavaScript type');
+	throw new TypeError(`Unsupported JavaScript type: \`${String(value)}\``);
 };
 
 /**
@@ -96,21 +96,21 @@ export function sqliteToJS(value: SQLiteType, type?: 'boolean' | 'date' | 'url')
 	switch (type) {
 		case 'boolean': {
 			if (typeof value !== 'number' || (value !== 0 && value !== 1)) {
-				throw new Error('Database columns must be a 0 or 1 when convert to a boolean type');
+				throw new TypeError(`Database columns must be a 0 or 1 when convert to a boolean type, but \`${String(value)}\` was specified`);
 			}
 
 			return Boolean(value);
 		}
 		case 'date': {
 			if (typeof value !== 'number' || !Number.isInteger(value)) {
-				throw new Error('Database columns must be a integer when convert to a Date type');
+				throw new TypeError(`Database columns must be a integer when convert to a Date type, but \`${String(value)}\` was specified`);
 			}
 
 			return new Date(value * 1000);
 		}
 		case 'url': {
 			if (typeof value !== 'string') {
-				throw new Error('Database columns must be a string type when convert to a URL type');
+				throw new TypeError(`Database columns must be a string type when convert to a URL type, but \`${String(value)}\` was specified`);
 			}
 
 			return new URL(value);
