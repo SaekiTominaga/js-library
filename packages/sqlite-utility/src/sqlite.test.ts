@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { test } from 'node:test';
-import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS } from './sqlite.ts';
+import { jsToSQLiteAssignment, jsToSQLiteComparison, sqliteToJS } from './sqlite.ts';
 
 await test('jsToSQLiteComparison', async (t) => {
 	await t.test('string', () => {

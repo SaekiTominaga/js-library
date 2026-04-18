@@ -1,3 +1,3 @@
-import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS } from './sqlite.ts';
+import { jsToSQLiteAssignment, jsToSQLiteComparison, sqliteToJS } from './sqlite.ts';
 
-export { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS };
+export { jsToSQLiteAssignment, jsToSQLiteComparison, sqliteToJS };
