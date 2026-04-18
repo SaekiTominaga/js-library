@@ -1,3 +1,3 @@
-import { escape, unescape, template } from './escape.ts';
+import { escape, template, unescape } from './escape.ts';
 
-export { escape, unescape, template };
+export { escape, template, unescape };
