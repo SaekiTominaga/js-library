@@ -1,7 +1,7 @@
 # SQLite utility
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fsqlite-utility.svg)](https://www.npmjs.com/package/@w0s/sqlite-utility)
-[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/package-sqlite-utility.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/package-sqlite-utility.yml)
+[![CI status](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml)
 
 ## Examples
 
