@@ -6,7 +6,9 @@
 		"packages/*"
 	],
 	"scripts": {
-		"lint": "eslint packages/*/src/**/*.ts *.{js,mjs}"
+		"lint": "eslint packages/*/src/**/*.ts *.{js,mjs}",
+		"pretest": "npm run build --workspaces",
+		"test": "node --experimental-test-coverage --test packages/*/src/**/*.test.ts"
 	},
 	"devDependencies": {
 		"@types/node": "24.10.0",

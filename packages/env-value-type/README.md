@@ -1,7 +1,7 @@
 # Get the value of `process.env` with specified types
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fenv-value-type.svg)](https://www.npmjs.com/package/@w0s/env-value-type)
-[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/package-env-value-type.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/package-env-value-type.yml)
+[![CI status](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml)
 
 ## Examples
 

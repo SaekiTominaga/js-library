@@ -1,7 +1,7 @@
 # Converts newlines in a string, `trim()`, half-width / full-width conversion, etc
 
 [![npm version](https://badge.fury.io/js/%40w0s%2Fstring-convert.svg)](https://www.npmjs.com/package/@w0s/string-convert)
-[![Workflow status](https://github.com/SaekiTominaga/js-library/actions/workflows/package-string-convert.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/package-string-convert.yml)
+[![CI status](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml/badge.svg)](https://github.com/SaekiTominaga/js-library/actions/workflows/ci.yml)
 
 ## Examples
 
