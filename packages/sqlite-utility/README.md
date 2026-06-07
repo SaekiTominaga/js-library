@@ -6,7 +6,7 @@
 ## Examples
 
 ```JavaScript
-import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS, prepareSelect, prepareInsert, prepareUpdate, prepareDelete } from '@w0s/sqlite-utility';
+import { jsToSQLiteComparison, jsToSQLiteAssignment, sqliteToJS } from '@w0s/sqlite-utility';
 
 jsToSQLiteComparison('text'); // 'text'
 jsToSQLiteComparison(123); // 123
