@@ -6,22 +6,25 @@
 	"bugs": {
 		"url": "https://github.com/SaekiTominaga/js-library/issues"
 	},
+	"license": "MIT",
+	"author": "Saeki Tominaga",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"
 	},
-	"license": "MIT",
-	"author": "Saeki Tominaga",
-	"type": "module",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
 	"files": [
 		"dist/**/*.d.ts",
 		"dist/**/*.d.ts.map",
 		"dist/**/*.js",
 		"dist/**/*.js.map"
 	],
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"prebuild": "rimraf dist/* -g",
 		"build": "tsc",
@@ -31,8 +34,5 @@
 	},
 	"engines": {
 		"node": ">=22"
-	},
-	"publishConfig": {
-		"access": "public"
 	}
 }
