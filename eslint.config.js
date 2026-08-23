@@ -9,16 +9,13 @@ export default [
 		ignores: ['@types', 'packages/*/dist'],
 	},
 	{
-		files: ['**/*.ts'],
+		files: ['packages/*/src/**/*.ts'],
 		languageOptions: {
 			parserOptions: {
 				tsconfigRootDir: import.meta.dirname,
-				project: './packages/*/tsconfig.lint.json',
+				project: 'packages/*/tsconfig.lint.json',
 			},
 		},
-	},
-	{
-		files: ['packages/*/src/**/*.ts'],
 		rules: {
 			'@typescript-eslint/no-non-null-assertion': 'off',
 		},
