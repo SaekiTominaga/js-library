@@ -1,5 +1,5 @@
-import { getSequence as getNewlineSequence } from './util/newline.ts';
 import type { Option } from './index.ts';
+import { getSequence as getNewlineSequence } from './util/newline.ts';
 
 /**
  * Convert execution
