@@ -42,11 +42,8 @@ export default class {
 	#set(data?: Readonly<{ size?: number }>): void {
 		this.#size = data?.size;
 
-		if (data?.size === undefined) {
-			this.#url.pathname = `${this.#dir}/${this.#id}${this.#extension}`;
-		} else {
-			this.#url.pathname = `${this.#dir}/${this.#id}._SL${String(data.size)}_${this.#extension}`;
-		}
+		this.#url.pathname =
+			data?.size === undefined ? `${this.#dir}/${this.#id}${this.#extension}` : `${this.#dir}/${this.#id}._SL${String(data.size)}_${this.#extension}`;
 	}
 
 	/**
@@ -82,6 +79,7 @@ export default class {
 	 * @returns Image size (e.g. 160)
 	 */
 	getSize(): number | null {
+		// oxlint-disable-next-line unicorn/no-null
 		return this.#size ?? null;
 	}
 
@@ -125,7 +123,7 @@ export default class {
 
 		const size = Math.round(this.#size * multiply);
 		this.#set({
-			size: size < 1 ? 1 : size,
+			size: Math.max(1, size),
 		});
 	}
 
@@ -144,7 +142,7 @@ export default class {
 
 		const size = Math.round(this.#size / division);
 		this.#set({
-			size: size < 1 ? 1 : size,
+			size: Math.max(1, size),
 		});
 	}
 

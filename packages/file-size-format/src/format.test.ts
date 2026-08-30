@@ -48,35 +48,35 @@ await test('2進接頭辞', async (t) => {
 	});
 
 	await t.test('PiB - max', () => {
-		assert.equal(iec(BigInt('1152921504606846975')), '1024PiB');
+		assert.equal(iec(1_152_921_504_606_846_975n), '1024PiB');
 	});
 
 	await t.test('EiB - min', () => {
-		assert.equal(iec(BigInt('1152921504606846976')), '1EiB');
+		assert.equal(iec(1_152_921_504_606_846_976n), '1EiB');
 	});
 
 	await t.test('EiB - max', () => {
-		assert.equal(iec(BigInt('1180591620717411303423')), '1024EiB');
+		assert.equal(iec(1_180_591_620_717_411_303_423n), '1024EiB');
 	});
 
 	await t.test('ZiB - min', () => {
-		assert.equal(iec(BigInt('1180591620717411303424')), '1ZiB');
+		assert.equal(iec(1_180_591_620_717_411_303_424n), '1ZiB');
 	});
 
 	await t.test('ZiB - max', () => {
-		assert.equal(iec(BigInt('1208925819614629174706175')), '1024ZiB');
+		assert.equal(iec(1_208_925_819_614_629_174_706_175n), '1024ZiB');
 	});
 
 	await t.test('YiB - min', () => {
-		assert.equal(iec(BigInt('1208925819614629174706176')), '1YiB');
+		assert.equal(iec(1_208_925_819_614_629_174_706_176n), '1YiB');
 	});
 
 	await t.test('YiB - max', () => {
-		assert.equal(iec(BigInt('1237940039285380274899124223')), '1024YiB');
+		assert.equal(iec(1_237_940_039_285_380_274_899_124_223n), '1024YiB');
 	});
 
 	await t.test('YiB - over', () => {
-		assert.equal(iec(BigInt('1237940039285380274899124224')), '1024YiB');
+		assert.equal(iec(1_237_940_039_285_380_274_899_124_224n), '1024YiB');
 	});
 });
 
@@ -126,35 +126,35 @@ await test('SI接頭辞', async (t) => {
 	});
 
 	await t.test('PB - max', () => {
-		assert.equal(si(BigInt('999999999999999999')), '1000PB');
+		assert.equal(si(999_999_999_999_999_999n), '1000PB');
 	});
 
 	await t.test('EB - min', () => {
-		assert.equal(si(BigInt('1000000000000000000')), '1EB');
+		assert.equal(si(1_000_000_000_000_000_000n), '1EB');
 	});
 
 	await t.test('EB - max', () => {
-		assert.equal(si(BigInt('999999999999999999999')), '1000EB');
+		assert.equal(si(999_999_999_999_999_999_999n), '1000EB');
 	});
 
 	await t.test('ZB - min', () => {
-		assert.equal(si(BigInt('1000000000000000000000')), '1ZB');
+		assert.equal(si(1_000_000_000_000_000_000_000n), '1ZB');
 	});
 
 	await t.test('ZB - max', () => {
-		assert.equal(si(BigInt('999999999999999999999999')), '1000ZB');
+		assert.equal(si(999_999_999_999_999_999_999_999n), '1000ZB');
 	});
 
 	await t.test('YB - min', () => {
-		assert.equal(si(BigInt('1000000000000000000000000')), '1YB');
+		assert.equal(si(1_000_000_000_000_000_000_000_000n), '1YB');
 	});
 
 	await t.test('YB - max', () => {
-		assert.equal(si(BigInt('999999999999999999999999999')), '1000YB');
+		assert.equal(si(999_999_999_999_999_999_999_999_999n), '1000YB');
 	});
 
 	await t.test('YB - over', () => {
-		assert.equal(si(BigInt('1000000000000000000000000000')), '1000YB');
+		assert.equal(si(1_000_000_000_000_000_000_000_000_000n), '1000YB');
 	});
 });
 
@@ -164,7 +164,7 @@ await test('オプション', async (t) => {
 	});
 
 	await t.test('byte (SI・BigInt)', () => {
-		assert.equal(si(BigInt(512), { byte: 'B' }), '512B');
+		assert.equal(si(512n, { byte: 'B' }), '512B');
 	});
 
 	await t.test('space (IEC・Number)', () => {
@@ -172,7 +172,7 @@ await test('オプション', async (t) => {
 	});
 
 	await t.test('space (SI・BigInt)', () => {
-		assert.equal(si(BigInt(1024), { space: true }), '1 kB');
+		assert.equal(si(1024n, { space: true }), '1 kB');
 	});
 
 	await t.test('digits (IEC・Number)', () => {
@@ -184,7 +184,7 @@ await test('オプション', async (t) => {
 	});
 
 	await t.test('digits (SI・BigInt)', () => {
-		assert.equal(si(BigInt(1280), { digits: 2 }), '1kB'); // BigInt なので効果なし
+		assert.equal(si(1280n, { digits: 2 }), '1kB'); // BigInt なので効果なし
 	});
 });
 
@@ -216,7 +216,7 @@ await test('不正な値', async (t) => {
 	await t.test('NaN', () => {
 		assert.throws(
 			() => {
-				iec(NaN);
+				iec(Number.NaN);
 			},
 			{
 				name: 'RangeError',
@@ -240,7 +240,7 @@ await test('不正な値', async (t) => {
 	await t.test('unsafe', () => {
 		assert.throws(
 			() => {
-				iec(9007199254740992);
+				iec(9_007_199_254_740_992);
 			},
 			{
 				name: 'RangeError',

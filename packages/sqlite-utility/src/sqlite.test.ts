@@ -20,7 +20,7 @@ await test('jsToSQLiteComparison', async (t) => {
 	});
 
 	await t.test('Date', () => {
-		assert.equal(jsToSQLiteComparison(new Date('2000-01-01')), 946684800);
+		assert.equal(jsToSQLiteComparison(new Date('2000-01-01')), 946_684_800);
 	});
 
 	await t.test('URL', () => {
@@ -72,7 +72,7 @@ await test('jsToSQLiteAssignment', async (t) => {
 	});
 
 	await t.test('Date', () => {
-		assert.equal(jsToSQLiteAssignment(new Date('2000-01-01')), 946684800);
+		assert.equal(jsToSQLiteAssignment(new Date('2000-01-01')), 946_684_800);
 	});
 
 	await t.test('URL', () => {
@@ -102,10 +102,10 @@ await test('sqliteToJS', async (t) => {
 	});
 
 	await t.test('Date', () => {
-		const result = sqliteToJS(946684800, 'date');
+		const result = sqliteToJS(946_684_800, 'date');
 
 		assert.equal(result instanceof Date, true);
-		assert.equal(result.getTime(), 946684800000);
+		assert.equal(result.getTime(), 946_684_800_000);
 	});
 
 	await t.test('URL', () => {

@@ -63,6 +63,7 @@ export const jsToSQLiteComparison = <T extends Exclude<JSType, undefined>>(value
  */
 export const jsToSQLiteAssignment = <T extends JSType>(value: T): JsToSQLiteAssignment<T> => {
 	if (value === undefined) {
+		// oxlint-disable-next-line unicorn/no-null
 		return null as JsToSQLiteAssignment<T>;
 	}
 

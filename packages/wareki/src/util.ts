@@ -5,7 +5,7 @@
  *
  * @returns 元号
  */
-export const getEra = (date: Date): string =>
+const getEra = (date: Date): string =>
 	new Intl.DateTimeFormat('ja-JP-u-ca-japanese')
 		.formatToParts(date)
 		.filter((part) => part.type === 'era')
@@ -20,4 +20,6 @@ export const getEra = (date: Date): string =>
  *
  * @returns 元号が同じなら true
  */
-export const compareEra = (date1: Date, date2: Date): boolean => getEra(date1) === getEra(date2);
+const compareEra = (date1: Date, date2: Date): boolean => getEra(date1) === getEra(date2);
+
+export { getEra, compareEra };

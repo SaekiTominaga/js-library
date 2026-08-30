@@ -1,8 +1,6 @@
-import { convert } from './convert.ts';
+type NewlineSequence = '\r' | '\n' | '\r\n';
 
-export type NewlineSequence = '\r' | '\n' | '\r\n';
-
-export interface Option {
+interface Option {
 	newline?: 'CR' | 'LF' | 'CRLF'; // Converts newline
 	trim?: boolean; // Remove whitespace at both ends (Only one of `trim` and `trimMultiLine` can be specified)
 	trimMultiLine?: boolean; // Remove whitespace at both ends of each line (Only one of `trim` and `trimMultiLine` can be specified)
@@ -16,4 +14,6 @@ export interface Option {
 	table?: Readonly<Record<string, string>>; // Proprietary conversion table (An associative array that specifies the character string before conversion as the key and the character string after conversion as the value)
 }
 
-export { convert };
+export { convert } from './convert.ts';
+
+export { type NewlineSequence, type Option };

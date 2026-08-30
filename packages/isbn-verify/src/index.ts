@@ -1,3 +1,1 @@
-import IsbnVerify from './ISBN.ts';
-
-export default IsbnVerify;
+export { default } from './ISBN.ts';

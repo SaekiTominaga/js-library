@@ -13,10 +13,10 @@ export default class {
 		if (typeof url === 'string') {
 			const searchIndex = url.indexOf('?');
 			if (searchIndex !== -1) {
-				search = url.substring(searchIndex + 1);
+				search = url.slice(searchIndex + 1);
 			}
 		} else {
-			search = url.search.substring(1);
+			search = url.search.slice(1);
 		}
 
 		if (search !== '') {

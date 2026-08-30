@@ -1,3 +1,1 @@
-import Wareki from './Wareki.ts';
-
-export default Wareki;
+export { default } from './Wareki.ts';
