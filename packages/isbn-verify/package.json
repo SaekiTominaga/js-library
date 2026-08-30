@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/isbn-verify",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"description": "Verify ISBN string format and check digit",
 	"keywords": [
 		"ISBN"
