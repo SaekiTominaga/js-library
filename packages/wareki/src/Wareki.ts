@@ -20,14 +20,14 @@ export default class {
 		}
 
 		if (/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/u.test(date)) {
-			const year = Number(date.substring(0, 4));
-			const month = Number(date.substring(5, 7));
-			const day = Number(date.substring(8, 10));
+			const year = Number(date.slice(0, 4));
+			const month = Number(date.slice(5, 7));
+			const day = Number(date.slice(8, 10));
 
 			this.#date = new Date(year, month - 1, day);
 		} else if (/^[0-9]{4}-[0-9]{2}$/u.test(date)) {
-			const year = Number(date.substring(0, 4));
-			const month = Number(date.substring(5, 7));
+			const year = Number(date.slice(0, 4));
+			const month = Number(date.slice(5, 7));
 
 			const firstDay = new Date(year, month - 1); // その月の最初の日（1日）
 			const lastDay = new Date(year, month, 0); // その月の最後の日（30日や31日）

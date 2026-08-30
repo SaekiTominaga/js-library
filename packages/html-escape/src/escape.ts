@@ -5,7 +5,7 @@
  *
  * @returns Escaped string
  */
-export const escape = (input: string): string => {
+const escape = (input: string): string => {
 	let escaped = input;
 	for (const [char, ref] of new Map([
 		['&', '&amp;'], // & の変換は最初に行う必要がある
@@ -27,7 +27,7 @@ export const escape = (input: string): string => {
  *
  * @returns Unescaped string
  */
-export const unescape = (input: string): string => {
+const unescape = (input: string): string => {
 	let unescaped = input;
 	for (const [char, ref] of new Map([
 		['&lt;', '<'],
@@ -50,8 +50,10 @@ export const unescape = (input: string): string => {
  *
  * @returns Escaped string
  */
-export const template = (input: Readonly<TemplateStringsArray>, ...placeholders: readonly unknown[]): string =>
+const template = (input: Readonly<TemplateStringsArray>, ...placeholders: readonly unknown[]): string =>
 	input.reduce((previous, current, index) => {
 		const placeholder = String(placeholders.at(index - 1));
 		return `${previous}${escape(placeholder)}${current}`;
 	});
+
+export { escape, unescape, template };

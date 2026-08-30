@@ -29,7 +29,7 @@ await test('exist key', async (t) => {
 	});
 
 	await t.test('number (NaN)', () => {
-		assert.equal(getValue('TEST_STRING', 'number'), NaN);
+		assert.equal(getValue('TEST_STRING', 'number'), Number.NaN);
 	});
 
 	await t.test('number[]', () => {
@@ -79,7 +79,7 @@ await test('separator', async (t) => {
 	});
 
 	await t.test('number[]', () => {
-		assert.deepEqual(getValue('TEST_NUMBERS2', 'number[]', { separator: ' ' }), [NaN]);
+		assert.deepEqual(getValue('TEST_NUMBERS2', 'number[]', { separator: ' ' }), [Number.NaN]);
 	});
 
 	await t.test('number[]', () => {

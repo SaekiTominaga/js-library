@@ -33,7 +33,7 @@ const format = (size: number | bigint, base: number, unitTable: Readonly<UnitTab
 
 		const findUnitTable = Object.entries(unitTable).find(([exponent]) => size < base ** Number(exponent));
 		if (findUnitTable === undefined) {
-			throw new RangeError();
+			throw new RangeError('Values outside the expected range.'); // unitTable が正しく設定されていれば到達しない想定
 		}
 		const [exponent, unit] = findUnitTable;
 		return `${String(Math.round((size / base ** (Number(exponent) - 1)) * chusu) / chusu)}${space}${unit}`;
@@ -62,7 +62,7 @@ const format = (size: number | bigint, base: number, unitTable: Readonly<UnitTab
  *
  * @returns File size formatted with a IEC prefix
  */
-export const iec = (size: number | bigint, options?: Readonly<Option>): string => {
+const iec = (size: number | bigint, options?: Readonly<Option>): string => {
 	const optionsValidated = optionValidator(options);
 
 	const BASE = 1024;
@@ -89,7 +89,7 @@ export const iec = (size: number | bigint, options?: Readonly<Option>): string =
  *
  * @returns File size formatted with a SI prefix
  */
-export const si = (size: number | bigint, options?: Readonly<Option>): string => {
+const si = (size: number | bigint, options?: Readonly<Option>): string => {
 	const optionsValidated = optionValidator(options);
 
 	const BASE = 1000;
@@ -107,3 +107,5 @@ export const si = (size: number | bigint, options?: Readonly<Option>): string =>
 
 	return format(size, BASE, UNIT_TABLE, optionsValidated);
 };
+
+export { iec, si };

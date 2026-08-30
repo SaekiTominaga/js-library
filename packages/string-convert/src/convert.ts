@@ -63,10 +63,12 @@ export const convert = (text: string, options: Readonly<Option>): string => {
 
 	if (options.toHankakuEisu) {
 		/* 英数字を半角化 */
-		convertedText = convertedText.replaceAll(/[ａ-ｚＡ-Ｚ０-９]/gu, (str) => String.fromCharCode(str.charCodeAt(0) - 0xfee0));
+		// oxlint-disable-next-line unicorn/prefer-code-point unicorn/number-literal-case
+		convertedText = convertedText.replaceAll(/[ａ-ｚＡ-Ｚ０-９]/gu, (str) => String.fromCharCode(str.charCodeAt(0) - 0xfe_e0));
 	} else if (options.toZenkakuEisu) {
 		/* 英数字を全角化 */
-		convertedText = convertedText.replaceAll(/[a-zA-Z0-9]/gu, (str) => String.fromCharCode(str.charCodeAt(0) + 0xfee0));
+		// oxlint-disable-next-line unicorn/prefer-code-point unicorn/number-literal-case
+		convertedText = convertedText.replaceAll(/[a-zA-Z0-9]/gu, (str) => String.fromCharCode(str.charCodeAt(0) + 0xfe_e0));
 	}
 
 	if (options.toHankakuSpace) {

@@ -21,7 +21,7 @@ export default class {
 	 * @param options - Characteristics related to the handling of ISBN values
 	 */
 	constructor(isbn: string, options?: Readonly<Option>) {
-		const isbnNormalization = isbn.replace(/-/gu, '');
+		const isbnNormalization = isbn.replaceAll('-', '');
 		this.#isbnNormalization = isbnNormalization;
 
 		if (options?.strict) {
@@ -86,9 +86,9 @@ export default class {
 	verify(options?: Readonly<VerifyOption>): boolean {
 		if (options?.check_digit) {
 			if (this.#isbn13) {
-				return this.#isbnNormalization.substring(12) === this.#getCheckDigit13();
+				return this.#isbnNormalization.slice(12) === this.#getCheckDigit13();
 			} else if (this.#isbn10) {
-				return this.#isbnNormalization.substring(9) === this.#getCheckDigit10();
+				return this.#isbnNormalization.slice(9) === this.#getCheckDigit10();
 			}
 
 			return false;
@@ -107,23 +107,24 @@ export default class {
 
 		const checkDigit =
 			10 -
-			((Number(isbnNormalization.substring(0, 1)) +
-				Number(isbnNormalization.substring(1, 2)) * 3 +
-				Number(isbnNormalization.substring(2, 3)) +
-				Number(isbnNormalization.substring(3, 4)) * 3 +
-				Number(isbnNormalization.substring(4, 5)) +
-				Number(isbnNormalization.substring(5, 6)) * 3 +
-				Number(isbnNormalization.substring(6, 7)) +
-				Number(isbnNormalization.substring(7, 8)) * 3 +
-				Number(isbnNormalization.substring(8, 9)) +
-				Number(isbnNormalization.substring(9, 10)) * 3 +
-				Number(isbnNormalization.substring(10, 11)) +
-				Number(isbnNormalization.substring(11, 12)) * 3) %
+			((Number(isbnNormalization.slice(0, 1)) +
+				Number(isbnNormalization.slice(1, 2)) * 3 +
+				Number(isbnNormalization.slice(2, 3)) +
+				Number(isbnNormalization.slice(3, 4)) * 3 +
+				Number(isbnNormalization.slice(4, 5)) +
+				Number(isbnNormalization.slice(5, 6)) * 3 +
+				Number(isbnNormalization.slice(6, 7)) +
+				Number(isbnNormalization.slice(7, 8)) * 3 +
+				Number(isbnNormalization.slice(8, 9)) +
+				Number(isbnNormalization.slice(9, 10)) * 3 +
+				Number(isbnNormalization.slice(10, 11)) +
+				Number(isbnNormalization.slice(11, 12)) * 3) %
 				10);
 
 		switch (checkDigit) {
-			case 10:
+			case 10: {
 				return '0';
+			}
 			default:
 		}
 
@@ -140,22 +141,24 @@ export default class {
 
 		const checkDigit =
 			11 -
-			((Number(isbnNormalization.substring(0, 1)) * 10 +
-				Number(isbnNormalization.substring(1, 2)) * 9 +
-				Number(isbnNormalization.substring(2, 3)) * 8 +
-				Number(isbnNormalization.substring(3, 4)) * 7 +
-				Number(isbnNormalization.substring(4, 5)) * 6 +
-				Number(isbnNormalization.substring(5, 6)) * 5 +
-				Number(isbnNormalization.substring(6, 7)) * 4 +
-				Number(isbnNormalization.substring(7, 8)) * 3 +
-				Number(isbnNormalization.substring(8, 9)) * 2) %
+			((Number(isbnNormalization.slice(0, 1)) * 10 +
+				Number(isbnNormalization.slice(1, 2)) * 9 +
+				Number(isbnNormalization.slice(2, 3)) * 8 +
+				Number(isbnNormalization.slice(3, 4)) * 7 +
+				Number(isbnNormalization.slice(4, 5)) * 6 +
+				Number(isbnNormalization.slice(5, 6)) * 5 +
+				Number(isbnNormalization.slice(6, 7)) * 4 +
+				Number(isbnNormalization.slice(7, 8)) * 3 +
+				Number(isbnNormalization.slice(8, 9)) * 2) %
 				11);
 
 		switch (checkDigit) {
-			case 10:
+			case 10: {
 				return 'X';
-			case 11:
+			}
+			case 11: {
 				return '0';
+			}
 			default:
 		}
 
