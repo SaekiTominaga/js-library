@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/wareki",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "西暦データから和暦を取得",
 	"keywords": [
 		"wareki",
