@@ -7,7 +7,6 @@
 	"type": "module",
 	"scripts": {
 		"lint": "oxlint",
-		"pretest": "npm run build --workspaces",
 		"test": "node --experimental-test-coverage --experimental-strip-types --test packages/*/src/**/*.test.ts"
 	},
 	"devDependencies": {

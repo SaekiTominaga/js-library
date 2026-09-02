@@ -31,7 +31,6 @@
 	"scripts": {
 		"prebuild": "rimraf dist/* -g",
 		"build": "tsc",
-		"pretest": "tsc --noEmit",
 		"test": "node --experimental-test-coverage --experimental-strip-types --test src/**/*.test.ts"
 	},
 	"engines": {
