@@ -12,9 +12,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "24.10.0",
-		"@w0s/oxlint-config": "1.0.4",
+		"@w0s/oxlint-config": "1.0.7",
 		"@w0s/tsconfig": "3.1.1",
-		"eslint-plugin-safely-storage": "1.1.0",
 		"oxfmt": "0.64.0",
 		"oxlint": "1.80.0",
 		"oxlint-tsgolint": "7.0.2001",
