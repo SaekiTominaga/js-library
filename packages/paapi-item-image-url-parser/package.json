@@ -30,7 +30,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"prebuild": "rimraf dist/* -g",
+		"prebuild": "rimraf dist",
 		"build": "tsc",
 		"test": "node --experimental-test-coverage --experimental-strip-types --test src/**/*.test.ts"
 	},
