@@ -7,7 +7,7 @@
 	"type": "module",
 	"scripts": {
 		"lint": "oxlint",
-		"test": "node --experimental-test-coverage --experimental-strip-types --test packages/*/src/**/*.test.ts"
+		"test": "node --experimental-test-coverage --experimental-strip-types --test \"packages/*/src/**/*.test.ts\""
 	},
 	"devDependencies": {
 		"@types/node": "24.10.0",
