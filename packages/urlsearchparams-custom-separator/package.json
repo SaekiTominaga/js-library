@@ -1,6 +1,6 @@
 {
 	"name": "@w0s/urlsearchparams-custom-separator",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"description": "Support characters other than \"&\" as URL query separator",
 	"keywords": [
 		"url",
