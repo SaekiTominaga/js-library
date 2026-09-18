@@ -16,15 +16,15 @@
 		"url": "git+https://github.com/SaekiTominaga/js-library.git"
 	},
 	"files": [
-		"dist/**/*.d.ts",
-		"dist/**/*.d.ts.map",
-		"dist/**/*.js",
-		"dist/**/*.js.map"
+		"dist"
 	],
 	"type": "module",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
 	"publishConfig": {
 		"access": "public"
 	},
