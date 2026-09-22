@@ -58,9 +58,9 @@ constructor(date: Date | string)
 ## メソッド
 
 <dl>
-<dt><code>getYear(options?: Readonly&lt;FormatOption&gt;): string | undefined</code></dt>
+<dt><code>getYear(options?: FormatOption): string | undefined</code></dt>
 <dd>和暦年の文字列を取得する</dd>
-<dt><code>getYearParts(options?: Readonly&lt;FormatOption&gt;): Intl.DateTimeFormatPart[] | undefined</code></dt>
+<dt><code>getYearParts(options?: FormatOption): Intl.DateTimeFormatPart[] | undefined</code></dt>
 <dd>和暦年をパートごとに分解されたデータを取得する（<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts"><code>Intl.DateTimeFormat.prototype.formatToParts()</code></a> の返値をそのまま利用）</dd>
 </dl>
 

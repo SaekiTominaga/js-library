@@ -30,9 +30,9 @@ iec(1208925819614629174706176); // RangeError: `BigInt` should be used when spec
 ## Functions
 
 <dl>
-<dt><code>const iec = (size: number | bigint, options?: Readonly&lt;Option&gt;): string</code></dt>
+<dt><code>const iec = (size: number | bigint, options?: Option): string</code></dt>
 <dd>Expressed with a binary prefix (Byte, KiB, MiB, ...)</dd>
-<dt><code>const si = (size: number | bigint, options?: Readonly&lt;Option&gt;): string</code></dt>
+<dt><code>const si = (size: number | bigint, options?: Option): string</code></dt>
 <dd>Expressed with a SI prefix (Byte, kB, MB, ...)</dd>
 </dl>
 

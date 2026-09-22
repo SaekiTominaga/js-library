@@ -42,11 +42,11 @@ try {
 
 ## Functions
 
-- `function getValue(key: string, type?: 'string', option?: Readonly<Option>): string`
-- `function getValue(key: string, type: 'string[]', option?: Readonly<Option>): string[]`
-- `function getValue(key: string, type: 'number', option?: Readonly<Option>): number`
-- `function getValue(key: string, type: 'number[]', option?: Readonly<Option>): number[]`
-- `function getValue(key: string, type: 'boolean', option?: Readonly<Option>): boolean`
+- `function getValue(key: string, type?: 'string', option?: Option): string`
+- `function getValue(key: string, type: 'string[]', option?: Option): string[]`
+- `function getValue(key: string, type: 'number', option?: Option): number`
+- `function getValue(key: string, type: 'number[]', option?: Option): number[]`
+- `function getValue(key: string, type: 'boolean', option?: Option): boolean`
 
 ### Option
 
