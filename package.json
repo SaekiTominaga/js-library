@@ -17,7 +17,7 @@
 		"@w0s/oxlint-config": "1.0.9",
 		"@w0s/tsconfig": "3.2.2",
 		"concurrently": "10.0.6",
-		"oxfmt": "0.70.0",
+		"oxfmt": "0.74.0",
 		"oxlint": "1.85.0",
 		"oxlint-tsgolint": "7.0.2002",
 		"publint": "0.3.24",
